@@ -309,7 +309,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/ll_test_cqqd"
+            android:id="@id/ll_test_jcsz"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -320,7 +320,7 @@
             <ImageView
                 android:layout_width="30.0dip"
                 android:layout_height="30.0dip"
-                android:background="@drawable/img_module_home_page_base_home_reboot_kk" />
+                android:background="@drawable/img_module_home_page_base_home_setting_kk" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -328,7 +328,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:paddingLeft="10.0dip"
-                android:text="重启驱动"
+                android:text="基础设置"
                 android:textColor="#ff595757"
                 android:textSize="@dimen/twentyFour_sp" />
         </LinearLayout>

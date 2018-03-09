@@ -48,7 +48,7 @@ import rx.android.BuildConfig;
 
 public class TestActivity extends BaseActivity implements View.OnClickListener {
 
-    private LinearLayout llNowtime, llLocalip, llNetip, linearlayoutSfcj, linearlayoutCjjl, linearlayoutSfrz, linearlayoutKwdj, linearlayoutSjgl, ll_test_xqkc, ll_test_cqqd;
+    private LinearLayout llNowtime, llLocalip, llNetip, linearlayoutSfcj, linearlayoutCjjl, linearlayoutSfrz, linearlayoutKwdj, linearlayoutSjgl, ll_test_xqkc, ll_test_jcsz;
     private TextView nowtimeTv, nowdayTv, localipTv, tvConnectState, netipTv, upload_app_tv, version_app_tv;
     private ImageView imgConnectState;
     private Handler handler = new Handler();
@@ -89,7 +89,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         linearlayoutKwdj = findViewById(R.id.linearlayout_kwdj);
         linearlayoutSjgl = findViewById(R.id.linearlayout_sjgl);
         ll_test_xqkc = findViewById(R.id.ll_test_xqkc);
-        ll_test_cqqd = findViewById(R.id.ll_test_cqqd);
+        ll_test_jcsz = findViewById(R.id.ll_test_jcsz);
         version_app_tv = findViewById(R.id.version_app_tv);
     }
 
@@ -126,7 +126,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         linearlayoutKwdj.setOnClickListener(this);
         linearlayoutSjgl.setOnClickListener(this);
         ll_test_xqkc.setOnClickListener(this);
-        ll_test_cqqd.setOnClickListener(this);
+        ll_test_jcsz.setOnClickListener(this);
         version_app_tv.setOnClickListener(this);
     }
 
@@ -266,6 +266,9 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                         }
                     }).setBackgroundResource(R.drawable.img_base_icon_question).setNOVisibility(true).setLLButtonVisibility(true).setTitle("提示").setPositiveButton("是").setNegativeButton("否").show();
                 }
+                break;
+            case R.id.ll_test_jcsz:
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
         }
     }

@@ -45,6 +45,9 @@
         <activity
             android:name=".ui.RZJLActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.SettingActivity"
+            android:screenOrientation="landscape" />
 
 
     </application>

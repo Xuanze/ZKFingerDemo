@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="50dp"
+    android:background="@drawable/shape_dialog_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffebebec">
+
+        <TextView
+            android:id="@id/title"
+            style="@style/dialogTitleText"
+            android:layout_centerHorizontal="true"
+            android:text="提示"
+            android:textSize="24.0sp"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="@color/dialogTitleLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="#ffe0e0e1"
+        android:minHeight="124.04999dip"
+        android:orientation="horizontal"
+        android:padding="10.0dip">
+
+        <ImageView
+            android:id="@id/ivTip"
+            android:layout_width="83.32999dip"
+            android:layout_height="83.32999dip"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="26.519989dip"
+            android:layout_marginRight="14.199982dip"
+            android:background="@drawable/img_base_icon_question" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#ffe0e0e1"
+            android:minWidth="590.3828dip"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:singleLine="true"
+                android:text="当前场次不在当前考试时间"
+                android:textColor="@color/black"
+                android:textSize="30.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/tvContent2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:singleLine="true"
+                android:text="当前时间：2017年11月16日 12:05"
+                android:textColor="@color/black"
+                android:textSize="30.0sp" />
+
+            <TextView
+                android:id="@id/tvContent3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:singleLine="true"
+                android:text="所选场次：2017年11月03日 07：00-23:00"
+                android:textColor="@color/black"
+                android:textSize="30.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="@color/dialogTitleLine"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="117.41998dip"
+        android:layout_gravity="bottom|center"
+        android:background="#ffebebec"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@id/negativeButton"
+            android:layout_width="236.73999dip"
+            android:layout_height="60.609985dip"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20.0dip"
+            android:background="@drawable/shape_dialog_cancel2"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/black"
+            android:textSize="24.0sp" />
+
+
+        <Button
+            android:id="@id/positiveButton"
+            android:layout_width="236.73999dip"
+            android:layout_height="60.609985dip"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20.0dip"
+            android:background="@drawable/shape_dialog_ok2"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="24.0sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

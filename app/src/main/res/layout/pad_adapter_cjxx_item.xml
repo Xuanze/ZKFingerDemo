@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/ll_photowall_item"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="12dip"
+    android:background="@drawable/shape_photowall_boder_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="46.0dip"
+        android:background="@color/cjtj_gray"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/tv_student_name"
+            android:layout_width="fill_parent"
+            android:layout_height="42.0dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="张三"
+            android:textColor="@color/black2"
+            android:textSize="22.72998sp" />
+
+        <ImageView
+            android:id="@id/v_name_line"
+            android:layout_width="fill_parent"
+            android:layout_height="4.0dip"
+            android:background="@color/cjtj_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cjtj_item_white"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@id/ll_photo_state"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20.0dip">
+
+                <ImageView
+                    android:id="@id/iv_student_pic"
+                    android:layout_width="65dip"
+                    android:layout_height="81dip"
+                    android:layout_marginLeft="36.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@id/iv_upload_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40.0dip"
+                    android:layout_marginTop="20.0dip"
+                    android:layout_toRightOf="@id/iv_student_pic"
+                    android:background="@drawable/img_module_tab_collect_dynamiclist_not_upload" />
+
+                <TextView
+                    android:id="@id/tv_upload_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_upload_state"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginTop="12.0dip"
+                    android:layout_toRightOf="@id/iv_student_pic"
+                    android:text="未上报"
+                    android:textColor="@color/deep_gray"
+                    android:textSize="20.0sp" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@id/tv_student_sfzh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10.0dip"
+            android:background="@color/cjtj_item_white"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@color/black2"
+            android:textSize="20.0sp" />
+    </LinearLayout>
+</LinearLayout>

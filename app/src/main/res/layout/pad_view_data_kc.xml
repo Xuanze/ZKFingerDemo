@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/select_kc_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffdcdcdc">
+
+
+    <RelativeLayout
+        android:id="@id/rl_arrange_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/img_module_tab_arrange_levelsubject_bg"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@id/ll_data"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="50.0dip"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginTop="0.0dip"
+            android:background="@drawable/img_module_tab_arrange_levelsubject_gkck_card"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="15.0dip"
+                android:padding="10.0dip">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="已选"
+                        android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
+                        android:textSize="24.0sp" />
+
+                    <TextView
+                        android:id="@id/tv_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginRight="30.0dip"
+                        android:gravity="center"
+                        android:text="暂无"
+                        android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
+                        android:textSize="24.0sp" />
+
+                    <TextView
+                        android:id="@id/tv_selectkc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50.0dip"
+                        android:layout_marginLeft="10.0dip"
+                        android:background="@drawable/selector_module_tab_arrange_levelsubject_selectcc_unselected"
+                        android:gravity="center|left"
+                        android:maxLines="1"
+                        android:maxWidth="600.0dip"
+                        android:paddingLeft="10.0dip"
+                        android:paddingRight="10.0dip"
+                        android:text=""
+                        android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
+                        android:textSize="24.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@id/tv_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="1"
+                        android:textColor="@color/lightGreen"
+                        android:textSize="24.0sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5.0dip"
+                        android:text="/"
+                        android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
+                        android:textSize="24.0sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5.0dip"
+                        android:text="3"
+                        android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
+                        android:textSize="24.0sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:background="#ffdcdcdc"
+                android:orientation="horizontal" />
+
+            <GridView
+                android:id="@id/gv_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="20.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:numColumns="4"
+                android:padding="20.0dip"
+                android:verticalSpacing="20.0dip" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20.0dip"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@id/ll_buttons"
+                android:layout_width="250.0dip"
+                android:layout_height="50.0dip"
+                android:background="@drawable/selector_module_tab_arrange_levelsubject_button_selected"
+                android:text="确定"
+                android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_white"
+                android:textSize="24.0sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

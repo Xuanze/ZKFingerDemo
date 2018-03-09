@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0.0dip"
+    android:layout_weight="1.0"
+    android:background="@null"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@id/tv_idMsg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="身份证信息"
+        android:textColor="#ff999999"
+        android:textSize="30.0dip"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@id/ll_idcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginTop="15.0dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@id/iv_idFace"
+                android:layout_width="64.0dip"
+                android:layout_height="81.0dip" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@id/tv_name"
+                    android:layout_width="90.0dip"
+                    android:layout_height="31.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:textColor="#ff000000"
+                    android:textSize="25.0dip" />
+
+                <TextView
+                    android:id="@id/tv_sex"
+                    android:layout_width="23.0dip"
+                    android:layout_height="31.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:textColor="#ff000000"
+                    android:textSize="21.0dip" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_marginLeft="35.0dip"
+                android:background="@drawable/img_module_tab_collect_dynamicflow_process_check" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@id/tv_cardId"
+            android:layout_width="245.0dip"
+            android:layout_height="28.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="6.0dip"
+            android:text="\ 445224199309100000"
+            android:textColor="#ff000000"
+            android:textSize="24.0dip" />
+    </LinearLayout>
+</LinearLayout>

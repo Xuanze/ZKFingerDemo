@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="125.0dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="校准时间"
+            android:textColor="#ff333333"
+            android:textSize="40.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60.0dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32.0dip"
+            android:layout_height="32.0dip"
+            android:src="@drawable/img_module_tab_setting_timeset_gkck_time" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前设备时间"
+            android:textColor="#ff333333"
+            android:textSize="26.0sp" />
+
+        <TextView
+            android:id="@id/calibration_nowtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:text="2016-05-15 09:30"
+            android:textColor="#ff333333"
+            android:textSize="26.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60.0dip"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="32.0dip"
+            android:layout_height="32.0dip"
+            android:src="@drawable/img_module_tab_setting_timeset_gkck_time"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检测当前时间"
+            android:textColor="#ff333333"
+            android:textSize="26.0sp" />
+
+        <TextView
+            android:id="@id/calibration_nettime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:text="2016-05-15 09:30"
+            android:textColor="#ff333333"
+            android:textSize="26.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <DatePicker
+            android:id="@id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false" />
+
+        <TimePicker
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/calibration_confirm"
+        android:layout_width="240.0dip"
+        android:layout_height="50.0dip"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5.0dip"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textColor="#ff333333"
+            android:textSize="26.0sp" />
+    </LinearLayout>
+</LinearLayout>

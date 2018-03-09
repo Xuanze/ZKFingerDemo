@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="226.0dip"
+        android:layout_height="61.0dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="17.0dip"
+        android:text="请刷身份证"
+        android:textColor="#ff333333"
+        android:textSize="40.0dip"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/tv_inputIdCard"
+            android:layout_width="310.0dip"
+            android:layout_height="31.0dip"
+            android:layout_marginTop="14.0dip"
+            android:text="无身份证，点击输入身份证号"
+            android:textColor="#ff666666"
+            android:textSize="25.0dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="1.0px"
+            android:background="#ff666666"
+            android:minWidth="310.0dip" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="556.0dip"
+        android:layout_height="237.0dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30.0dip"
+        android:background="@drawable/img_module_tab_collect_dynamicflow_idcard_icon" />
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@id/dialog_ll_"
+        android:layout_width="match_parent"
+        android:layout_height="68.0dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@id/dialog_progressbar"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip" />
+
+        <ImageView
+            android:id="@id/dialog_complete_iv"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip"
+            android:src="@drawable/img_base_icon_correct" />
+
+        <TextView
+            android:id="@id/dialog_task_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:textSize="24.0dip" />
+    </LinearLayout>
+</LinearLayout>

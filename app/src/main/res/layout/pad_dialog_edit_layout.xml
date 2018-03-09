@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="20.0dip">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#ffebebec"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/dialog_edit_title"
+            style="@style/dialogTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_title_height"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="24.0sp"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.0px"
+            android:background="@color/dialogTitleLine" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffe0e0e1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="0.0dip"
+            android:paddingTop="0.0dip">
+
+            <ImageView
+                android:id="@id/iv_edit_Tip"
+                android:layout_width="83.32999dip"
+                android:layout_height="83.32999dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="26.519989dip"
+                android:layout_marginRight="14.199982dip"
+                android:background="@drawable/img_base_icon_info" />
+
+            <LinearLayout
+                android:layout_width="590.3828dip"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="124.04999dip"
+                android:minWidth="590.3828dip"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@id/et_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60.0dip"
+                    android:layout_marginLeft="20.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:background="@drawable/shape_ip_edittext_bg"
+                    android:hint="请输入18位身份证号码"
+                    android:inputType="number"
+                    android:digits="0123456789xyzXYZ"
+                    android:imeOptions="actionDone"
+                    android:maxLength="18"
+                    android:padding="15.0dip"
+                    android:textSize="25.0dip" />
+            </LinearLayout>
+            <ImageView
+                android:layout_width="83.32999dip"
+                android:layout_height="83.32999dip"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="14.199982dip"
+                android:layout_marginRight="26.519989dip"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.0px"
+            android:background="@color/dialogTitleLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="117.41998dip"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_dialog_bottom_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@id/no_edit_Button"
+                android:layout_width="236.73999dip"
+                android:layout_height="60.609985dip"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20.0dip"
+                android:background="@drawable/shape_dialog_cancel2"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="24.0sp" />
+
+            <Button
+                android:id="@id/ok_edit_Button"
+                android:layout_width="236.73999dip"
+                android:layout_height="60.609985dip"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20.0dip"
+                android:background="@drawable/shape_dialog_ok2"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/white"
+                android:textSize="24.0sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

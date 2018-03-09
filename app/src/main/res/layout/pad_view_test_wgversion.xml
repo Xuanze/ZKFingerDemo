@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_footer_version_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="#ebebec"
+    android:paddingTop="32dp"
+    android:paddingBottom="18dip"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:background="@drawable/img_module_tab_footer_base_icon_upload" />
+
+        <TextView
+            android:id="@id/upload_app_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="10.0dip"
+            android:text="暂无数据上传"
+            android:textColor="#fffe554f"
+            android:textSize="@dimen/twentyFour_sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1.0px"
+        android:layout_height="40.0dip"
+        android:background="@color/color_divider_line" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:background="@drawable/img_module_tab_footer_base_icon_info" />
+
+        <TextView
+            android:id="@id/version_app_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="10.0dip"
+            android:text="河南省2018年普通高校招生艺术类考试"
+            android:textColor="@color/version_black"
+            android:textSize="@dimen/twentyFour_sp" />
+    </LinearLayout>
+</LinearLayout>

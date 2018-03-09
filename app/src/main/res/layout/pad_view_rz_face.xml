@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginLeft="15.0dip"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0.0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="2.0"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@id/llCenter"
+            android:layout_width="450.0dip"
+            android:layout_height="345.0dip"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@id/state_camera"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:layout_width="100.0dip"
+                    android:layout_height="100.0dip"
+                    android:layout_gravity="center"
+                    android:layout_margin="10.0dip"
+                    android:indeterminate="false"
+                    android:indeterminateDrawable="@drawable/anim_progress_round" />
+
+                <TextView
+                    android:id="@id/camera_loadingmsg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="正在打开摄像头"
+                    android:textSize="@dimen/text_size_normal" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@id/rl_camera"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+                <com.zhongruan.android.zkfingerdemo.camera.CameraSurfaceView
+                    android:id="@id/sf_face"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true" />
+
+                <com.zhongruan.android.zkfingerdemo.camera.FaceHintView
+                    android:id="@id/view_tip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="130.0dip"
+            android:layout_height="345.0dip"
+            android:layout_margin="5.0dip"
+            android:background="@color/peopleCheckBtnBg">
+
+            <LinearLayout
+                android:id="@id/llSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10.0dip"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="10.0dip">
+
+                <ImageView
+                    android:id="@id/ivSwitch"
+                    android:layout_width="40.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5.0dip"
+                    android:layout_toLeftOf="@id/tvSwith"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_module_tab_auth_queryflow_face_switch" />
+
+                <TextView
+                    android:id="@id/tvSwith"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:text="切换"
+                    android:textColor="@drawable/color_module_tab_auth_queryflow_face_bg_tvbg"
+                    android:textSize="@dimen/twentySix_sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/llPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@id/img_photo"
+                    android:layout_width="100.0dip"
+                    android:layout_height="100.0dip"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_module_tab_auth_queryflow_face_takepic" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.zhongruan.android.zkfingerdemo"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            //显示日志
+            buildConfigField("boolean", "LOG_DEBUG", "false")
+        }
+
+        release {
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.zhongruan.android.zkfingerdemo.db'
+        targetGenDir 'src/main/java'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'org.greenrobot:greendao:3.2.0'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.trello:rxlifecycle:0.3.1'
+    compile 'com.trello:rxlifecycle-components:0.3.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.7.0'
+    compile files('libs/zip4j_1.3.2.jar')
+    compile 'org.apache.commons:commons-lang3:3.6'
+    compile files('libs/sun.misc.BASE64Decoder.jar')
+    compile 'com.github.ganfra:material-spinner:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation files('libs/zkandroidcore.jar')
+    implementation files('libs/zkandroididcardreader.jar')
+    implementation files('libs/zkandroidfpsensor.jar')
+}

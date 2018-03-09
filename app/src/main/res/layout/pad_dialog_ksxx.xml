@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="20.0dip">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#ffebebec"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/dialog_select_title"
+            style="@style/dialogTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_title_height"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="考务登记"
+            android:textSize="26.0sp"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.0px"
+            android:background="@color/dialogTitleLine" />
+
+        <include
+            layout="@layout/pad_view_rz_kwdj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_module_tab_auth_queryflow_bg" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.0px"
+            android:background="@color/dialogTitleLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="117.41998dip"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shape_dialog_bottom_bg"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@id/no_ksxx_Button"
+                android:layout_width="236.73999dip"
+                android:layout_height="60.609985dip"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20.0dip"
+                android:background="@drawable/shape_dialog_cancel2"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="24.0sp" />
+
+            <Button
+                android:id="@id/yes_ksxx_Button"
+                android:layout_width="236.73999dip"
+                android:layout_height="60.609985dip"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20.0dip"
+                android:background="@drawable/shape_dialog_ok2"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/white"
+                android:textSize="24.0sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

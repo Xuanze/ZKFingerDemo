@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@id/tip_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivDevice"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@id/tip_img"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip"
+            android:layout_marginRight="10.0dip"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_base_close" />
+
+        <TextView
+            android:id="@id/tip_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tip_img"
+            android:text="指纹比对不通过，请调整手指或更换手指再按"
+            android:textColor="@color/textcolor_c"
+            android:textSize="@dimen/thirty_sp" />
+
+        <TextView
+            android:id="@id/tip_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tip_one"
+            android:layout_marginTop="10.0dip"
+            android:layout_toRightOf="@id/tip_img"
+            android:text="如果多次不通过，请通过右上角定位考生"
+            android:textColor="@color/red"
+            android:textSize="@dimen/twentyFour_sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60.0dip">
+
+        <ImageView
+            android:id="@id/ivDevice"
+            android:layout_width="400.0dip"
+            android:layout_height="250.0dip"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_module_tab_auth_queryflow_device" />
+
+        <ImageView
+            android:id="@id/ivFinger"
+            android:layout_width="200.0dip"
+            android:layout_height="100.0dip"
+            android:layout_toRightOf="@id/ivDevice"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_module_tab_auth_queryflow_finger" />
+
+        <ImageView
+            android:id="@id/ivIdcard"
+            android:layout_width="200.0dip"
+            android:layout_height="150.0dip"
+            android:layout_below="@id/ivFinger"
+            android:layout_toRightOf="@id/ivDevice"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_module_tab_auth_queryflow_id_card"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

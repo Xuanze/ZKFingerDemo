@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">河南省考试考生身份认证系统</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="statistics_total">总人数</string>
+    <string name="statistics_totalchi">总人次</string>
+    <string name="statistics_unverified">未验证</string>
+    <string name="statistics_verified">已验证</string>
+    <string name="title_name">标准化考场身份认证系统</string>
+    <string name="search_hint">请输入考生号后四位查询</string>
+</resources>

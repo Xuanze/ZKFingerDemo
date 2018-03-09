@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@id/tv_fingerTips"
+            android:layout_width="wrap_content"
+            android:layout_height="61.0dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17.0dip"
+            android:text="请按右手食指"
+            android:textColor="#ff333333"
+            android:textSize="40.0dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@id/tv_warnMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="30.0dip"
+            android:layout_below="@id/tv_fingerTips"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffff0000"
+            android:textSize="25.0dip" />
+
+        <Button
+            android:id="@id/btn_endCollect"
+            android:layout_width="140.0dip"
+            android:layout_height="45.0dip"
+            android:layout_marginLeft="580.0dip"
+            android:layout_marginTop="17.0dip"
+            android:background="@drawable/shape_rounded_rect_white1"
+            android:padding="5.0dip"
+            android:text="终止本次采集"
+            android:textColor="#ff000000"
+            android:textSize="20.0dip"
+            android:textStyle="normal"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@id/btn_skipCollect"
+            android:layout_width="140.0dip"
+            android:layout_height="45.0dip"
+            android:layout_below="@id/btn_endCollect"
+            android:layout_marginLeft="580.0dip"
+            android:layout_marginTop="23.0dip"
+            android:background="@drawable/shape_rounded_rect_white1"
+            android:padding="5.0dip"
+            android:text="跳过指纹环节"
+            android:textColor="#ff000000"
+            android:textSize="20.0dip"
+            android:textStyle="normal"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@id/iv_finger"
+        android:layout_width="556.0dip"
+        android:layout_height="237.0dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="37.0dip"
+        android:background="@drawable/img_module_tab_collect_dynamicflow_finger6" />
+
+    <LinearLayout
+        android:id="@id/ll_switchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/tv_switchFinger"
+            android:layout_width="100.0dip"
+            android:layout_height="35.0dip"
+            android:text="切换指位"
+            android:textColor="#ff333333"
+            android:textSize="25.0dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="1.0px"
+            android:layout_gravity="center_horizontal"
+            android:background="#ff333333"
+            android:minWidth="100.0dip" />
+    </LinearLayout>
+</LinearLayout>

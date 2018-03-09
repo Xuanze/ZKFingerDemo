@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/cjtj_gray_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="74.0dip"
+            android:background="@color/cjtj_title_gray"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@id/ll_collect_statistic_back"
+                android:layout_width="100.0dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/twenty_dp"
+                    android:background="@drawable/back" />
+            </LinearLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@id/tabs_cj"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_toLeftOf="@id/ll_collect_statistic_search"
+                app:tabIndicatorColor="#ff16a085"
+                app:tabIndicatorHeight="6.0dip"
+                app:tabPaddingEnd="25.0dip"
+                app:tabPaddingStart="25.0dip"
+                app:tabSelectedTextColor="#de16a085"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabTextColor="#de333333" />
+
+            <LinearLayout
+                android:id="@id/ll_collect_statistic_search"
+                android:layout_width="100.0dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/twenty_dp"
+                    android:background="@drawable/img_base_search_big" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/color_divider_line" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@id/vp_view_cj"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

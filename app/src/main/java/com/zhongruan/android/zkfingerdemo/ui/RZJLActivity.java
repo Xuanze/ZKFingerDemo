@@ -30,7 +30,6 @@ public class RZJLActivity extends BaseActivity implements View.OnClickListener {
     private List<List<HistoryViw>> historyLists;
     private String TAG = "HNZR";
 
-
     @Override
     public void setContentView() {
         setContentView(R.layout.activity_rzjl);

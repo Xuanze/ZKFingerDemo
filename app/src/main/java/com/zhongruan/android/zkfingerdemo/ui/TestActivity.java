@@ -275,8 +275,9 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             checkAgain();
             return;
         }
-        if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() > 0) {
-            rzjg2 = DbServices.getInstance(TestActivity.this).selectCCrzjg(DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name());
+        if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() > 0 && DbServices.getInstance(getBaseContext()).selectCC().size() > 0) {
+            String ccmc = DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name();
+            rzjg2 = DbServices.getInstance(TestActivity.this).selectCCrzjg(ccmc);
             rzjl = DbServices.getInstance(getBaseContext()).selectRZJLSB();
             rzjg1 = DbServices.getInstance(getBaseContext()).selectRZJGSB(DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name());
             LogUtil.i("数据上报：rzjg1", rzjg1.size());
@@ -432,6 +433,13 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             return false;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        MyApplication.getApplication().setShouldStopUploadingData(false);
     }
 
     @Override

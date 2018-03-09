@@ -68,6 +68,8 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
         rz_title = findViewById(R.id.rz_title);
         ksKcList = new ArrayList<>();
         ksCcList = new ArrayList<>();
+        MyApplication.getApplication().setShouldStopUploadingData(true);
+
     }
 
     @Override
@@ -187,7 +189,7 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
 
                                     showProgressDialog(SelectKcCcActivity.this, "正在提取所选场次数据完成", false, 100);
                                     dismissProgressDialog();
-                                    new HintDialog(SelectKcCcActivity.this, R.style.dialog, "提取指纹完成，共有" + DbServices.getInstance(getBaseContext()).loadAllbkks().size() + "个考生，有" + DbServices.getInstance(getBaseContext()).loadAllrzkszw().size() + "个指\r\n纹", new HintDialog.OnCloseListener() {
+                                    new HintDialog(SelectKcCcActivity.this, R.style.dialog, "提取指纹完成，共有" + DbServices.getInstance(getBaseContext()).loadAllbkks().size() + "个考生，有" + DbServices.getInstance(getBaseContext()).loadAllrzkszw().size() + "个指纹", new HintDialog.OnCloseListener() {
                                         @Override
                                         public void onClick(Dialog dialog, boolean confirm) {
                                             if (confirm) {

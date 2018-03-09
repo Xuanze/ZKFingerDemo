@@ -103,7 +103,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
         state_camera = findViewById(R.id.state_camera);
         rl_camera = findViewById(R.id.rl_camera);
         gvKs = findViewById(R.id.gvKs);
-
+        MyApplication.getApplication().setShouldStopUploadingData(false);
         layout_view_kslist.setVisibility(View.VISIBLE);
         layout_view_finger.setVisibility(View.GONE);
         layout_view_face.setVisibility(View.GONE);

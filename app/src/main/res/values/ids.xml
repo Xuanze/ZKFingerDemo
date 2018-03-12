@@ -187,6 +187,7 @@
     <item name="img_photo" type="id">false</item>
     <item name="tvCountTotal" type="id">false</item>
     <item name="layout_view_finger" type="id">false</item>
+    <item name="layout_view_rz_face" type="id">false</item>
     <item name="llBottom" type="id">false</item>
     <item name="tvCancel" type="id">false</item>
     <item name="tvComfirm" type="id">false</item>

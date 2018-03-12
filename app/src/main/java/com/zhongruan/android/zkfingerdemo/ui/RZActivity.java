@@ -51,7 +51,7 @@ import java.util.List;
  */
 
 public class RZActivity extends BaseActivity implements View.OnClickListener, FingerprintCaptureListener {
-    private LinearLayout llSwitch, llPhoto, mLlBack, mLlChangeCc, ll_kwdj, layout_view_finger, layout_view_face, state_camera, layout_view_kslist;
+    private LinearLayout llSwitch, llPhoto, mLlBack, mLlChangeCc, ll_kwdj, layout_view_face, state_camera, layout_view_kslist, layout_view_rz_face, layout_view_finger;
     private TextView mTvCountUnverified, mTvTitle, mTvCountVerified, mTvCountTotal, mTvTime, mTvDate, mTvTip, mTvKsName, mTvKsSeat, mKsResult, mTvKsSfzh, mTvKsKc, mTvKsno;
     private RelativeLayout rl_camera;
     private ImageView mIvKs;
@@ -66,7 +66,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     private List<Bk_ks> bk_ks;
     private String zwid, timeZP, timeZW, kmno, kmmc, kcmc, kdno, ccmc, ccno;
     private int CS = 0;
-
 
     @Override
     public void setContentView() {
@@ -103,6 +102,8 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
         state_camera = findViewById(R.id.state_camera);
         rl_camera = findViewById(R.id.rl_camera);
         gvKs = findViewById(R.id.gvKs);
+        layout_view_rz_face = findViewById(R.id.layout_view_rz_face);
+
         MyApplication.getApplication().setShouldStopUploadingData(false);
         layout_view_kslist.setVisibility(View.VISIBLE);
         layout_view_finger.setVisibility(View.GONE);
@@ -174,7 +175,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
         }
     };
 
-
     private void KsList() {
         fingerData = null;
         mLlChangeCc.setEnabled(true);
@@ -202,6 +202,19 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     }
 
     private void KsZW() {
+        mLlChangeCc.setEnabled(false);
+        ll_kwdj.setEnabled(false);
+        layout_view_rz_face.setVisibility(View.GONE);
+        layout_view_finger.setVisibility(View.VISIBLE);
+        layout_view_face.setVisibility(View.VISIBLE);
+        Picasso.with(this).load(new File(FileUtils.getAppSavePath() + "/" + rz_ks_zw.get(0).getKs_xp())).into(mIvKs);
+        mTvKsName.setText(rz_ks_zw.get(0).getKs_xm() + "|" + (rz_ks_zw.get(0).getKs_xb().equals("1") ? "男" : "女"));
+        mTvKsSeat.setText(rz_ks_zw.get(0).getKs_zwh());
+        mTvKsSfzh.setText(rz_ks_zw.get(0).getKs_zjno());
+        mTvKsKc.setText(rz_ks_zw.get(0).getKs_kcmc());
+        mTvKsno.setText(rz_ks_zw.get(0).getKs_ksno());
+        mKsResult.setText("指纹比对中");
+        mKsResult.setTextColor(getResources().getColor(R.color.red));
         isRzSucceed = true;
         int b = FingerprintService.clear();
         LogUtil.i("清空指纹库结果：" + b);
@@ -215,15 +228,9 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
 
     private void KsPZ() {
         isRzSucceed = true;
+        layout_view_rz_face.setVisibility(View.VISIBLE);
+        layout_view_finger.setVisibility(View.GONE);
         OnBnStop();
-        mLlChangeCc.setEnabled(false);
-        ll_kwdj.setEnabled(false);
-        Picasso.with(this).load(new File(FileUtils.getAppSavePath() + "/" + rz_ks_zw.get(0).getKs_xp())).into(mIvKs);
-        mTvKsName.setText(rz_ks_zw.get(0).getKs_xm() + "|" + (rz_ks_zw.get(0).getKs_xb().equals("1") ? "男" : "女"));
-        mTvKsSeat.setText(rz_ks_zw.get(0).getKs_zwh());
-        mTvKsSfzh.setText(rz_ks_zw.get(0).getKs_zjno());
-        mTvKsKc.setText(rz_ks_zw.get(0).getKs_kcmc());
-        mTvKsno.setText(rz_ks_zw.get(0).getKs_ksno());
         if (!Utils.stringIsEmpty(zwid)) {
             mKsResult.setText("指纹比对通过");
             mKsResult.setTextColor(getResources().getColor(R.color.green));
@@ -263,7 +270,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
             LogUtil.i("myShutterCallback:onShutter...");
         }
     };
-
     Camera.PictureCallback mJpegPictureCallback = new Camera.PictureCallback() {
         public void onPictureTaken(byte[] data, Camera camera) {
             // TODO Auto-generated method stub
@@ -283,7 +289,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
                     @Override
                     public void onClick(Dialog dialog, boolean confirm) {
                         if (confirm) {
-                            ShowHintDialog(RZActivity.this, rz_ks_zw.get(0).getKs_xm() + " 验证通过", "提示", R.drawable.img_base_icon_correct, 800, false);
+                            ShowHintDialog(RZActivity.this, rz_ks_zw.get(0).getKs_xm() + " 验证完毕", "提示", R.drawable.img_base_icon_correct, 800, false);
                             timeZP = DateUtil.getNowTime();
                             ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
                                 @Override
@@ -341,7 +347,9 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     }
 
     private void isZwYz() {
+        ll_kwdj.setEnabled(true);
         zwid = "";
+        CS = 0;
         isRzSucceed = false;
         mTvTip.setText("请选择考生");
         layout_view_kslist.setVisibility(View.VISIBLE);
@@ -365,7 +373,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
 
     @Override
     public void captureOK(int captureMode, byte[] imageBuffer, int[] imageAttributes, final byte[] templateBuffer) {
-
         final int[] attributes = imageAttributes;
         final byte[] imgBuffer = imageBuffer;
         final byte[] tmpBuffer = templateBuffer;
@@ -384,7 +391,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
                 if (fingerData != null) {
                     CS++;
                     byte[] bufids = new byte[256];
-
                     int ret = FingerprintService.identify(tmpBuffer, bufids, 55, 1);
                     if (ret > 0) {
                         String strRes[] = new String(bufids).split("\t");

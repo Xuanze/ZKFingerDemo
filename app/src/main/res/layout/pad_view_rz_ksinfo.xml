@@ -147,7 +147,7 @@
                             android:id="@id/tvKsSfzh"
                             android:layout_width="0.0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4.0"
+                            android:layout_weight="5.0"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:textColor="@color/auth_ksinfo"

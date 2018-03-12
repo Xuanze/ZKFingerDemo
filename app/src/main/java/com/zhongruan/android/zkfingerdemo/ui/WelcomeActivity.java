@@ -1,8 +1,10 @@
 package com.zhongruan.android.zkfingerdemo.ui;
 
 import android.app.Dialog;
+import android.app.Service;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioManager;
 import android.os.Build;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import com.zhongruan.android.zkfingerdemo.utils.Utils;
 public class WelcomeActivity extends BaseActivity {
     private ImageView loadingImageView;
     private TextView idTvLoadingmsg;
+    private AudioManager audioManager; //音频
 
     @Override
     public void setContentView() {
@@ -31,6 +34,8 @@ public class WelcomeActivity extends BaseActivity {
         loadingImageView = findViewById(R.id.loadingImageView);
         idTvLoadingmsg = findViewById(R.id.id_tv_loadingmsg);
         ((AnimationDrawable) loadingImageView.getBackground()).start();
+        audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
     }
 
     @Override

@@ -264,10 +264,9 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     public void onClick(Dialog dialog, boolean confirm) {
                         if (confirm) {
                             dialog.dismiss();
+                            initMap();
                             isError = false;
                             isMuch = false;
-                            number = 0;
-                            progressSize = 0;
                             tempList = Utils.checkUSBZip(getUSBPath(), null);
                             LogUtil.i(tempList);
                             if (!Utils.checkUSBInserted()) {
@@ -280,7 +279,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                 LogUtil.i("U盘根目录不存在ZIP包");
                             } else if (tempList == null || BuildConfig.VERSION_NAME.equals(tempList.get(2)) || BuildConfig.VERSION_NAME.equals(tempList.get(3)) || tempList.size() <= 4) {
 
-                                initMap();
+
                                 copyFile();
                                 LogUtil.i("U盘根目录只存在一个ZIP包");
                             } else {

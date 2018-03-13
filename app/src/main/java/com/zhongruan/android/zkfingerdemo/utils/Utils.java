@@ -26,9 +26,10 @@ public class Utils {
         this.list = list;
     }
 
-
     public static String getUSBPath() {
         String str = Build.MODEL;
+        LogUtil.i("path:", str);
+        LogUtil.i("path:", str.hashCode());
         int obj = -1;
         switch (str.hashCode()) {
             case 1962326088:
@@ -48,6 +49,7 @@ public class Utils {
 
     public static boolean checkUSBInserted() {
         String path = getUSBPath();
+
         if (stringIsEmpty(path)) {
             return false;
         }

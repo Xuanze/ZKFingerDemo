@@ -3,10 +3,8 @@ package com.zhongruan.android.zkfingerdemo.config;
 
 public class ABLConfig {
 
-    public static final int UPDATE_FACE_RECT = 0;
-    public static final int CAMERA_HAS_STARTED_PREVIEW = 1;
     public static final String SERVER_IP = "server_ip";
-    public static final String SERVER_IP_DEFAULT = "192.168.1.1";
+    public static final String SERVER_IP_DEFAULT = "192.168.1.202";
     public static final String SERVER_SOCKET_PORT = "server_socket_port";
     public static final String SERVER_SOCKET_PORT_DEFAULT = "8082";
     public static final String DEVICE_IP = "device_ip";

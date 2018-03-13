@@ -120,12 +120,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
         tv_rz_usb_dc = findViewById(R.id.tv_rz_usb_dc);
         ll_cj_usb_dc = findViewById(R.id.ll_cj_usb_dc);
         tv_cj_usb_dc = findViewById(R.id.tv_cj_usb_dc);
-
-        progressMap = new HashMap<>();
-        finishMap = new HashMap<>();
         handler = new MyHandler();
-        initProgressDialog();
-
         if (!stringIsEmpty(ConfigApplication.getApplication().getUsbImportTime())) {
             tvUsbDr.setText("最近导入：" + ConfigApplication.getApplication().getUsbImportTime());
         }
@@ -244,7 +239,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     showImportProgressDialog(DataActivity.this, progressMap, finishMap);
                     break;
                 case 16:
-                    finishMap.put(0, true);
+                    finishMap.put(0, false);
                     progressMap.put(0, "正在下载数据：" + current + "%");
                     showImportProgressDialog(DataActivity.this, progressMap, finishMap);
                     break;
@@ -272,6 +267,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                             isError = false;
                             isMuch = false;
                             number = 0;
+                            progressSize = 0;
                             tempList = Utils.checkUSBZip(getUSBPath(), null);
                             LogUtil.i(tempList);
                             if (!Utils.checkUSBInserted()) {
@@ -283,7 +279,8 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                 hint = "U盘根目录不存在ZIP包";
                                 LogUtil.i("U盘根目录不存在ZIP包");
                             } else if (tempList == null || BuildConfig.VERSION_NAME.equals(tempList.get(2)) || BuildConfig.VERSION_NAME.equals(tempList.get(3)) || tempList.size() <= 4) {
-                                multiProgressDialog.show();
+
+                                initMap();
                                 copyFile();
                                 LogUtil.i("U盘根目录只存在一个ZIP包");
                             } else {
@@ -329,7 +326,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                         if (confirm) {
                             dialog.dismiss();
                             if (ConfigApplication.getApplication().getKDConnectState()) {
-                                multiProgressDialog.show();
+                                initMap();
                                 delFolder("DataTemp");
                                 ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
                                     public Object callback() {
@@ -370,7 +367,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                     }
                                 });
                             } else {
-                                multiProgressDialog.dismiss();
                                 ShowHintDialog(DataActivity.this, "请检查网络是否连接服务器", "网络导入数据", R.drawable.img_base_icon_error, "知道了", false);
                             }
                         } else {
@@ -565,7 +561,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     public void editInputFinished(Dialog dialog, String password, boolean confirm) {
                         if (confirm) {
                             dialog.dismiss();
-                            initProgressDialog();
+//                            initProgressDialog();
                             multiProgressDialog.show();
                             Message message3 = new Message();
                             message3.what = 1;
@@ -625,7 +621,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 DbServices.getInstance(DataActivity.this).deleteAllbkks();
                 DbServices.getInstance(DataActivity.this).deleteAllrzjl();
                 DbServices.getInstance(DataActivity.this).deleteAllrzjg();
-
                 if (DbServices.getInstance(DataActivity.this).loadAlltemp().size() == 0) {
                     return Boolean.valueOf(true);
                 }
@@ -641,7 +636,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 } else {
                     multiProgressDialog.dismiss();
                     ShowHintDialog(DataActivity.this, "数据库数据清除失败", "U盘导入数据", R.drawable.img_base_icon_error, "知道了", false);
-
                 }
             }
         });
@@ -676,7 +670,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 } else {
                     multiProgressDialog.dismiss();
                     ShowHintDialog(DataActivity.this, "报名照片复制失败", "U盘导入数据", R.drawable.img_base_icon_error, "知道了", false);
-
                 }
             }
         });
@@ -718,36 +711,15 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 } else {
                     multiProgressDialog.dismiss();
                     ShowHintDialog(DataActivity.this, "考生编排信息导入失败", "U盘导入数据", R.drawable.img_base_icon_error, "知道了", false);
-
                 }
             }
         });
     }
 
-    private void showImportProgressDialog(Context context, HashMap<Integer, String> progressMap, HashMap<Integer, Boolean> finishMap) {
-        if (this.progressSize <= progressMap.size()) {
-            this.multiProgressDialog.setLastPosition();
-        }
-        this.progressSize = progressMap.size();
-        this.multiProgressDialog.setProgressMap(progressMap).setFinishMap(finishMap);
-    }
-
-    private void initProgressDialog() {
-        multiProgressDialog = new MultiProgressDialog(this).createDialog();
-        multiProgressDialog.setTitile("导入进度");
-        multiProgressDialog.setProgressMap(progressMap);
-        multiProgressDialog.setFinishMap(finishMap);
-        multiProgressDialog.setCancelable(false);
-        WindowManager.LayoutParams p = this.multiProgressDialog.getWindow().getAttributes();
-        p.height = 420;
-        p.width = 800;
-        this.multiProgressDialog.getWindow().setAttributes(p);
-    }
 
     /**
      * 读取bk_ks.txt内容
      */
-
     private boolean getFileContent(File file, String tabName, int mag) {
         int numbers = 0;
         if (file != null) {    // 先判断目录是否为空，否则会报空指针
@@ -811,7 +783,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 LogUtil.i(DbServices.getInstance(DataActivity.this).loadAllkd().size());
                 LogUtil.i(DbServices.getInstance(DataActivity.this).loadAllkm().size());
                 if (DbServices.getInstance(DataActivity.this).loadAllcc().size() == 0 && DbServices.getInstance(DataActivity.this).loadAllkc().size() == 0 && DbServices.getInstance(DataActivity.this).loadAllkd().size() == 0 && DbServices.getInstance(DataActivity.this).loadAllkm().size() == 0) {
-//                    MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Ks_ccDao.TABLENAME + " (cc_no, cc_name,km_no,km_name,cc_kssj,cc_jssj,cc_zskssj,cc_zsjssj,cc_extract) " + " select distinct ccno,ccmc,kmno,kmmc,kssj,jssj,zskssj,zsjssj,'0' from " + Bk_ks_tempDao.TABLENAME);
                     MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Ks_ccDao.TABLENAME + " (cc_no, cc_name,km_no,km_name,cc_kssj,cc_jssj,cc_extract) " + " select distinct ccno,ccmc,kmno,kmmc,kssj,jssj,'0' from " + Bk_ks_tempDao.TABLENAME);
                     MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Ks_kmDao.TABLENAME + " (km_no, km_name) " + " select distinct kmno,kmmc from " + Bk_ks_tempDao.TABLENAME);
                     MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Ks_kcDao.TABLENAME + " (kc_no, kc_name,kc_extract) " + " select distinct kcno,kcmc,'0' from " + Bk_ks_tempDao.TABLENAME);
@@ -828,6 +799,8 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     Message message12 = new Message();
                     message12.what = 15;
                     handler.sendMessage(message12);
+
+
                     if (ksKcList.size() > 0) {
                         multiProgressDialog.dismiss();
                         select_kc_rl.setVisibility(View.VISIBLE);
@@ -886,5 +859,33 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
         this.ll_buttons.setEnabled(false);
         this.tv_selectkc.setText(BuildConfig.VERSION_NAME);
         this.tv_selectkc.setVisibility(View.GONE);
+    }
+
+    private void initMap() {
+        progressMap = new HashMap<>();
+        finishMap = new HashMap<>();
+        number = 0;
+        progressSize = 0;
+        multiProgressDialog = null;
+    }
+
+    public void showImportProgressDialog(Context paramContext, HashMap<Integer, String> paramHashMap, HashMap<Integer, Boolean> paramHashMap1) {
+        if (this.multiProgressDialog == null) {
+            this.multiProgressDialog = new MultiProgressDialog(paramContext).createDialog();
+            this.multiProgressDialog.setTitile("导入进度");
+            this.multiProgressDialog.setProgressMap(paramHashMap);
+            this.multiProgressDialog.setFinishMap(paramHashMap1);
+            this.multiProgressDialog.setCancelable(false);
+            this.multiProgressDialog.show();
+            WindowManager.LayoutParams localLayoutParams = this.multiProgressDialog.getWindow().getAttributes();
+            localLayoutParams.height = 420;
+            localLayoutParams.width = 800;
+            this.multiProgressDialog.getWindow().setAttributes(localLayoutParams);
+            return;
+        }
+        if (this.progressSize <= paramHashMap.size())
+            this.multiProgressDialog.setLastPosition();
+        this.progressSize = paramHashMap.size();
+        this.multiProgressDialog.setProgressMap(paramHashMap).setFinishMap(paramHashMap1);
     }
 }

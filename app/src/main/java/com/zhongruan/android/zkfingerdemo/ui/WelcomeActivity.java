@@ -120,7 +120,6 @@ public class WelcomeActivity extends BaseActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

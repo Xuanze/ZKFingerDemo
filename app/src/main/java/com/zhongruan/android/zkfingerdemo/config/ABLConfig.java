@@ -28,5 +28,4 @@ public class ABLConfig {
     public static final String BUNDLE_KEY_DOWNLOAD_NAME = "download_name";
     public static final String BUNDLE_KEY_DOWNLOAD_TYPE = "download_type";
     public static final int SYNTAX_ERROR = 500;
-
 }

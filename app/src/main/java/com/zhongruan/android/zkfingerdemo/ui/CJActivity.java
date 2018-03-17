@@ -119,7 +119,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         include_idcard.setVisibility(View.VISIBLE);
         tvTitle.setText("采集身份证");
         if (idCardData == null) {
-            handler.postDelayed(runnable01, 500);
+            handler.postDelayed(runnable01, 100);
         }
     }
 
@@ -158,7 +158,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                                             } else {
                                                 idCardData = null;
                                                 if (idCardData == null) {
-                                                    handler.postDelayed(runnable01, 500);
+                                                    handler.postDelayed(runnable01, 100);
                                                 }
                                             }
                                         }
@@ -173,7 +173,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
 
                         } else {
                             dialog.dismiss();
-                            handler.postDelayed(runnable01, 500);
+                            handler.postDelayed(runnable01, 100);
                         }
                     }
                 }).setTitle("请输入身份证号").show();
@@ -285,7 +285,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                             tvFingerMsg.setVisibility(View.VISIBLE);
                             llFace.setVisibility(View.GONE);
                             tvFaceMsg.setVisibility(View.VISIBLE);
-                            handler.postDelayed(runnable01, 1000);
+                            handler.postDelayed(runnable01, 100);
                             dialog.dismiss();
                         }
                     }
@@ -324,7 +324,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                             } else {
                                 idCardData = null;
                                 if (idCardData == null) {
-                                    handler.postDelayed(runnable01, 500);
+                                    handler.postDelayed(runnable01, 100);
                                 }
                             }
                         }
@@ -335,7 +335,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                     OnBnBegin();
                 }
             } else {
-                handler.postDelayed(this, 500);// 间隔1秒
+                handler.postDelayed(this, 100 );// 间隔1秒
             }
         }
     };

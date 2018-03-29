@@ -360,7 +360,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                             NewFilePath = StringUtils.substringBeforeLast(NewFile, ".");
                                             unZipFile(array[0].getPath(), StringUtils.substringBeforeLast(array[0].getPath(), "."), "mst");
                                         } else {
-                                            multiProgressDialog.dismiss();
+//                                            multiProgressDialog.dismiss();
                                             ShowHintDialog(DataActivity.this, "考点端没有数据，请进行生成基础数据操作！", "U盘导入数据", R.drawable.img_base_icon_error, "知道了", false);
                                         }
                                     }

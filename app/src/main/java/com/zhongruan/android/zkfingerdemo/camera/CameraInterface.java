@@ -82,7 +82,6 @@ public class CameraInterface {
                 mParams.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
             }
             mCamera.setParameters(mParams);
-
             try {
                 mCamera.setPreviewDisplay(holder);
                 mCamera.startPreview();//开启预览
@@ -127,7 +126,6 @@ public class CameraInterface {
             this.mCamera.startPreview();
         }
     }
-
 
     /**
      * 获取Camera.Parameters

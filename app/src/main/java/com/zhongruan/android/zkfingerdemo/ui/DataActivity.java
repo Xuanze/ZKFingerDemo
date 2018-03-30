@@ -340,7 +340,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                 }
                                                 MyApplication.getApplication().setShouldStopUploadingData(true);
                                                 SocketClient client = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                                                isReceive = client.receiveUnLockField(BuildConfig.VERSION_NAME, 105, path, handler);
+                                                isReceive = client.receiveUnLockField(DataActivity.this,BuildConfig.VERSION_NAME, 105, path, handler);
                                                 LogUtil.i(isReceive);
                                             }
                                         }.run();

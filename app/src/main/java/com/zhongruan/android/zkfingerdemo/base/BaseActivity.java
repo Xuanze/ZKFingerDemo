@@ -52,6 +52,7 @@ public abstract class BaseActivity extends FragmentActivity {
     private static final int PID = 289;
     private FingerprintSensor fingerprintSensor = null;
     public boolean bstart = false;
+    public boolean bopen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,15 +186,47 @@ public abstract class BaseActivity extends FragmentActivity {
         this.idCardReader = IDCardReaderFactory.createIDCardReader(this, TransportType.USB, idrparams);
     }
 
+    /**
+     * 获取设备序列号
+     *
+     * @return
+     */
+    public String getSerialNumber() {
+        try {
+            if (!bopen) {
+                OnBnOpen();
+            }
+            String samid = idCardReader.getSAMID(0);
+            LogUtil.i("获取SAM编号成功：" + samid);
+            return samid;
+        } catch (IDCardReaderException e) {
+            LogHelper.d("获取SAM模块失败, 错误码：" + e.getErrorCode() + "\n错误信息：" + e.getMessage() + "\n 内部错误码=" + e.getInternalErrorCode());
+            return null;
+        }
+    }
+
+    public void OnBnOpen() {
+        try {
+            if (bopen) return;
+            idCardReader.open(0);
+            bopen = true;
+        } catch (IDCardReaderException e) {
+            LogHelper.d("连接设备失败, 错误码：" + e.getErrorCode() + "\n错误信息：" + e.getMessage() + "\n 内部错误码=" + e.getInternalErrorCode());
+        }
+    }
+
     public IDCardData OnBnRead() {
         try {
-            idCardReader.open(0);
-            idCardReader.findCard(0);
-            idCardReader.selectCard(0);
-            IDCardInfo idCardInfo = new IDCardInfo();
-            this.idCardReader.readCard(0, 1, idCardInfo);
-            if (idCardInfo.getContentLength() > 0) {
-                return CommonUtil.getIDCardData(idCardInfo);
+            if (bopen) {
+                idCardReader.findCard(0);
+                idCardReader.selectCard(0);
+                IDCardInfo idCardInfo = new IDCardInfo();
+                this.idCardReader.readCard(0, 1, idCardInfo);
+                if (idCardInfo.getContentLength() > 0) {
+                    return CommonUtil.getIDCardData(idCardInfo);
+                }
+            } else {
+                OnBnOpen();
             }
         } catch (IDCardReaderException e) {
             LogUtil.e("读卡失败, 错误码：" + e.getErrorCode() + "\n错误信息：" + e.getMessage() + "\n 内部错误码=" + e.getInternalErrorCode());

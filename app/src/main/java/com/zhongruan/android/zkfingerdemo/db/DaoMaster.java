@@ -36,6 +36,7 @@ public class DaoMaster extends AbstractDaoMaster {
         Sfrz_rzjgDao.createTable(db, ifNotExists);
         Sfrz_rzjlDao.createTable(db, ifNotExists);
         Sfrz_rzztDao.createTable(db, ifNotExists);
+        Sn_numberDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -55,6 +56,7 @@ public class DaoMaster extends AbstractDaoMaster {
         Sfrz_rzjgDao.dropTable(db, ifExists);
         Sfrz_rzjlDao.dropTable(db, ifExists);
         Sfrz_rzztDao.dropTable(db, ifExists);
+        Sn_numberDao.dropTable(db, ifExists);
     }
 
     /**
@@ -88,6 +90,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(Sfrz_rzjgDao.class);
         registerDaoClass(Sfrz_rzjlDao.class);
         registerDaoClass(Sfrz_rzztDao.class);
+        registerDaoClass(Sn_numberDao.class);
     }
 
     public DaoSession newSession() {

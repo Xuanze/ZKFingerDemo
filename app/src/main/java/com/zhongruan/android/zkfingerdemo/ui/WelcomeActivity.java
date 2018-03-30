@@ -15,9 +15,11 @@ import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.db.Sb_ipDao;
 import com.zhongruan.android.zkfingerdemo.db.Sfrz_rzfsDao;
 import com.zhongruan.android.zkfingerdemo.db.Sfrz_rzztDao;
+import com.zhongruan.android.zkfingerdemo.db.Sn_numberDao;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
 import com.zhongruan.android.zkfingerdemo.utils.APPUtil;
 import com.zhongruan.android.zkfingerdemo.utils.Utils;
+
 
 public class WelcomeActivity extends BaseActivity {
     private ImageView loadingImageView;
@@ -31,6 +33,7 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     public void initViews() {
+        startIDCardReader();
         loadingImageView = findViewById(R.id.loadingImageView);
         idTvLoadingmsg = findViewById(R.id.id_tv_loadingmsg);
         ((AnimationDrawable) loadingImageView.getBackground()).start();
@@ -50,6 +53,12 @@ public class WelcomeActivity extends BaseActivity {
     public void initData() {
         if (Build.MODEL.equals(Utils.DEVICETYPE_YLT2)) {
             if (DbServices.getInstance(getBaseContext()).loadAllrzfs().size() == 0 && DbServices.getInstance(getBaseContext()).loadAllrzzt().size() == 0 && DbServices.getInstance(getBaseContext()).loadAllsbip().size() == 0) {
+
+                String sn = getSerialNumber();
+                if (sn != null) {
+                    MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sn_numberDao.TABLENAME + " (snid,sn)   VALUES ('1','" + sn + "')");
+                }
+
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sb_ipDao.TABLENAME + " (sb_ip)   VALUES ('192.168.1.1')");
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sfrz_rzztDao.TABLENAME + " (rzzt_no,rzzt_name)   VALUES ('11','考中补充拍照')");
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sfrz_rzztDao.TABLENAME + " (rzzt_no,rzzt_name)   VALUES ('13','考中考务登记')");

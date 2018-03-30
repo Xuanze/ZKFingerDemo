@@ -92,15 +92,6 @@ public class FileUtils {
         }
     }
 
-    /**
-     * 获取设备序列号
-     *
-     * @return
-     */
-    public static String getSerialNumber() {
-        return "1234567890";
-    }
-
     public static String getSDCardPath() {
         if (Environment.getExternalStorageState().equals("mounted")) {
             return Environment.getExternalStorageDirectory().getAbsolutePath();

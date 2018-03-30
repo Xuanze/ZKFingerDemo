@@ -66,6 +66,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     private List<Bk_ks> bk_ks;
     private String zwid, timeZP, timeZW, kmno, kmmc, kcmc, kdno, ccmc, ccno;
     private int CS = 0;
+    private String SN = DbServices.getInstance(getBaseContext()).loadAllSN().get(0).getSn();
 
     @Override
     public void setContentView() {
@@ -304,22 +305,22 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
                                 @Override
                                 public void callback(Object obj) {
                                     if (((Boolean) obj).booleanValue()) {
-                                        DbServices.getInstance(getBaseContext()).saveRzjg("21", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), FileUtils.getSerialNumber(), timeZP, "0");
+                                        DbServices.getInstance(getBaseContext()).saveRzjg("21", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), SN, timeZP, "0");
                                         if (fingerData != null) {
                                             byte[] bytes = fingerData.getFingerImage();
                                             zwBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length); //生成位图
                                             String timezw = DateUtil.getNowTime_Millisecond4();
                                             FileUtils.saveBitmap(zwBitmap, "sfrz_rzjl/kstz_a_zw/", rz_ks_zw.get(0).getKs_ksno() + "_" + timezw);
-                                            DbServices.getInstance(getBaseContext()).saveRzjl("8003", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), FileUtils.getSerialNumber(), "1", timeZW, Base64Util.encode(fingerData.getFingerFeatures()), "sfrz_rzjl/kstz_a_zw/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezw + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
+                                            DbServices.getInstance(getBaseContext()).saveRzjl("8003", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), SN, "1", timeZW, Base64Util.encode(fingerData.getFingerFeatures()), "sfrz_rzjl/kstz_a_zw/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezw + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
                                         }
                                         String timezp = DateUtil.getNowTime_Millisecond4();
                                         FileUtils.saveBitmap(CameraInterface.getInstance().rectBitmap, "sfrz_rzjl/kstz_a_pz/", rz_ks_zw.get(0).getKs_ksno() + "_" + timezp);
-                                        DbServices.getInstance(getBaseContext()).saveRzjl("8007", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), FileUtils.getSerialNumber(), "1", DateUtil.getNowTime(), "", "sfrz_rzjl/kstz_a_pz/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezp + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
+                                        DbServices.getInstance(getBaseContext()).saveRzjl("8007", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), SN, "1", DateUtil.getNowTime(), "", "sfrz_rzjl/kstz_a_pz/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezp + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
                                     } else {
-                                        DbServices.getInstance(getBaseContext()).saveRzjg("22", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), FileUtils.getSerialNumber(), timeZP, "0");
+                                        DbServices.getInstance(getBaseContext()).saveRzjg("22", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), SN, timeZP, "0");
                                         String timezp = DateUtil.getNowTime_Millisecond4();
                                         FileUtils.saveBitmap(CameraInterface.getInstance().rectBitmap, "sfrz_rzjl/kstz_a_pz/", rz_ks_zw.get(0).getKs_ksno() + "_" + timezp);
-                                        DbServices.getInstance(getBaseContext()).saveRzjl("8006", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), FileUtils.getSerialNumber(), "0", DateUtil.getNowTime(), "", "sfrz_rzjl/kstz_a_pz/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezp + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
+                                        DbServices.getInstance(getBaseContext()).saveRzjl("8006", rz_ks_zw.get(0).getKs_ksno(), kmno, kdno, rz_ks_zw.get(0).getKs_kcno(), rz_ks_zw.get(0).getKs_zwh(), SN, "0", DateUtil.getNowTime(), "", "sfrz_rzjl/kstz_a_pz/" + rz_ks_zw.get(0).getKs_ksno() + "_" + timezp + ".jpg", DbServices.getInstance(getBaseContext()).selectRzjg(rz_ks_zw.get(0).getKs_ksno()).toString(), "0");
                                     }
                                     DbServices.getInstance(getBaseContext()).saveBkKs(kcmc, ccno, rz_ks_zw.get(0).getKs_zjno());
                                     isZwYz();

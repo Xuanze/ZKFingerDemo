@@ -1,14 +1,14 @@
 package com.zhongruan.android.zkfingerdemo.socket;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
-
 
 import com.zhongruan.android.zkfingerdemo.BuildConfig;
 import com.zhongruan.android.zkfingerdemo.config.ABLConfig;
+import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.ui.MyApplication;
 import com.zhongruan.android.zkfingerdemo.utils.BeanToMapUtil;
-import com.zhongruan.android.zkfingerdemo.utils.FileUtils;
 import com.zhongruan.android.zkfingerdemo.utils.PreferenceUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -28,12 +28,12 @@ public class SocketHeadInfo {
         KEYS = new String[]{"sessionID", "userName", "passWord", "version", "contentType", "contentName", "resultInfo", "wsWsNo", "wsWsIp", "contentInfo", "dateTime", "contentLength"};
     }
 
-    public SocketHeadInfo() {
+    public SocketHeadInfo(Context context) {
         this.socketBean = new SocketHeadBean();
         this.map = new HashMap();
         this.preferences = PreferenceUtils.getInstance(MyApplication.getApplication()).getPreferences();
         this.socketBean.setWsWsIp(this.preferences.getString(ABLConfig.DEVICE_IP, BuildConfig.VERSION_NAME));
-        this.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+        this.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
     }
 
     public String getHeadInfo() {

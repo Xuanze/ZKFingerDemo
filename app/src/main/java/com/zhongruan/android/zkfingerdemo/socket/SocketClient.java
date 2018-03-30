@@ -2,12 +2,13 @@ package com.zhongruan.android.zkfingerdemo.socket;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 
-
 import com.zhongruan.android.zkfingerdemo.config.ABLConfig;
+import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.ui.ConfigApplication;
 import com.zhongruan.android.zkfingerdemo.ui.MyApplication;
 import com.zhongruan.android.zkfingerdemo.utils.DateUtil;
@@ -77,7 +78,7 @@ public class SocketClient {
      * @param contentInfo
      * @return
      */
-    public Map<String, Object> receiveUnLockMessage(String sessionId, String contentInfo) {
+    public Map<String, Object> receiveUnLockMessage(Context context, String sessionId, String contentInfo) {
         Map<String, Object> map = new HashMap();
         getSocket();
         LogUtil.i(socket.toString());
@@ -88,8 +89,8 @@ public class SocketClient {
                     OutputStream outputStream = this.socket.getOutputStream();
                     Date nowTime = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nowTime);
-                    SocketHeadInfo headInfo = new SocketHeadInfo();
-                    headInfo.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo = new SocketHeadInfo(context);
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(106);
@@ -110,8 +111,8 @@ public class SocketClient {
 
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
 
-                    SocketHeadInfo headInfo2 = new SocketHeadInfo();
-                    headInfo2.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     int version = headInfo2.socketBean.getVersion();
                     map.put("version", Integer.valueOf(version));
@@ -139,7 +140,7 @@ public class SocketClient {
      * @param handler
      * @return
      */
-    public int receiveUnLockField(String sessionId, int contentName, String filepath, Handler handler) {
+    public int receiveUnLockField(Context context, String sessionId, int contentName, String filepath, Handler handler) {
         FileUtils.newFolder(filepath);
         getSocket();
         if (this.socket != null) {
@@ -151,8 +152,8 @@ public class SocketClient {
                     byte[] byteHeadLength = new byte[10];
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-                    SocketHeadInfo headInfo = new SocketHeadInfo();
-                    headInfo.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo = new SocketHeadInfo(context);
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -170,8 +171,8 @@ public class SocketClient {
                     outputStream.flush();
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] headInfo1 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10), "UTF-8").trim()));
-                    SocketHeadInfo headInfo2 = new SocketHeadInfo();
-                    headInfo2.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo2.setHeadInfo(headInfo1);
                     int fileLength = headInfo2.socketBean.getContentLength();
                     String contentInfo = headInfo2.socketBean.getContentInfo();
@@ -238,7 +239,7 @@ public class SocketClient {
      * @return
      */
 
-    public Map<String, Object> sendFile(String sessionId, int contentName, String filepath, String contentInfo) {
+    public Map<String, Object> sendFile(Context context, String sessionId, int contentName, String filepath, String contentInfo) {
         LogUtil.i("解锁sendFile");
         String msg = (BuildConfig.VERSION_NAME + DateUtil.getNowTime_Millisecond() + ABLConfig.BMD_BZ_SPLIT) + "contentName:" + contentName + ABLConfig.BMD_BZ_SPLIT;
         if (contentName == ABLConfig.RZJL) {
@@ -261,8 +262,8 @@ public class SocketClient {
                     byte[] byteFile = FileUtils.getBytes(filepath);
                     LogUtil.i("照片：byteFile", filepath + " | " + byteFile + " | " + (byteFile != null ? byteFile.length : 0));
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
-                    SocketHeadInfo headInfo = new SocketHeadInfo();
-                    headInfo.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo = new SocketHeadInfo(context);
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(2);
                     headInfo.socketBean.setContentName(contentName);
@@ -288,8 +289,8 @@ public class SocketClient {
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
                     inputStream.read(byteHeadInfo2);
-                    SocketHeadInfo headInfo2 = new SocketHeadInfo();
-                    headInfo2.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     LogUtil.i("接收到sendFile head", BuildConfig.VERSION_NAME + headInfo2.getHeadInfo());
                     int success = headInfo2.socketBean.getResultInfo();
@@ -320,7 +321,7 @@ public class SocketClient {
      * @return
      */
 
-    public Map<String, Object> sendString(int contentName, String contentInfo) {
+    public Map<String, Object> sendString(Context context, int contentName, String contentInfo) {
         String msg = BuildConfig.VERSION_NAME + DateUtil.getNowTime_Millisecond() + ABLConfig.BMD_BZ_SPLIT;
         msg = msg + "contentName:" + contentName + ABLConfig.BMD_BZ_SPLIT;
         if (contentName == ABLConfig.RZJG) {
@@ -340,8 +341,8 @@ public class SocketClient {
                     OutputStream outputStream = this.socket.getOutputStream();
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-                    SocketHeadInfo headInfo = new SocketHeadInfo();
-                    headInfo.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo = new SocketHeadInfo(context);
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo.socketBean.setSessionID(BuildConfig.VERSION_NAME);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -362,8 +363,8 @@ public class SocketClient {
                     LogUtil.i("byteHeadInfo", length + " | " + headSize.length + " | " + byteHeadInfo);
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
-                    SocketHeadInfo headInfo2 = new SocketHeadInfo();
-                    headInfo2.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     LogUtil.i("接收到sendString head", BuildConfig.VERSION_NAME + headInfo2.getHeadInfo());
                     int success = headInfo2.socketBean.getResultInfo();
@@ -404,7 +405,7 @@ public class SocketClient {
      * @param handler
      * @return
      */
-    public boolean receiveUnLockField(String sessionId, int contentName, String filepath, String contentInfoStr, Handler handler) {
+    public boolean receiveUnLockField(Context context, String sessionId, int contentName, String filepath, String contentInfoStr, Handler handler) {
         FileUtils.newFolder(filepath);
         getSocket();
         if (this.socket != null) {
@@ -416,8 +417,8 @@ public class SocketClient {
                     LogUtil.i("receiveField", "byteHeadLength");
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-                    SocketHeadInfo headInfo = new SocketHeadInfo();
-                    headInfo.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo = new SocketHeadInfo(context);
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -433,8 +434,8 @@ public class SocketClient {
                     outputStream.flush();
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] headInfo1 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10), "UTF-8").trim()));
-                    SocketHeadInfo headInfo2 = new SocketHeadInfo();
-                    headInfo2.socketBean.setWsWsNo(FileUtils.getSerialNumber());
+                    SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
                     headInfo2.setHeadInfo(headInfo1);
                     int fileLength = headInfo2.socketBean.getContentLength();
                     String contentInfo = headInfo2.socketBean.getContentInfo();

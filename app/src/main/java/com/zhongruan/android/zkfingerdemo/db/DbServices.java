@@ -16,6 +16,7 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzfs;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzzt;
+import com.zhongruan.android.zkfingerdemo.db.entity.Sn_number;
 import com.zhongruan.android.zkfingerdemo.ui.MyApplication;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 
@@ -46,7 +47,7 @@ public class DbServices {
     private Sfrz_rzjgDao rzjgDao;
     private Bk_ksDao bk_ksDao;
     private Sb_ipDao sbIpDao;
-
+    private Sn_numberDao sn_numberDao;
 
     private DbServices() {
     }
@@ -81,7 +82,7 @@ public class DbServices {
             instance.rzjgDao = instance.mDaoSession.getSfrz_rzjgDao();
             instance.bk_ksDao = instance.mDaoSession.getBk_ksDao();
             instance.sbIpDao = instance.mDaoSession.getSb_ipDao();
-
+            instance.sn_numberDao = instance.mDaoSession.getSn_numberDao();
         }
         return instance;
     }
@@ -144,6 +145,10 @@ public class DbServices {
 
     public List<Sb_ip> loadAllsbip() {
         return sbIpDao.loadAll();
+    }
+
+    public List<Sn_number> loadAllSN() {
+        return sn_numberDao.loadAll();
     }
 
     /**

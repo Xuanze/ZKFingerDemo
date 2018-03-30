@@ -307,7 +307,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 String kcno = DbServices.getInstance(getBaseContext()).loadAllkc().size() > 0 ? BuildConfig.VERSION_NAME + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_no() : BuildConfig.VERSION_NAME;
                 LogUtil.i("所选的考场：", kcno);
                 client = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                Map<String, Object> messages = client.receiveUnLockMessage(BuildConfig.VERSION_NAME, kcno);
+                Map<String, Object> messages = client.receiveUnLockMessage(TestActivity.this,BuildConfig.VERSION_NAME, kcno);
                 LogUtil.i(kcno + " | 获取到考点端消息：" + messages);
                 client.closeSocket();
                 return messages;
@@ -355,7 +355,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void run() {
                         SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        map = socketClient.sendString(ABLConfig.RZJG, rzjg.toString());
+                        map = socketClient.sendString(TestActivity.this,ABLConfig.RZJG, rzjg.toString());
                         LogUtil.i("数据上报：uploadRzjg", map);
                     }
                 }.run();
@@ -378,7 +378,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void run() {
                         SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        receive = socketClient.receiveUnLockField(BuildConfig.VERSION_NAME, ABLConfig.DATAVERSION_APP_FILE, FileUtils.getSDCardPath(), ABLConfig.BUNDLE_KEY_DOWNLOAD_NAME, checkMessageHandler);
+                        receive = socketClient.receiveUnLockField(TestActivity.this,BuildConfig.VERSION_NAME, ABLConfig.DATAVERSION_APP_FILE, FileUtils.getSDCardPath(), ABLConfig.BUNDLE_KEY_DOWNLOAD_NAME, checkMessageHandler);
                     }
                 }.run();
                 return receive;
@@ -400,7 +400,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void run() {
                         SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        map = socketClient.sendFile(BuildConfig.VERSION_NAME, ABLConfig.RZJL, FileUtils.getAppSavePath() + "/" + rzjl.getRzjl_pith(), rzjl.toString());
+                        map = socketClient.sendFile(TestActivity.this,BuildConfig.VERSION_NAME, ABLConfig.RZJL, FileUtils.getAppSavePath() + "/" + rzjl.getRzjl_pith(), rzjl.toString());
                         LogUtil.i("数据上报：uploadRzjl", map);
                     }
                 }.run();

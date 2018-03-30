@@ -2,12 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.zhongruan.android.zkfingerdemo"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -52,7 +51,7 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.2.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:design:27.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'io.reactivex:rxjava:1.2.1'
     implementation 'io.reactivex:rxandroid:1.2.1'

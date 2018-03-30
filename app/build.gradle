@@ -17,7 +17,6 @@ android {
             //显示日志
             buildConfigField("boolean", "LOG_DEBUG", "false")
         }
-
         release {
             minifyEnabled false
             //Zipalign优化
@@ -32,7 +31,6 @@ android {
         daoPackage 'com.zhongruan.android.zkfingerdemo.db'
         targetGenDir 'src/main/java'
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
@@ -42,34 +40,33 @@ android {
 repositories {
     maven { url "https://jitpack.io" }
 }
-
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'org.greenrobot:greendao:3.2.0'
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    implementation 'org.greenrobot:greendao:3.2.0'
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:design:26.0.0-alpha1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'io.reactivex:rxjava:1.1.0'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.trello:rxlifecycle:0.3.1'
-    compile 'com.trello:rxlifecycle-components:0.3.1'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.7.0'
-    compile files('libs/zip4j_1.3.2.jar')
-    compile 'org.apache.commons:commons-lang3:3.6'
-    compile files('libs/sun.misc.BASE64Decoder.jar')
-    compile 'com.github.ganfra:material-spinner:1.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'io.reactivex:rxjava:1.2.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.trello:rxlifecycle:1.0'
+    implementation 'com.trello:rxlifecycle-components:1.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.7.0'
+    implementation files('libs/zip4j_1.3.2.jar')
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    implementation files('libs/sun.misc.BASE64Decoder.jar')
+    implementation 'com.github.ganfra:material-spinner:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
     implementation files('libs/zkandroidcore.jar')
     implementation files('libs/zkandroididcardreader.jar')
     implementation files('libs/zkandroidfpsensor.jar')

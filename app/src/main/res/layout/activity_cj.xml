@@ -19,7 +19,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <include
                 layout="@layout/pad_view_cj_idcard"
                 android:layout_width="match_parent"
@@ -47,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0" />
-
         </LinearLayout>
 
         <View
@@ -59,7 +57,6 @@
             android:id="@id/frame_module"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <include
                 android:id="@id/include_idcard"
@@ -75,8 +72,6 @@
                 android:id="@id/include_face"
                 layout="@layout/pad_activity_cj_face"
                 android:visibility="gone" />
-
-
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>

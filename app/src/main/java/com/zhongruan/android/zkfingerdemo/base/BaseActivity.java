@@ -167,8 +167,8 @@ public abstract class BaseActivity extends FragmentActivity {
             progressDialog.setCancelable(cancelable);//能否够被取消
             progressDialog.setMessage(message);//载入显示的信息
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//圆环风格
-            progressDialog.show();
         }
+        progressDialog.show();
         this.message = message;
         mHandler.sendEmptyMessageDelayed(2, time);
         progressDialog.setMessage(message);//载入显示的信息

@@ -290,5 +290,8 @@
     <item name="ll_face_cfcs" type="id">false</item>
     <item name="tv_face_xsd" type="id">false</item>
     <item name="tv_ms_change" type="id">false</item>
+    <item name="rb1" type="id">false</item>
+    <item name="rb2" type="id">false</item>
+    <item name="rb3" type="id">false</item>
 
 </resources>

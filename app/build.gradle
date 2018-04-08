@@ -12,10 +12,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug {
-            //显示日志
-            buildConfigField("boolean", "LOG_DEBUG", "false")
-        }
         release {
             minifyEnabled false
             //Zipalign优化

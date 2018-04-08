@@ -46,50 +46,6 @@
             android:textSize="@dimen/title_sp" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1.0dip"
-        android:background="@color/color_divider_line" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="播放音乐" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <ToggleButton
-                android:id="@+id/tbMute"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:checked="true"
-                android:textOff="正常"
-                android:textOn="静音" />
-
-            <Button
-                android:id="@+id/btnUpper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="增大音量" />
-
-            <Button
-                android:id="@+id/btnLower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="减小音量" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <include
+        layout="@layout/pad_view_setting_setcamera"/>
 </LinearLayout>

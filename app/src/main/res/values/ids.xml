@@ -277,5 +277,18 @@
     <item name="list_item_history_cc" type="id">false</item>
     <item name="list_item_uploaded_ll_history" type="id">false</item>
     <item name="eplv_statistic" type="id">false</item>
+    <item name="setting_ll" type="id">false</item>
+    <item name="ll_ms_change" type="id">false</item>
+    <item name="ll_hyfs" type="id">false</item>
+    <item name="tv_hyfs" type="id">false</item>
+    <item name="ll_finger_fz" type="id">false</item>
+    <item name="tv_finger_fz" type="id">false</item>
+    <item name="ll_finger_cfcs" type="id">false</item>
+    <item name="tv_finger_cfcs" type="id">false</item>
+    <item name="ll_face_xsd" type="id">false</item>
+    <item name="tv_face_cfcs" type="id">false</item>
+    <item name="ll_face_cfcs" type="id">false</item>
+    <item name="tv_face_xsd" type="id">false</item>
+    <item name="tv_ms_change" type="id">false</item>
 
 </resources>

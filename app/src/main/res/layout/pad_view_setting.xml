@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/setting_ll"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/settingBg"
+    android:scrollbars="none"
+    tools:ignore="MissingDefaultResource">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:paddingLeft="20.0dip"
+        android:paddingTop="20.0dip"
+        android:paddingRight="20.0dip"
+        android:paddingBottom="20.0dip">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@id/ll_ms_change"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_selector_top_bottom"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawableLeft="@drawable/img_module_tab_setting_base_device"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="应用模式选择"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_ms_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="51.5dip"
+                android:layout_marginTop="20.0dip"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/shape_setting_selector_top"
+                    android:clickable="false"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="认证流程"
+                    android:textColor="#ffff9f15"
+                    android:textSize="24.0sp" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:orientation="vertical" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.5dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffff9f15" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@id/ll_hyfs"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_selector_center"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip">
+
+                <TextView
+                    android:layout_width="0.0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/img_module_tab_setting_base_idcard"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="核验方式"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_hyfs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="51.5dip"
+                android:layout_marginTop="20.0dip"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/shape_setting_selector_top"
+                    android:clickable="false"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="参数设置"
+                    android:textColor="#ffff9f15"
+                    android:textSize="24.0sp" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:orientation="vertical" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.5dip"
+                    android:layout_alignParentBottom="true"
+                    android:background="#ffff9f15" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@id/ll_finger_fz"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_selector_center"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip">
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/img_module_tab_setting_base_fingerprints"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="指纹比对阀值"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_finger_fz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="#ffdcdcdc" />
+
+            <LinearLayout
+                android:id="@id/ll_finger_cfcs"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_selector_center"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip">
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/img_module_tab_setting_base_collection"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="指纹比对重复次数"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_finger_cfcs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="#ffdcdcdc" />
+
+            <LinearLayout
+                android:id="@id/ll_face_xsd"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_selector_center"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip">
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/img_module_tab_collect_base_student"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="人脸相似度"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_face_xsd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="#ffdcdcdc" />
+
+            <LinearLayout
+                android:id="@id/ll_face_cfcs"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:background="@drawable/shape_setting_white_top_bottom"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15.0dip"
+                android:paddingBottom="20.0dip">
+
+                <TextView
+                    android:layout_width="0.0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:drawableLeft="@drawable/img_module_tab_setting_base_collection"
+                    android:drawablePadding="8.0dip"
+                    android:gravity="center_vertical"
+                    android:state_pressed="true"
+                    android:text="人脸比对重复次数"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@id/tv_face_cfcs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dip"
+                    android:gravity="center_vertical"
+                    android:textSize="20.0sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

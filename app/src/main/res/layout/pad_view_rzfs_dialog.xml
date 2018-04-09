@@ -20,7 +20,7 @@
             android:drawableLeft="@drawable/selector_radiobutton"
             android:drawablePadding="10.0dip"
             android:gravity="center_vertical"
-            android:text="身份证+人脸"
+            android:text="指纹+拍照"
             android:textColor="#ff000000"
             android:textSize="32.0px" />
 
@@ -48,7 +48,7 @@
             android:drawableLeft="@drawable/selector_radiobutton"
             android:drawablePadding="10.0dip"
             android:gravity="center_vertical"
-            android:text="指纹+拍照"
+            android:text="身份证+人脸"
             android:textColor="#ff000000"
             android:textSize="32.0px" />
     </RadioGroup>

@@ -24,7 +24,7 @@ import java.util.List;
 import rx.android.BuildConfig;
 
 public class FileUtils {
-    private static final String DST_FOLDER_NAME = "HNZR";
+    private static final String DST_FOLDER_NAME = "HNZR/com.zhongruan.android.zkfingerdemo";
     private static File newFile;
 
     public static byte[] getBytes(String filePath) {

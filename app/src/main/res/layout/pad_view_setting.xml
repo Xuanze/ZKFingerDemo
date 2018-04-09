@@ -32,8 +32,9 @@
                 android:paddingLeft="15.0dip">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0.0dp"
                     android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_device"
                     android:drawablePadding="8.0dip"
                     android:gravity="center_vertical"
@@ -251,8 +252,7 @@
                 android:background="@drawable/shape_setting_white_top_bottom"
                 android:clickable="true"
                 android:orientation="horizontal"
-                android:paddingLeft="15.0dip"
-                android:paddingBottom="20.0dip">
+                android:paddingLeft="15.0dip">
 
                 <TextView
                     android:layout_width="0.0dip"

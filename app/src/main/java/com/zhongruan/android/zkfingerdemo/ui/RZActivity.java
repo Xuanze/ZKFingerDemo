@@ -66,7 +66,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     private List<Bk_ks> bk_ks;
     private String zwid, timeZP, timeZW, kmno, kmmc, kcmc, kdno, ccmc, ccno;
     private int CS = 0;
-    private String SN = DbServices.getInstance(getBaseContext()).loadAllSN().get(0).getSn();
+    private String SN = DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_sn();
 
     @Override
     public void setContentView() {

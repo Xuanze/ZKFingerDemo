@@ -339,7 +339,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                     file.mkdirs();
                                                 }
                                                 MyApplication.getApplication().setShouldStopUploadingData(true);
-                                                SocketClient client = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
+                                                SocketClient client = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
                                                 isReceive = client.receiveUnLockField(DataActivity.this,BuildConfig.VERSION_NAME, 105, path, handler);
                                                 LogUtil.i(isReceive);
                                             }

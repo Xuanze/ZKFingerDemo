@@ -132,7 +132,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initData() {
-        netipTv.setText(DbServices.getInstance(getBaseContext()).selectIP());
+        netipTv.setText(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
         startCheckMeesageFromKD();
         new Thread(runnable01).start();
         handler.postDelayed(runnable02, 500);
@@ -306,8 +306,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             public Object callback() {
                 String kcno = DbServices.getInstance(getBaseContext()).loadAllkc().size() > 0 ? BuildConfig.VERSION_NAME + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_no() : BuildConfig.VERSION_NAME;
                 LogUtil.i("所选的考场：", kcno);
-                client = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                Map<String, Object> messages = client.receiveUnLockMessage(TestActivity.this,BuildConfig.VERSION_NAME, kcno);
+                client = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
+                Map<String, Object> messages = client.receiveUnLockMessage(TestActivity.this, BuildConfig.VERSION_NAME, kcno);
                 LogUtil.i(kcno + " | 获取到考点端消息：" + messages);
                 client.closeSocket();
                 return messages;
@@ -354,8 +354,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 new Runnable() {
                     @Override
                     public void run() {
-                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        map = socketClient.sendString(TestActivity.this,ABLConfig.RZJG, rzjg.toString());
+                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
+                        map = socketClient.sendString(TestActivity.this, ABLConfig.RZJG, rzjg.toString());
                         LogUtil.i("数据上报：uploadRzjg", map);
                     }
                 }.run();
@@ -377,8 +377,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 new Runnable() {
                     @Override
                     public void run() {
-                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        receive = socketClient.receiveUnLockField(TestActivity.this,BuildConfig.VERSION_NAME, ABLConfig.DATAVERSION_APP_FILE, FileUtils.getSDCardPath(), ABLConfig.BUNDLE_KEY_DOWNLOAD_NAME, checkMessageHandler);
+                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
+                        receive = socketClient.receiveUnLockField(TestActivity.this, BuildConfig.VERSION_NAME, ABLConfig.DATAVERSION_APP_FILE, FileUtils.getSDCardPath(), ABLConfig.BUNDLE_KEY_DOWNLOAD_NAME, checkMessageHandler);
                     }
                 }.run();
                 return receive;
@@ -399,8 +399,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 new Runnable() {
                     @Override
                     public void run() {
-                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).selectIP());
-                        map = socketClient.sendFile(TestActivity.this,BuildConfig.VERSION_NAME, ABLConfig.RZJL, FileUtils.getAppSavePath() + "/" + rzjl.getRzjl_pith(), rzjl.toString());
+                        SocketClient socketClient = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
+                        map = socketClient.sendFile(TestActivity.this, BuildConfig.VERSION_NAME, ABLConfig.RZJL, FileUtils.getAppSavePath() + "/" + rzjl.getRzjl_pith(), rzjl.toString());
                         LogUtil.i("数据上报：uploadRzjl", map);
                     }
                 }.run();

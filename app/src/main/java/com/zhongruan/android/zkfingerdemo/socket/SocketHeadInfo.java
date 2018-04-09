@@ -33,7 +33,7 @@ public class SocketHeadInfo {
         this.map = new HashMap();
         this.preferences = PreferenceUtils.getInstance(MyApplication.getApplication()).getPreferences();
         this.socketBean.setWsWsIp(this.preferences.getString(ABLConfig.DEVICE_IP, BuildConfig.VERSION_NAME));
-        this.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+        this.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
     }
 
     public String getHeadInfo() {

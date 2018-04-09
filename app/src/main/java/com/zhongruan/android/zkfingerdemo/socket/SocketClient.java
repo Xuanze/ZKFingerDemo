@@ -90,7 +90,7 @@ public class SocketClient {
                     Date nowTime = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nowTime);
                     SocketHeadInfo headInfo = new SocketHeadInfo(context);
-                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(106);
@@ -112,7 +112,7 @@ public class SocketClient {
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
 
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
-                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     int version = headInfo2.socketBean.getVersion();
                     map.put("version", Integer.valueOf(version));
@@ -153,7 +153,7 @@ public class SocketClient {
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
                     SocketHeadInfo headInfo = new SocketHeadInfo(context);
-                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -172,7 +172,7 @@ public class SocketClient {
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] headInfo1 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10), "UTF-8").trim()));
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
-                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(headInfo1);
                     int fileLength = headInfo2.socketBean.getContentLength();
                     String contentInfo = headInfo2.socketBean.getContentInfo();
@@ -263,7 +263,7 @@ public class SocketClient {
                     LogUtil.i("照片：byteFile", filepath + " | " + byteFile + " | " + (byteFile != null ? byteFile.length : 0));
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
                     SocketHeadInfo headInfo = new SocketHeadInfo(context);
-                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(2);
                     headInfo.socketBean.setContentName(contentName);
@@ -290,7 +290,7 @@ public class SocketClient {
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
                     inputStream.read(byteHeadInfo2);
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
-                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     LogUtil.i("接收到sendFile head", BuildConfig.VERSION_NAME + headInfo2.getHeadInfo());
                     int success = headInfo2.socketBean.getResultInfo();
@@ -342,7 +342,7 @@ public class SocketClient {
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
                     SocketHeadInfo headInfo = new SocketHeadInfo(context);
-                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo.socketBean.setSessionID(BuildConfig.VERSION_NAME);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -364,7 +364,7 @@ public class SocketClient {
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
-                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
                     LogUtil.i("接收到sendString head", BuildConfig.VERSION_NAME + headInfo2.getHeadInfo());
                     int success = headInfo2.socketBean.getResultInfo();
@@ -418,7 +418,7 @@ public class SocketClient {
                     Date date = new Date(System.currentTimeMillis());
                     String retStrFormatNowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
                     SocketHeadInfo headInfo = new SocketHeadInfo(context);
-                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo.socketBean.setSessionID(sessionId);
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
@@ -435,7 +435,7 @@ public class SocketClient {
                     InputStream inputStream = this.socket.getInputStream();
                     byte[] headInfo1 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10), "UTF-8").trim()));
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
-                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSN().get(0).getSn());
+                    headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(headInfo1);
                     int fileLength = headInfo2.socketBean.getContentLength();
                     String contentInfo = headInfo2.socketBean.getContentInfo();

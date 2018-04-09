@@ -11,12 +11,11 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Ks_kc;
 import com.zhongruan.android.zkfingerdemo.db.entity.Ks_kd;
 import com.zhongruan.android.zkfingerdemo.db.entity.Ks_km;
 import com.zhongruan.android.zkfingerdemo.db.entity.Rz_ks_zw;
-import com.zhongruan.android.zkfingerdemo.db.entity.Sb_ip;
+import com.zhongruan.android.zkfingerdemo.db.entity.Sb_setting;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzfs;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzzt;
-import com.zhongruan.android.zkfingerdemo.db.entity.Sn_number;
 import com.zhongruan.android.zkfingerdemo.ui.MyApplication;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 
@@ -46,8 +45,7 @@ public class DbServices {
     private Sfrz_rzjlDao rzjlDao;
     private Sfrz_rzjgDao rzjgDao;
     private Bk_ksDao bk_ksDao;
-    private Sb_ipDao sbIpDao;
-    private Sn_numberDao sn_numberDao;
+    private Sb_settingDao settingDao;
 
     private DbServices() {
     }
@@ -81,8 +79,7 @@ public class DbServices {
             instance.rzjlDao = instance.mDaoSession.getSfrz_rzjlDao();
             instance.rzjgDao = instance.mDaoSession.getSfrz_rzjgDao();
             instance.bk_ksDao = instance.mDaoSession.getBk_ksDao();
-            instance.sbIpDao = instance.mDaoSession.getSb_ipDao();
-            instance.sn_numberDao = instance.mDaoSession.getSn_numberDao();
+            instance.settingDao = instance.mDaoSession.getSb_settingDao();
         }
         return instance;
     }
@@ -143,13 +140,10 @@ public class DbServices {
         return bk_ksDao.loadAll();
     }
 
-    public List<Sb_ip> loadAllsbip() {
-        return sbIpDao.loadAll();
+    public List<Sb_setting> loadAllSbSetting() {
+        return settingDao.loadAll();
     }
 
-    public List<Sn_number> loadAllSN() {
-        return sn_numberDao.loadAll();
-    }
 
     /**
      * 根据查询条件,返回数据列表
@@ -209,11 +203,6 @@ public class DbServices {
 
     public List<Bk_ks> queryNOBKKSList(String ks_kcmc, String ks_ccmc) {
         return bk_ksDao.queryBuilder().whereOr(Bk_ksDao.Properties.Ks_ccmc.notEq(ks_ccmc), Bk_ksDao.Properties.Ks_kcmc.notEq(ks_kcmc)).orderAsc(Bk_ksDao.Properties.Ks_ccno).list();
-    }
-
-
-    public String selectIP() {
-        return sbIpDao.queryBuilder().where(Sb_ipDao.Properties.Ipid.eq("1")).list().get(0).getSb_ip();
     }
 
     public List<Ks_cc> selectCC() {
@@ -292,9 +281,7 @@ public class DbServices {
         return bk_ks_cjxxDao.insert(bk_ks_cjxx);
     }
 
-
     public long saveRzjl(String rzjl_rzfsno, String rzjl_ksno, String rzjl_kmbh, String rzjl_kdbh, String rzjl_kcbh, String rzjl_zwh, String rzjl_device, String rzjl_verify_result, String rzjl_time, String rzjl_Features, String rzjl_pith, String rzjl_rzjgid, String rzjl_sb) {
-
         Sfrz_rzjl sfrzRzjl = new Sfrz_rzjl();
         sfrzRzjl.setRzjl_rzfsno(rzjl_rzfsno);
         sfrzRzjl.setRzjl_ksno(rzjl_ksno);
@@ -311,7 +298,6 @@ public class DbServices {
         sfrzRzjl.setRzjl_sb(rzjl_sb);
         return rzjlDao.insert(sfrzRzjl);
     }
-
 
     public long saveRzjg(String rzjg_ztid, String rzjg_ksno, String rzjg_kmno, String rzjg_kdno, String rzjg_kcno, String rzjg_zwh, String rzjg_device, String rzjg_time, String rzjg_sb) {
         Sfrz_rzjg sfrzRzjg = new Sfrz_rzjg();
@@ -350,10 +336,76 @@ public class DbServices {
     }
 
     public void saveSbip(String ipStr) {
-        Sb_ip sbIp = sbIpDao.queryBuilder().where(Sb_ipDao.Properties.Ipid.eq(1)).build().unique();
+        Sb_setting sbIp = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
         if (sbIp != null) {
             sbIp.setSb_ip(ipStr);
-            sbIpDao.update(sbIp);
+            settingDao.update(sbIp);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbMs(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_ms(Str);
+            settingDao.update(sbSetting);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbHyfs(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_hyfs(Str);
+            settingDao.update(sbSetting);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbZwfz(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_finger_fz(Str);
+            settingDao.update(sbSetting);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbZwcfcs(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_finger_cfcs(Str);
+            settingDao.update(sbSetting);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbFaceXsd(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_face_xsd(Str);
+            settingDao.update(sbSetting);
+            LogUtil.i("修改成功");
+        } else {
+            LogUtil.i("数据不存在");
+        }
+    }
+
+    public void saveSbFaceCfcs(String Str) {
+        Sb_setting sbSetting = settingDao.queryBuilder().where(Sb_settingDao.Properties.Settingid.eq(1)).build().unique();
+        if (sbSetting != null) {
+            sbSetting.setSb_face_cfcs(Str);
+            settingDao.update(sbSetting);
             LogUtil.i("修改成功");
         } else {
             LogUtil.i("数据不存在");

@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.hardware.Camera;
 import android.media.ThumbnailUtils;
 import android.os.Handler;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -176,7 +177,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                             handler.postDelayed(runnable01, 100);
                         }
                     }
-                }).setTitle("请输入身份证号").show();
+                }).setInputType(InputType.TYPE_CLASS_NUMBER).setTitle("请输入身份证号").show();
                 break;
             case R.id.ll_back:
                 if (!isCJ) {
@@ -335,7 +336,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                     OnBnBegin();
                 }
             } else {
-                handler.postDelayed(this, 100 );// 间隔1秒
+                handler.postDelayed(this, 100);// 间隔1秒
             }
         }
     };

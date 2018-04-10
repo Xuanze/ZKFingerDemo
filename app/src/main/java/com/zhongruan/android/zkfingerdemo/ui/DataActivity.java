@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -68,15 +69,15 @@ import static com.zhongruan.android.zkfingerdemo.utils.FileUtils.getAppSavePath;
 import static com.zhongruan.android.zkfingerdemo.utils.Utils.getUSBPath;
 import static com.zhongruan.android.zkfingerdemo.utils.Utils.stringIsEmpty;
 
+
 /**
  * Created by Administrator on 2017/8/15.
  */
 
 public class DataActivity extends BaseActivity implements View.OnClickListener {
-    private LinearLayout llDataBack, llUsbDr, llNetDr, llUsbDc, llNetSb, data_ll, ll_cj_usb_dc;
+    private LinearLayout llDataBack, llUsbDr, llNetDr, llUsbDc, llNetSb, data_ll, ll_cj_usb_dc,select_kc_rl;
     private GridView gridView;
     private SelectKcAdapter selectKcAdapter;
-    private RelativeLayout select_kc_rl;
     private String hint, pwd;
     private FileBrowserAdapter adapter;
     private Button ll_buttons;
@@ -339,7 +340,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                 }
                                                 MyApplication.getApplication().setShouldStopUploadingData(true);
                                                 SocketClient client = new SocketClient(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
-                                                isReceive = client.receiveUnLockField(DataActivity.this,BuildConfig.VERSION_NAME, 105, path, handler);
+                                                isReceive = client.receiveUnLockField(getBaseContext(), BuildConfig.VERSION_NAME, 105, path, handler);
                                                 LogUtil.i(isReceive);
                                             }
                                         }.run();
@@ -419,7 +420,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                         String USBPath = FileUtils.copyFileToUSB(tempFolder);
                                                         LogUtil.i("USBPath", USBPath.toString());
                                                         dismissProgressDialog();
-                                                        if (!Utils.stringIsEmpty(USBPath)) {
+                                                        if (!stringIsEmpty(USBPath)) {
                                                             ShowHintDialog(DataActivity.this, "认证数据导出成功", "U盘导出认证数据", R.drawable.img_base_check, "知道了", false);
                                                             ConfigApplication.getApplication().setUsbExportTime(DateUtil.getNowTime());
                                                             tv_rz_usb_dc.setText("最近导入：" + ConfigApplication.getApplication().getUsbExportTime());
@@ -482,7 +483,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                         String USBPath = FileUtils.copyFileToUSB(tempFolder);
                                                         LogUtil.i("USBPath", USBPath.toString());
                                                         dismissProgressDialog();
-                                                        if (!Utils.stringIsEmpty(USBPath)) {
+                                                        if (!stringIsEmpty(USBPath)) {
                                                             ShowHintDialog(DataActivity.this, "采集数据导出成功", "U盘导出采集数据", R.drawable.img_base_check, "知道了", false);
                                                             ConfigApplication.getApplication().setCJExportTime(DateUtil.getNowTime());
                                                             tv_cj_usb_dc.setText("最近导入：" + ConfigApplication.getApplication().getCJExportTime());
@@ -558,7 +559,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     public void editInputFinished(Dialog dialog, String password, boolean confirm) {
                         if (confirm) {
                             dialog.dismiss();
-//                            initProgressDialog();
                             multiProgressDialog.show();
                             Message message3 = new Message();
                             message3.what = 1;
@@ -568,7 +568,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                             dialog.dismiss();
                         }
                     }
-                }).setTitle("请输入解压密码").setHint("请输入解压密码").show();
+                }).setTitle("请输入解压密码").setHint("请输入解压密码").setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD).show();
             } else {
                 unZipFile(NewPith + NewFile, NewPith + NewFilePath, pwd);
             }
@@ -688,7 +688,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     Message message10 = new Message();
                     message10.what = mag + 1;
                     handler.sendMessage(message10);
-
                     if (isUSB) {
                         ConfigApplication.getApplication().setUsbImportTime(DateUtil.getNowTime());
                         ConfigApplication.getApplication().setNetImportTime("");
@@ -712,7 +711,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
             }
         });
     }
-
 
     /**
      * 读取bk_ks.txt内容
@@ -796,8 +794,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     Message message12 = new Message();
                     message12.what = 15;
                     handler.sendMessage(message12);
-
-
                     if (ksKcList.size() > 0) {
                         multiProgressDialog.dismiss();
                         select_kc_rl.setVisibility(View.VISIBLE);

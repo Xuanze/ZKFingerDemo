@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/select_kc_rl"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#ffdcdcdc">
-
 
     <RelativeLayout
         android:id="@id/rl_arrange_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/img_module_tab_arrange_levelsubject_bg"
-        android:visibility="visible">
+        android:background="@drawable/img_module_tab_arrange_levelsubject_bg">
 
         <LinearLayout
             android:id="@id/ll_data"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="50.0dip"
             android:layout_marginLeft="20.0dip"
-            android:layout_marginRight="20.0dip"
             android:layout_marginTop="0.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginBottom="50.0dip"
             android:background="@drawable/img_module_tab_arrange_levelsubject_gkck_card"
             android:orientation="vertical">
 
@@ -31,8 +29,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="70.0dip"
                 android:layout_marginLeft="20.0dip"
-                android:layout_marginRight="20.0dip"
                 android:layout_marginTop="15.0dip"
+                android:layout_marginRight="20.0dip"
                 android:padding="10.0dip">
 
                 <LinearLayout
@@ -68,8 +66,8 @@
                         android:layout_marginLeft="10.0dip"
                         android:background="@drawable/selector_module_tab_arrange_levelsubject_selectcc_unselected"
                         android:gravity="center|left"
-                        android:maxLines="1"
                         android:maxWidth="600.0dip"
+                        android:maxLines="1"
                         android:paddingLeft="10.0dip"
                         android:paddingRight="10.0dip"
                         android:text=""
@@ -128,9 +126,9 @@
                 android:id="@id/gv_content"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginBottom="20.0dip"
                 android:layout_marginLeft="10.0dip"
                 android:layout_marginRight="10.0dip"
+                android:layout_marginBottom="20.0dip"
                 android:numColumns="4"
                 android:padding="20.0dip"
                 android:verticalSpacing="20.0dip" />
@@ -155,4 +153,4 @@
                 android:textSize="24.0sp" />
         </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

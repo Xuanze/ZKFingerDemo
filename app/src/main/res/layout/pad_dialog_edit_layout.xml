@@ -64,7 +64,7 @@
                     android:background="@drawable/shape_ip_edittext_bg"
                     android:hint="请输入18位身份证号码"
                     android:inputType="number"
-                    android:digits="0123456789xyzXYZ"
+                    android:digits="0123456789abcdefghijklmnopqrstuvwxyz"
                     android:imeOptions="actionDone"
                     android:maxLength="18"
                     android:padding="15.0dip"

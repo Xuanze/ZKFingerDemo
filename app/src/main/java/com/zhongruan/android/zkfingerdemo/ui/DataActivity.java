@@ -263,6 +263,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void onClick(Dialog dialog, boolean confirm) {
                         if (confirm) {
+                            delFolder("DataTemp");
                             dialog.dismiss();
                             initMap();
                             isError = false;
@@ -278,8 +279,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                 hint = "U盘根目录不存在ZIP包";
                                 LogUtil.i("U盘根目录不存在ZIP包");
                             } else if (tempList == null || BuildConfig.VERSION_NAME.equals(tempList.get(2)) || BuildConfig.VERSION_NAME.equals(tempList.get(3)) || tempList.size() <= 4) {
-
-
                                 copyFile();
                                 LogUtil.i("U盘根目录只存在一个ZIP包");
                             } else {
@@ -360,7 +359,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                             NewFilePath = StringUtils.substringBeforeLast(NewFile, ".");
                                             unZipFile(array[0].getPath(), StringUtils.substringBeforeLast(array[0].getPath(), "."), "mst");
                                         } else {
-//                                            multiProgressDialog.dismiss();
                                             ShowHintDialog(DataActivity.this, "考点端没有数据，请进行生成基础数据操作！", "U盘导入数据", R.drawable.img_base_icon_error, "知道了", false);
                                         }
                                     }

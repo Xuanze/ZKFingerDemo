@@ -65,5 +65,4 @@ dependencies {
     implementation files('libs/zkandroidcore.jar')
     implementation files('libs/zkandroididcardreader.jar')
     implementation files('libs/zkandroidfpsensor.jar')
-    implementation files('libs/ZKLiveFaceService.jar')
 }

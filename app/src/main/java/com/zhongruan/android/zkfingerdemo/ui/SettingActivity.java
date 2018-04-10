@@ -65,8 +65,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         mLlFaceCfcs = findViewById(R.id.ll_face_cfcs);
         mLlFaceCfcs.setOnClickListener(this);
         mSettingLl = findViewById(R.id.setting_ll);
-
-
         if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ms()) == 0) {
             mTvMsChange.setText("采集模式");
         } else {

@@ -31,11 +31,11 @@ public class DaoMaster extends AbstractDaoMaster {
         Ks_kdDao.createTable(db, ifNotExists);
         Ks_kmDao.createTable(db, ifNotExists);
         Rz_ks_zwDao.createTable(db, ifNotExists);
+        Sb_settingDao.createTable(db, ifNotExists);
         Sfrz_rzfsDao.createTable(db, ifNotExists);
         Sfrz_rzjgDao.createTable(db, ifNotExists);
         Sfrz_rzjlDao.createTable(db, ifNotExists);
         Sfrz_rzztDao.createTable(db, ifNotExists);
-        Sb_settingDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -50,11 +50,11 @@ public class DaoMaster extends AbstractDaoMaster {
         Ks_kdDao.dropTable(db, ifExists);
         Ks_kmDao.dropTable(db, ifExists);
         Rz_ks_zwDao.dropTable(db, ifExists);
+        Sb_settingDao.dropTable(db, ifExists);
         Sfrz_rzfsDao.dropTable(db, ifExists);
         Sfrz_rzjgDao.dropTable(db, ifExists);
         Sfrz_rzjlDao.dropTable(db, ifExists);
         Sfrz_rzztDao.dropTable(db, ifExists);
-        Sb_settingDao.dropTable(db, ifExists);
     }
 
     /**
@@ -83,11 +83,11 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(Ks_kdDao.class);
         registerDaoClass(Ks_kmDao.class);
         registerDaoClass(Rz_ks_zwDao.class);
+        registerDaoClass(Sb_settingDao.class);
         registerDaoClass(Sfrz_rzfsDao.class);
         registerDaoClass(Sfrz_rzjgDao.class);
         registerDaoClass(Sfrz_rzjlDao.class);
         registerDaoClass(Sfrz_rzztDao.class);
-        registerDaoClass(Sb_settingDao.class);
     }
 
     public DaoSession newSession() {

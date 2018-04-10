@@ -64,6 +64,28 @@ public class FileUtils {
         return (Bitmap) new WeakReference(BitmapFactory.decodeFile(path, opts)).get();
     }
 
+    public static Bitmap getBitmapFromPath(String path) {
+
+        if (!new File(path).exists()) {
+            System.err.println("getBitmapFromPath: file not exists");
+            return null;
+        }
+        byte[] buf = new byte[1024 * 1024];// 1M
+        Bitmap bitmap = null;
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            int len = fis.read(buf, 0, buf.length);
+            bitmap = BitmapFactory.decodeByteArray(buf, 0, len);
+            if (bitmap == null) {
+                System.out.println("len= " + len);
+                System.err.println("path: " + path + "  could not be decode!!!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
     /**
      * 保存Bitmap到sdcard
      *
@@ -111,7 +133,6 @@ public class FileUtils {
             if (list.size() >= 4) {
                 String str0 = list.get(0);
                 String str1 = list.get(1);
-
                 if (delFolder("DataTemp") && delFolder("bk_ksxp")) {
                     String path = FileUtils.getAppSavePath() + InternalZipConstants.ZIP_FILE_SEPARATOR + "DataTemp";
                     File file = new File(path);
@@ -145,7 +166,6 @@ public class FileUtils {
             return false;
         }
     }
-
 
     public static void renameFile(String file) {
         File toBeRenamed = new File(file);

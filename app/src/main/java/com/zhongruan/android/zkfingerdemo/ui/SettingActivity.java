@@ -76,35 +76,33 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             mTvHyfs.setText("指纹+拍照");
         } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_hyfs()) == 1) {
             mTvHyfs.setText("指纹+人脸");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_hyfs()) == 2) {
-            mTvHyfs.setText("身份证+人脸");
         }
-        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz() ) == 0) {
+        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz()) == 0) {
             mTvFingerFz.setText("低");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz() ) == 1) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz()) == 1) {
             mTvFingerFz.setText("中");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz() ) == 2) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_fz()) == 2) {
             mTvFingerFz.setText("高");
         }
-        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs() ) == 0) {
+        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs()) == 0) {
             mTvFingerCfcs.setText("3次");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs() ) == 1) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs()) == 1) {
             mTvFingerCfcs.setText("6次");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs() ) == 2) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_finger_cfcs()) == 2) {
             mTvFingerCfcs.setText("9次");
         }
-        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd() ) == 0) {
+        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd()) == 0) {
             mTvFaceXsd.setText("低");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd() ) == 1) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd()) == 1) {
             mTvFaceXsd.setText("中");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd() ) == 2) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_xsd()) == 2) {
             mTvFaceXsd.setText("高");
         }
-        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs() ) == 0) {
+        if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs()) == 0) {
             mTvFaceCfcs.setText("3次");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs() ) == 1) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs()) == 1) {
             mTvFaceCfcs.setText("6次");
-        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs() ) == 2) {
+        } else if (Integer.parseInt(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_face_cfcs()) == 2) {
             mTvFaceCfcs.setText("9次");
         }
     }

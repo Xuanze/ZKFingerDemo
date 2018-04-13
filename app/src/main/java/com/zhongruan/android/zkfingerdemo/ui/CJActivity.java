@@ -301,7 +301,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         public void run() {
             idCardData = OnBnRead();
             if (idCardData != null) {
-                playBeep();
+                soundPool.play(musicId.get(1), 1, 1, 0, 0, 1);
                 bkKsCjxxList = DbServices.getInstance(getBaseContext()).querySfzh(idCardData.getSfzh());
                 if (bkKsCjxxList.size() > 0) {
                     new SelectDialog(CJActivity.this, R.style.dialog, "该考生已采集过特征，重复采集会覆盖上一次采集的数据，是否覆盖采集信息？", new SelectDialog.OnCloseListener() {
@@ -490,8 +490,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
             @Override
             public void run() {
                 if (capMode == FingerprintCaptureListener.MODE_CAPTURE_TEMPLATEANDIMAGE) {
-
-                    playBeep();
+                    soundPool.play(musicId.get(1), 1, 1, 0, 0, 1);
                     Bitmap mBitMap = ToolUtils.renderCroppedGreyScaleBitmap(imgBuffer, attributes[0], attributes[1]);
                     fingerData = new FingerData();
                     fingerData.setFingerImage(FileUtils.Bitmap2Bytes(mBitMap));

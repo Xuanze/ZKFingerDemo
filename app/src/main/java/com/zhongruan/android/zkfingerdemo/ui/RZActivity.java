@@ -382,7 +382,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
             @Override
             public void run() {
                 if (capMode == FingerprintCaptureListener.MODE_CAPTURE_TEMPLATEANDIMAGE) {
-                    playBeep();
+                    soundPool.play(musicId.get(1), 1, 1, 0, 0, 1);
                     Bitmap mBitMap = ToolUtils.renderCroppedGreyScaleBitmap(imgBuffer, attributes[0], attributes[1]);
                     fingerData = new FingerData();
                     fingerData.setFingerImage(FileUtils.Bitmap2Bytes(mBitMap));

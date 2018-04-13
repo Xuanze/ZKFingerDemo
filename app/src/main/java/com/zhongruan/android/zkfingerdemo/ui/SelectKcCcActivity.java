@@ -109,6 +109,9 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
         for (int i = 0; i < ksKcList.size(); i++) {
             LogUtil.i(ksKcList.get(i).getKc_name());
         }
+        Intent getIntent = getIntent();
+        DbServices.getInstance(getBaseContext()).saveKsKc(getIntent.getStringExtra("kcmc"));
+
         selectKcAdapter = new SelectKcAdapter(SelectKcCcActivity.this, ksKcList);
         mGvContent.setAdapter(selectKcAdapter);
         mGvContent.setOnItemClickListener(new AdapterView.OnItemClickListener() {

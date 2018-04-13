@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,6 +55,11 @@ public abstract class BaseActivity extends FragmentActivity {
     public boolean bstart = false;
     public boolean bopen = false;
 
+    public SoundPool soundPool;
+    //定义一个HashMap用于存放音频流的ID
+    public HashMap<Integer, Integer> musicId = new HashMap<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -64,6 +70,9 @@ public abstract class BaseActivity extends FragmentActivity {
         initViews();
         initListeners();
         initData();
+        soundPool = new SoundPool(12, AudioManager.STREAM_MUSIC, 0);
+        //通过load方法加载指定音频流，并将返回的音频ID放入musicId中
+        musicId.put(1, soundPool.load(this, R.raw.beep, 1));
     }
 
     /**
@@ -287,22 +296,6 @@ public abstract class BaseActivity extends FragmentActivity {
         } catch (FingerprintSensorException e) {
             LogUtil.e("停止失败, 错误代码=" + e.getErrorCode() + "\nmessage=" + e.getMessage());
         }
-    }
-
-    public void playBeep() {
-        SoundPool soundPool = new SoundPool(10, 3, 100);
-        soundPool.load(this, R.raw.beep, 1);
-        soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(SoundPool soundPool, int i, int i2) {
-                soundPool.play(1,  //声音id
-                        1, //左声道
-                        1, //右声道
-                        0, //优先级
-                        0, // 0表示不循环，-1表示循环播放
-                        1);//播放比率，0.5~2，一般为1
-            }
-        });
     }
 
     @Override

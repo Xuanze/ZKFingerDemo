@@ -75,7 +75,7 @@ import static com.zhongruan.android.zkfingerdemo.utils.Utils.stringIsEmpty;
  */
 
 public class DataActivity extends BaseActivity implements View.OnClickListener {
-    private LinearLayout llDataBack, llUsbDr, llNetDr, llUsbDc, llNetSb, data_ll, ll_cj_usb_dc,select_kc_rl;
+    private LinearLayout llDataBack, llUsbDr, llNetDr, llUsbDc, llNetSb, data_ll, ll_cj_usb_dc, select_kc_rl;
     private GridView gridView;
     private SelectKcAdapter selectKcAdapter;
     private String hint, pwd;
@@ -424,7 +424,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                                             ShowHintDialog(DataActivity.this, "认证数据导出成功", "U盘导出认证数据", R.drawable.img_base_check, "知道了", false);
                                                             ConfigApplication.getApplication().setUsbExportTime(DateUtil.getNowTime());
                                                             tv_rz_usb_dc.setText("最近导入：" + ConfigApplication.getApplication().getUsbExportTime());
-
                                                         } else {
                                                             ShowHintDialog(DataActivity.this, "认证数据导出失败", "U盘导出认证数据", R.drawable.img_base_icon_error, "知道了", false);
                                                         }

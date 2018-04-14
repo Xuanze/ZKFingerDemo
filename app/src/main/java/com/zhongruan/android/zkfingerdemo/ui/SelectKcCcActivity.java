@@ -127,6 +127,7 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
                 LogUtil.i(selectKcAdapter.getChosenKcList().size());
                 if (selectKcAdapter.getChosenKcList().size() > 0) {
                     MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_kcDao.TABLENAME + " SET  kc_extract = 0");
+                    MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_ccDao.TABLENAME + " SET  cc_extract = 0");
                     DbServices.getInstance(getBaseContext()).saveKsKc(kc.getKc_name());
                     selectCC();
                 }

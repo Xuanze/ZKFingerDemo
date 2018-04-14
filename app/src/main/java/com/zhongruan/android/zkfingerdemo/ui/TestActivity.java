@@ -256,7 +256,6 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                             if (confirm) {
                                 String kcmc = DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name();
                                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_kcDao.TABLENAME + " SET  kc_extract = 0");
-                                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_ccDao.TABLENAME + " SET  cc_extract = 0");
                                 dialog.dismiss();
                                 Intent intent = new Intent(TestActivity.this, SelectKcCcActivity.class);
                                 intent.putExtra("sfrz", "3");

@@ -10,7 +10,6 @@ import rx.android.BuildConfig;
 import static com.zhongruan.android.zkfingerdemo.utils.Utils.isEqual;
 import static com.zhongruan.android.zkfingerdemo.utils.Utils.stringIsEmpty;
 
-
 public class ConfigApplication {
     private static ConfigApplication mApplication;
 
@@ -64,7 +63,6 @@ public class ConfigApplication {
     public String getDeviceIP() {
         String device_ip = BuildConfig.VERSION_NAME;
         int netType = NetUtil.getNetType(MyApplication.getApplication());
-
         if (netType == 1) {
             String str;
             device_ip = NetUtil.getWifiIp(MyApplication.getApplication());

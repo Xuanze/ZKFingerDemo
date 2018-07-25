@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,25 +26,26 @@ import java.io.File;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 
-public class KsxxDialog extends Dialog implements View.OnClickListener {
-
+public class KsxxDialog extends Dialog implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private ImageView mKwdjXp;
     private TextView mKwdjXm, mKwdjZh, mKwdjZjh, mKwdjKsh, mKwdjKc, ks_result;
     private MaterialSpinner bp;
     private Button mNoKsxxButton, mYesKsxxButton;
     private OnCloseListener listener;
+    private getItemString itemString;
     private Bk_ks bk_ks;
     private Context mContext;
     private String[] ITEMS;
     private RecyclerView recyclerView;
     private RzjlAdapter rzjlAdapter;
 
-    public KsxxDialog(Context context, int themeResId, Bk_ks bk_ks, String[] ITEMS, OnCloseListener listener) {
+    public KsxxDialog(Context context, int themeResId, Bk_ks bk_ks, String[] ITEMS, OnCloseListener listener, getItemString itemString) {
         super(context, themeResId);
         this.mContext = context;
         this.bk_ks = bk_ks;
         this.listener = listener;
         this.ITEMS = ITEMS;
+        this.itemString = itemString;
     }
 
     @Override
@@ -65,7 +67,6 @@ public class KsxxDialog extends Dialog implements View.OnClickListener {
         mKwdjKsh = findViewById(R.id.kw_tvKsno);
         recyclerView = findViewById(R.id.myRecycle_listview);
         rzjlAdapter = new RzjlAdapter(mContext, DbServices.getInstance(mContext).selectRZJL(bk_ks.getKs_ksno()));
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         //设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
@@ -75,10 +76,8 @@ public class KsxxDialog extends Dialog implements View.OnClickListener {
         recyclerView.setAdapter(rzjlAdapter);
         //设置增加或删除条目的动画
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
         bp = findViewById(R.id.spinner);
         bp.setVisibility(View.VISIBLE);
-
         Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + bk_ks.getKs_xp())).into(mKwdjXp);
         mKwdjZh.setText(bk_ks.getKs_zwh());
         mKwdjZjh.setText(bk_ks.getKs_zjno());
@@ -87,15 +86,13 @@ public class KsxxDialog extends Dialog implements View.OnClickListener {
         mKwdjXm.setText(bk_ks.getKs_xm() + "|" + (bk_ks.getKs_xb().equals("1") ? "男" : "女"));
         ks_result.setText(bk_ks.getIsRZ().equals("1") ? "通过" : "不通过");
         ks_result.setTextColor(bk_ks.getIsRZ().equals("1") ? mContext.getResources().getColor(R.color.green) : mContext.getResources().getColor(R.color.collect_yellow));
-
         mNoKsxxButton.setOnClickListener(this);
         mYesKsxxButton.setOnClickListener(this);
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, ITEMS);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bp.setAdapter(adapter);
+        bp.setOnItemSelectedListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -114,7 +111,21 @@ public class KsxxDialog extends Dialog implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        itemString.getInt(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
     public interface OnCloseListener {
         void onClick(Dialog dialog, boolean confirm);
+    }
+
+    public interface getItemString {
+        void getInt(int item);
     }
 }

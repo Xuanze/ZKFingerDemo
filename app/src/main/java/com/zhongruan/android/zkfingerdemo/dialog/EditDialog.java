@@ -27,7 +27,6 @@ public class EditDialog extends Dialog implements View.OnClickListener, TextWatc
     private int inputType;
     private OnEditInputFinishedListener mListener; //接口
 
-
     public interface OnEditInputFinishedListener {
         void editInputFinished(Dialog dialog, String password, boolean confirm);
     }
@@ -47,6 +46,7 @@ public class EditDialog extends Dialog implements View.OnClickListener, TextWatc
         this.hint = hint;
         return this;
     }
+
     public EditDialog setInputType(int inputType) {
         this.inputType = inputType;
         return this;
@@ -119,5 +119,4 @@ public class EditDialog extends Dialog implements View.OnClickListener, TextWatc
     public void afterTextChanged(Editable editable) {
 
     }
-
 }

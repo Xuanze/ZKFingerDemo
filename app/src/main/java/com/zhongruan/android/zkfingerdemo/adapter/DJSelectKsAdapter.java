@@ -20,10 +20,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectKsAdapter extends BaseAdapter {
+public class DJSelectKsAdapter extends BaseAdapter {
     private List<Bk_ks> ksList;
     private Context mContext;
-
 
     static class ViewHolder {
         TextView tvName, tvKsno;
@@ -31,7 +30,7 @@ public class SelectKsAdapter extends BaseAdapter {
         LinearLayout ll_kslist;
     }
 
-    public SelectKsAdapter(Context mContext, List<Bk_ks> ksList) {
+    public DJSelectKsAdapter(Context mContext, List<Bk_ks> ksList) {
         this.mContext = mContext;
         this.ksList = new ArrayList();
         this.ksList.addAll(ksList);
@@ -65,7 +64,13 @@ public class SelectKsAdapter extends BaseAdapter {
         if (this.ksList != null && this.ksList.size() > 0) {
             Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
             holder.tvKsno.setText(this.ksList.get(position).getKs_xm());
-            holder.ll_kslist.setBackgroundColor(ksList.get(position).getIsRZ().equals("0") ? ContextCompat.getColor(this.mContext, R.color.auth_kslist_hastauth) : ContextCompat.getColor(this.mContext, R.color.auth_kslist_hasauth));
+            if (ksList.get(position).getIsRZ().equals("0")){
+                holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.auth_kslist_hastauth));
+            }else if (ksList.get(position).getIsRZ().equals("1")){
+                holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.auth_kslist_hasauth));
+            }else if (ksList.get(position).getIsRZ().equals("2")){
+                holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.button_wjdj));
+            }
             holder.tvName.setText(ksList.get(position).getKs_zwh());
         }
         return convertView;

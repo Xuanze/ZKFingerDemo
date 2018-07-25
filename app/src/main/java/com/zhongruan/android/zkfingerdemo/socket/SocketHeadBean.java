@@ -17,7 +17,6 @@ public class SocketHeadBean implements Serializable {
     private int version;
     private String wsWsIp;
     private String wsWsNo;
-
     public SocketHeadBean() {
         this.sessionID = null;
         this.userName = null;

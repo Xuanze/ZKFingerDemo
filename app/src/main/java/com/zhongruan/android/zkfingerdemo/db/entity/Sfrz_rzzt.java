@@ -53,5 +53,4 @@ public class Sfrz_rzzt {
     public void setRzzt_name(String rzzt_name) {
         this.rzzt_name = rzzt_name;
     }
-
 }

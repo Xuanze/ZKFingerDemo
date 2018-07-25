@@ -27,7 +27,6 @@ public class FaceDialog extends Dialog implements View.OnClickListener {
         return this;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,6 @@ public class FaceDialog extends Dialog implements View.OnClickListener {
 
     private void initView() {
         imageView = findViewById(R.id.ivPhoto);
-
         tvComfirm = findViewById(R.id.tvComfirm);
         tvComfirm.setOnClickListener(this);
         tvCancel = findViewById(R.id.tvCancel);
@@ -48,7 +46,6 @@ public class FaceDialog extends Dialog implements View.OnClickListener {
             imageView.setImageBitmap(bitmap);
         }
     }
-
 
     @Override
     public void onClick(View v) {

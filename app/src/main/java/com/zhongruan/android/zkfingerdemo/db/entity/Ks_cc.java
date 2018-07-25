@@ -29,7 +29,6 @@ public class Ks_cc {
     @Property(nameInDb = "cc_extract")
     private String cc_extract;
 
-
     @Generated(hash = 1715350612)
     public Ks_cc(Long ccid, String cc_no, String cc_name, String km_no,
                  String km_name, String cc_kssj, String cc_jssj, String cc_extract) {
@@ -46,7 +45,6 @@ public class Ks_cc {
     @Generated(hash = 1694416469)
     public Ks_cc() {
     }
-
 
     public Long getCcid() {
         return this.ccid;

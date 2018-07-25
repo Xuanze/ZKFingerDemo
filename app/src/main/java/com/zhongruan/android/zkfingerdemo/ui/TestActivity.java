@@ -16,10 +16,10 @@ import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.base.BaseActivity;
 import com.zhongruan.android.zkfingerdemo.config.ABLConfig;
 import com.zhongruan.android.zkfingerdemo.db.DbServices;
-import com.zhongruan.android.zkfingerdemo.db.Ks_ccDao;
 import com.zhongruan.android.zkfingerdemo.db.Ks_kcDao;
 import com.zhongruan.android.zkfingerdemo.db.entity.Ks_cc;
 import com.zhongruan.android.zkfingerdemo.db.entity.Ks_kc;
+import com.zhongruan.android.zkfingerdemo.db.entity.Sb_setting;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
@@ -45,26 +45,22 @@ import rx.android.BuildConfig;
 /**
  * Created by Administrator on 2017/8/1.
  */
-
 public class TestActivity extends BaseActivity implements View.OnClickListener {
-
-    private LinearLayout llNowtime, llLocalip, llNetip, linearlayoutSfcj, linearlayoutCjjl, linearlayoutSfrz, linearlayoutKwdj, linearlayoutSjgl, ll_test_xqkc, ll_test_jcsz;
+    private LinearLayout llNowtime, llLocalip, llNetip, linearlayoutSfcj, linearlayoutCjjl, linearlayoutSfrz, linearlayoutKwdj, linearlayoutRzjl, linearlayoutSjgl, ll_test_xqkc, ll_test_jcsz;
     private TextView nowtimeTv, nowdayTv, localipTv, tvConnectState, netipTv, upload_app_tv, version_app_tv;
     private ImageView imgConnectState;
     private Handler handler = new Handler();
     private boolean connectedOrNot = false;
     private SocketClient client;
     private Map<String, Object> map;
-    private List<Sfrz_rzjg> rzjg1, rzjg2;
-    private List<Sfrz_rzjl> rzjl;
     private List<Ks_cc> cc;
     private List<Ks_kc> kc;
+    private boolean receive;
     private Handler checkMessageHandler = new Handler() {
         public void handleMessage(Message msg) {
             startCheckMeesageFromKD();
         }
     };
-    private boolean receive;
 
     @Override
     public void setContentView() {
@@ -87,6 +83,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         linearlayoutCjjl = findViewById(R.id.linearlayout_cjjl);
         linearlayoutSfrz = findViewById(R.id.linearlayout_sfrz);
         linearlayoutKwdj = findViewById(R.id.linearlayout_kwdj);
+        linearlayoutRzjl = findViewById(R.id.linearlayout_rzjl);
         linearlayoutSjgl = findViewById(R.id.linearlayout_sjgl);
         ll_test_xqkc = findViewById(R.id.ll_test_xqkc);
         ll_test_jcsz = findViewById(R.id.ll_test_jcsz);
@@ -101,7 +98,6 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             handler.postDelayed(runnable01, 1000);
         }
     };
-
     Runnable runnable02 = new Runnable() {
         @Override
         public void run() {
@@ -124,10 +120,10 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         linearlayoutCjjl.setOnClickListener(this);
         linearlayoutSfrz.setOnClickListener(this);
         linearlayoutKwdj.setOnClickListener(this);
+        linearlayoutRzjl.setOnClickListener(this);
         linearlayoutSjgl.setOnClickListener(this);
         ll_test_xqkc.setOnClickListener(this);
         ll_test_jcsz.setOnClickListener(this);
-        version_app_tv.setOnClickListener(this);
     }
 
     @Override
@@ -226,10 +222,50 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     }).setBackgroundResource(R.drawable.img_base_icon_info).setNOVisibility(true).setLLButtonVisibility(true).setTitle("未导入数据").setPositiveButton("确定").show();
                 } else if (cc.size() == 0) {
                     Intent intent = new Intent(this, SelectKcCcActivity.class);
+                    intent.putExtra("sfrz", "1");
+                    startActivity(intent);
+                } else {
+                    if (!DateUtil.isTime(DateUtil.dateToLong(DateUtil.getNowTime_Millisecond3()), DateUtil.dateToLong(cc.get(0).getCc_kssj()), DateUtil.dateToLong(cc.get(0).getCc_jssj()))) {
+                        new HintDialog2(this, R.style.dialog, "当前场次不在当前考试时间", "当前时间：" + DateUtil.getNowTimeChinese(), "所选场次：" + DateUtil.getChineseTime(DateUtil.getStringToDate(cc.get(0).getCc_kssj())) + "-" + DateUtil.getChineseTime(DateUtil.getStringToDate(cc.get(0).getCc_jssj())), new HintDialog2.OnCloseListener() {
+                            @Override
+                            public void onClick(Dialog dialog, boolean confirm) {
+                                if (confirm) {
+                                    Intent intent = new Intent(TestActivity.this, SelectKcCcActivity.class);
+                                    intent.putExtra("sfrz", "3");
+                                    startActivity(intent);
+                                    dialog.dismiss();
+                                } else {
+                                    startActivity(new Intent(TestActivity.this, TimeActivity.class));
+                                    dialog.dismiss();
+                                }
+                            }
+                        }).setTitle("提示").setBackgroundResource(R.drawable.img_base_icon_question).setNegativeButton("重新选择场次").setPositiveButton("修改当前时间").show();
+                    } else {
+                        startActivity(new Intent(this, KWDJActivity.class));
+                    }
+                }
+                break;
+            case R.id.linearlayout_rzjl:
+                kc = DbServices.getInstance(getBaseContext()).selectKC();
+                cc = DbServices.getInstance(getBaseContext()).selectCC();
+                if (kc.size() == 0) {
+                    new HintDialog(this, R.style.dialog, "未发现数据,是否现在导入数据？", new HintDialog.OnCloseListener() {
+                        @Override
+                        public void onClick(Dialog dialog, boolean confirm) {
+                            if (confirm) {
+                                dialog.dismiss();
+                                startActivity(new Intent(TestActivity.this, DataActivity.class));
+                            } else {
+                                dialog.dismiss();
+                            }
+                        }
+                    }).setBackgroundResource(R.drawable.img_base_icon_info).setNOVisibility(true).setLLButtonVisibility(true).setTitle("未导入数据").setPositiveButton("确定").show();
+                } else if (cc.size() == 0) {
+                    Intent intent = new Intent(this, SelectKcCcActivity.class);
                     intent.putExtra("sfrz", "2");
                     startActivity(intent);
                 } else {
-                    startActivity(new Intent(this, RZJLActivity.class));
+                    startActivity(new Intent(this, RZDJJLActivity.class));
                 }
                 break;
             case R.id.linearlayout_sjgl:
@@ -258,8 +294,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_kcDao.TABLENAME + " SET  kc_extract = 0");
                                 dialog.dismiss();
                                 Intent intent = new Intent(TestActivity.this, SelectKcCcActivity.class);
-                                intent.putExtra("sfrz", "3");
                                 intent.putExtra("kcmc", kcmc);
+                                intent.putExtra("sfrz", "4");
                                 startActivity(intent);
                             } else {
                                 dialog.dismiss();
@@ -279,29 +315,36 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             checkAgain();
             return;
         }
-        if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() > 0 && DbServices.getInstance(getBaseContext()).selectCC().size() > 0) {
-            String ccmc = DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name();
-            rzjg2 = DbServices.getInstance(TestActivity.this).selectCCrzjg(ccmc);
-            rzjl = DbServices.getInstance(getBaseContext()).selectRZJLSB();
-            rzjg1 = DbServices.getInstance(getBaseContext()).selectRZJGSB(DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name());
-            LogUtil.i("数据上报：rzjg1", rzjg1.size());
-            LogUtil.i("数据上报：rzjg2", rzjg2.size());
-            LogUtil.i("数据上报：rzjl", rzjl.size());
-            upload_app_tv.setText("上传 " + ((int) (100.0d * ((((double) (rzjg2.size() - rzjg1.size())) * 1.0d) / (((double) rzjg2.size()) * 1.0d)))) + "%（" + (rzjg2.size() - rzjg1.size()) + " / " + rzjg2.size() + "）");
-            if (ConfigApplication.getApplication().getKDConnectState() && rzjg1.size() != 0 || rzjl.size() != 0) {
-                if (rzjg1.size() != 0) {
-                    for (int i = 0; i < rzjg1.size(); i++) {
-                        uploadRzjg(rzjg1.get(i));
+
+        if (DbServices.getInstance(getBaseContext()).selectKC().size() > 0) {
+            kc = DbServices.getInstance(getBaseContext()).selectKC();
+            cc = DbServices.getInstance(getBaseContext()).selectCC();
+            if (cc.size() > 0) {
+                int rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name(), "1").size();
+                int rzjg2 = DbServices.getInstance(TestActivity.this).selectKCCCrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name()).size();
+                if (rzjg2 > 0) {
+                    upload_app_tv.setText("上传 " + ((int) (100.0d * ((((double) rzjg1) * 1.0d) / (((double) rzjg2) * 1.0d)))) + "%（" + rzjg1 + " / " + rzjg2 + "）");
+                } else {
+                    upload_app_tv.setText("暂无数据上传");
+                }
+
+            } else {
+                upload_app_tv.setText("暂无数据上传");
+            }
+            if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() > 0 || DbServices.getInstance(TestActivity.this).loadAllrzjl().size() > 0) {
+                List<Sfrz_rzjg> rzjgList = DbServices.getInstance(getBaseContext()).selectWSBrzjg("0");
+                List<Sfrz_rzjl> rzjlList = DbServices.getInstance(getBaseContext()).selectWSBrzjl("0");
+                if (rzjgList.size() > 0) {
+                    for (int i = 0; i < rzjgList.size(); i++) {
+                        uploadRzjg(rzjgList.get(i));
                     }
                 }
-                if (rzjl.size() != 0) {
-                    for (int i = 0; i < rzjl.size(); i++) {
-                        uploadRzjl(rzjl.get(i));
+                if (rzjlList.size() > 0) {
+                    for (int i = 0; i < rzjlList.size(); i++) {
+                        uploadRzjl(rzjlList.get(i));
                     }
                 }
             }
-        } else if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() == 0) {
-            upload_app_tv.setText("暂无数据上传");
         }
         ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
             public Object callback() {
@@ -439,11 +482,26 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
-
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         MyApplication.getApplication().setShouldStopUploadingData(false);
+        List<Sb_setting> settingList = DbServices.getInstance(getBaseContext()).loadAllSbSetting();
+        if (settingList.get(0).getSb_ms().equals("0")) {
+            linearlayoutSfcj.setVisibility(View.VISIBLE);
+            linearlayoutCjjl.setVisibility(View.VISIBLE);
+            linearlayoutSfrz.setVisibility(View.GONE);
+            linearlayoutKwdj.setVisibility(View.GONE);
+            linearlayoutRzjl.setVisibility(View.GONE);
+            linearlayoutSjgl.setVisibility(View.GONE);
+        } else {
+            linearlayoutSfcj.setVisibility(View.GONE);
+            linearlayoutCjjl.setVisibility(View.GONE);
+            linearlayoutSfrz.setVisibility(View.VISIBLE);
+            linearlayoutKwdj.setVisibility(View.VISIBLE);
+            linearlayoutRzjl.setVisibility(View.VISIBLE);
+            linearlayoutSjgl.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

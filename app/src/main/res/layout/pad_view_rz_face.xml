@@ -52,10 +52,16 @@
                 android:layout_gravity="center"
                 android:visibility="gone">
 
-                <com.zhongruan.android.zkfingerdemo.camera.CameraSurfaceView
+                <SurfaceView
                     android:id="@id/sf_face"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_centerInParent="true" />
+
+                <com.zhongruan.android.zkfingerdemo.camera.FaceView
+                    android:id="@id/face_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerInParent="true" />
 
                 <com.zhongruan.android.zkfingerdemo.camera.FaceHintView
@@ -108,12 +114,12 @@
                 android:layout_centerInParent="true"
                 android:orientation="horizontal">
 
-                <ImageView
+                <Button
                     android:id="@id/img_photo"
                     android:layout_width="100.0dip"
                     android:layout_height="100.0dip"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/img_module_tab_auth_queryflow_face_takepic" />
+                    android:background="@drawable/shape_dialog_pic"
+                    android:scaleType="fitCenter" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

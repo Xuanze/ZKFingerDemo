@@ -10,26 +10,22 @@ import android.widget.TextView;
 
 import com.zhongruan.android.zkfingerdemo.R;
 
-
 public class SelectDialog extends Dialog implements View.OnClickListener {
     private TextView contentTxt;
     private TextView titleTxt;
     private Button OkButton;
     private Button NoButton;
-
     private String content;
     private OnCloseListener listener;
     private String positiveName;
     private String negativeName;
     private String title;
 
-
     public SelectDialog(Context context, int themeResId, String content, OnCloseListener listener) {
         super(context, themeResId);
         this.content = content;
         this.listener = listener;
     }
-
 
     public SelectDialog setTitle(String title) {
         this.title = title;
@@ -58,20 +54,17 @@ public class SelectDialog extends Dialog implements View.OnClickListener {
     private void initView() {
         contentTxt = findViewById(R.id.tv_select_Content);
         titleTxt = findViewById(R.id.dialog_select_title);
-        OkButton =findViewById(R.id.yes_select_Button);
+        OkButton = findViewById(R.id.yes_select_Button);
         OkButton.setOnClickListener(this);
         NoButton = findViewById(R.id.no_select_Button);
         NoButton.setOnClickListener(this);
-
         contentTxt.setText(content);
         if (!TextUtils.isEmpty(positiveName)) {
             OkButton.setText(positiveName);
         }
-
         if (!TextUtils.isEmpty(negativeName)) {
             NoButton.setText(negativeName);
         }
-
         if (!TextUtils.isEmpty(title)) {
             titleTxt.setText(title);
         }

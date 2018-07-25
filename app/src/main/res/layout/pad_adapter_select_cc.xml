@@ -36,8 +36,5 @@
             android:maxLines="1"
             android:textColor="@color/color_module_tab_arrange_levelsubject_selectcc_text_darkgray"
             android:textSize="24.0sp" />
-
-
-
     </LinearLayout>
 </RelativeLayout>

@@ -37,7 +37,6 @@ public class DateUtil {
         return new SimpleDateFormat(template).format(date);
     }
 
-
     public static String dateFormat(Date date) {
         return new SimpleDateFormat(DATE_FORMAT_YYYY_MM_DD_HH_MM_SS).format(date);
     }

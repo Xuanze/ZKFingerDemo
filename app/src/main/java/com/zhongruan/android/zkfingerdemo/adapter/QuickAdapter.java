@@ -23,12 +23,9 @@ public class QuickAdapter extends BaseQuickAdapter<Bk_ks_cjxx> {
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, Bk_ks_cjxx bk_ks_cjxx) {
-
         if (bk_ks_cjxx.getIsSbzt() == 0) {
             String s = FileUtils.getAppSavePath() + "/" + bk_ks_cjxx.getRl_picpath();
             Bitmap bitmap = BitmapFactory.decodeFile(s);
-
-
             baseViewHolder.setText(R.id.tv_student_name, bk_ks_cjxx.getSfz_xm())
                     .setImageBitmap(R.id.iv_student_pic, bitmap)
                     .setBackgroundRes(R.id.iv_upload_state, R.drawable.img_module_tab_collect_dynamiclist_not_upload)
@@ -36,10 +33,8 @@ public class QuickAdapter extends BaseQuickAdapter<Bk_ks_cjxx> {
                     .setBackgroundColor(R.id.v_name_line, this.mContext.getResources().getColor(R.color.cjtj_gray))
                     .setText(R.id.tv_student_sfzh, bk_ks_cjxx.getSfz_sfzh());
         } else {
-
             String s = FileUtils.getAppSavePath() + "/" + bk_ks_cjxx.getRl_picpath();
             Bitmap bitmap = BitmapFactory.decodeFile(s);
-
             baseViewHolder.setText(R.id.tv_student_name, bk_ks_cjxx.getSfz_xm())
                     .setImageBitmap(R.id.iv_student_pic, bitmap)
                     .setBackgroundRes(R.id.iv_upload_state, R.drawable.img_module_tab_collect_dynamiclist_upload_finished)

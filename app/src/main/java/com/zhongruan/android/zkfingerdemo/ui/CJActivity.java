@@ -171,7 +171,6 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                             } else {
                                 ShowToast("输入身份证号有误！");
                             }
-
                         } else {
                             dialog.dismiss();
                             handler.postDelayed(runnable01, 100);
@@ -347,6 +346,9 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         }
     };
 
+    /**
+     * 指纹采集
+     */
     private void getCjIdCard() {
         llIdcard.setVisibility(View.VISIBLE);
         tvIdMsg.setVisibility(View.GONE);
@@ -425,14 +427,15 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         }
     };
 
+    /**
+     * 点击返回处理
+     */
     private void isFinish() {
         new SelectDialog(this, R.style.dialog, "确认终止本次采集吗？", new SelectDialog.OnCloseListener() {
             @Override
             public void onClick(Dialog dialog, boolean confirm) {
                 if (confirm) {
                     isCJ = false;
-                    handler.removeCallbacks(runnable01);
-                    OnBnClose();
                     handler.removeCallbacks(runnable03);
                     bkKsCjxxList = DbServices.getInstance(getBaseContext()).loadAllNote();
                     tvCollectNum.setText("已采集：" + bkKsCjxxList.size());
@@ -454,6 +457,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                     llFace.setVisibility(View.GONE);
                     tvFaceMsg.setVisibility(View.VISIBLE);
                     handler.postDelayed(runnable01, 1000);
+                    OnBnStop();
                 }
             }
         }).setTitle("提示").show();
@@ -472,6 +476,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        OnBnClose();
         handler.removeCallbacks(runnable01);
         handler.removeCallbacks(runnable03);
         handler = null;
@@ -480,6 +485,14 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         CameraInterface.getInstance().doStopCamera();
     }
 
+    /**
+     * 指纹采集
+     *
+     * @param captureMode     采集类型 0 表示只取指纹模板  1 表示取指纹模板和指纹图像
+     * @param imageBuffer     存储返回图像数据的数组
+     * @param imageAttributes 图像宽高数组
+     * @param templateBuffer  存储返回指纹模板数据的数组
+     */
     @Override
     public void captureOK(int captureMode, byte[] imageBuffer, int[] imageAttributes, final byte[] templateBuffer) {
         final int[] attributes = imageAttributes;

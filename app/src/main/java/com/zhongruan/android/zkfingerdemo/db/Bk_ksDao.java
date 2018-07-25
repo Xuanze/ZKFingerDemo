@@ -36,6 +36,7 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
         public final static Property Ks_zwh = new Property(9, String.class, "ks_zwh", false, "ks_zwh");
         public final static Property Ks_xp = new Property(10, String.class, "ks_xp", false, "ks_xp");
         public final static Property IsRZ = new Property(11, String.class, "isRZ", false, "isRZ");
+        public final static Property RzTime = new Property(12, String.class, "rzTime", false, "rzTime");
     }
 
 
@@ -62,7 +63,8 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
                 "\"ks_kcmc\" TEXT," + // 8: ks_kcmc
                 "\"ks_zwh\" TEXT," + // 9: ks_zwh
                 "\"ks_xp\" TEXT," + // 10: ks_xp
-                "\"isRZ\" TEXT);"); // 11: isRZ
+                "\"isRZ\" TEXT," + // 11: isRZ
+                "\"rzTime\" TEXT);"); // 12: rzTime
     }
 
     /** Drops the underlying database table. */
@@ -134,6 +136,11 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
         if (isRZ != null) {
             stmt.bindString(12, isRZ);
         }
+ 
+        String rzTime = entity.getRzTime();
+        if (rzTime != null) {
+            stmt.bindString(13, rzTime);
+        }
     }
 
     @Override
@@ -199,6 +206,11 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
         if (isRZ != null) {
             stmt.bindString(12, isRZ);
         }
+ 
+        String rzTime = entity.getRzTime();
+        if (rzTime != null) {
+            stmt.bindString(13, rzTime);
+        }
     }
 
     @Override
@@ -220,7 +232,8 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // ks_kcmc
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // ks_zwh
             cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // ks_xp
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11) // isRZ
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // isRZ
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12) // rzTime
         );
         return entity;
     }
@@ -239,6 +252,7 @@ public class Bk_ksDao extends AbstractDao<Bk_ks, Long> {
         entity.setKs_zwh(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
         entity.setKs_xp(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
         entity.setIsRZ(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setRzTime(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
      }
     
     @Override

@@ -108,6 +108,7 @@
     <item name="no_ip_Button" type="id">false</item>
     <item name="ok_ip_Button" type="id">false</item>
     <item name="linearlayout_sjgl" type="id">false</item>
+    <item name="linearlayout_rzjl" type="id">false</item>
     <item name="ll_usb_dr" type="id">false</item>
     <item name="ll_net_dr" type="id">false</item>
     <item name="ll_usb_dc" type="id">false</item>
@@ -213,6 +214,10 @@
     <item name="ll_rz" type="id">false</item>
     <item name="ll_kwdj_back" type="id">false</item>
     <item name="ll_rzjl_back" type="id">false</item>
+    <item name="tabs_rz_dj" type="id">false</item>
+    <item name="vp_view_rzdj" type="id">false</item>
+    <item name="tabs" type="id">false</item>
+    <item name="vp_view" type="id">false</item>
     <item name="no_ksxx_Button" type="id">false</item>
     <item name="yes_ksxx_Button" type="id">false</item>
     <item name="spinner" type="id">false</item>
@@ -250,6 +255,7 @@
     <item name="list_item_statistic_history_item" type="id">false</item>
     <item name="list_item_piechart_total" type="id">false</item>
     <item name="list_item_piechart_yyz" type="id">false</item>
+    <item name="list_item_piechart_qk" type="id">false</item>
     <item name="list_item_piechart_wyz" type="id">false</item>
     <item name="list_item_uploading_ll" type="id">false</item>
     <item name="list_item_piechart_ysc" type="id">false</item>
@@ -263,6 +269,7 @@
     <item name="list_item_statistic_spread_ll" type="id">false</item>
     <item name="list_item_tv" type="id">false</item>
     <item name="list_item_history_iv" type="id">false</item>
+    <item name="rzjlRv" type="id">false</item>
     <item name="list_item_piechart_history" type="id">false</item>
     <item name="list_item_noupload_ll_history" type="id">false</item>
     <item name="list_item_history_pb" type="id">false</item>
@@ -271,6 +278,7 @@
     <item name="list_item_uploading_ll_history" type="id">false</item>
     <item name="list_item_history_wyz" type="id">false</item>
     <item name="list_item_history_yyz" type="id">false</item>
+    <item name="list_item_history_qk" type="id">false</item>
     <item name="list_item_history_total" type="id">false</item>
     <item name="list_item_history_kc" type="id">false</item>
     <item name="list_item_history_divider_cc_kc" type="id">false</item>
@@ -293,5 +301,36 @@
     <item name="rb1" type="id">false</item>
     <item name="rb2" type="id">false</item>
     <item name="rb3" type="id">false</item>
-
+    <item name="btQkdjBtg" type="id">false</item>
+    <item name="tip_layout" type="id">false</item>
+    <item name="tvyzsj" type="id">false</item>
+    <item name="tvyzjg" type="id">false</item>
+    <item name="llKsinfo" type="id">false</item>
+    <item name="btWjdjBtgs" type="id">false</item>
+    <item name="tvKsCc" type="id">false</item>
+    <item name="tvKsSex" type="id">false</item>
+    <item name="myRecycle_listview" type="id">false</item>
+    <item name="list_item_piechart_cc_iv" type="id">false</item>
+    <item name="vb_kslist_cc" type="id">false</item>
+    <item name="vb_kslist_kc" type="id">false</item>
+    <item name="lv_ks" type="id">false</item>
+    <item name="rl_v1" type="id">false</item>
+    <item name="auth_item_xp" type="id">false</item>
+    <item name="auth_item_xm" type="id">false</item>
+    <item name="auth_item_xb" type="id">false</item>
+    <item name="auth_item_rz_time" type="id">false</item>
+    <item name="auth_item_rzjg" type="id">false</item>
+    <item name="auth_item_rzbj_iv" type="id">false</item>
+    <item name="auth_item_ksid" type="id">false</item>
+    <item name="auth_item_zwh" type="id">false</item>
+    <item name="auth_item_zjh" type="id">false</item>
+    <item name="auth_item_kc" type="id">false</item>
+    <item name="expand_lv_rzgj" type="id">false</item>
+    <item name="dialog_rzgj_ksno" type="id">false</item>
+    <item name="dialog_rzgj_ksxm" type="id">false</item>
+    <item name="ll_djjl_back" type="id">false</item>
+    <item name="tabs_kw" type="id">false</item>
+    <item name="vp_kw_view" type="id">false</item>
+    <item name="tabs_rz" type="id">false</item>
+    <item name="vp_rz_view" type="id">false</item>
 </resources>

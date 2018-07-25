@@ -49,7 +49,6 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true" />
 
-
             <com.zhongruan.android.zkfingerdemo.camera.FaceHintView
                 android:id="@id/view_tip"
                 android:layout_width="match_parent"

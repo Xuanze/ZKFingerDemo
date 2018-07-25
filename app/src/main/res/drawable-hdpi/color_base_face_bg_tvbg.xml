@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:color="@color/auth_rgsh_btg_stroke" />
+    <item android:color="@color/mostBlack" />
+</selector>

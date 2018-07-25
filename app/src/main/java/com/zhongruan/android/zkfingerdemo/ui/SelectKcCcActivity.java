@@ -38,7 +38,6 @@ import rx.android.BuildConfig;
 /**
  * Created by Administrator on 2017/9/7.
  */
-
 public class SelectKcCcActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout mLlCcBack;
     private TextView mTvEmpty, mTvSelectkc, rz_title;
@@ -81,12 +80,10 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
                 selectKC();
             }
         }
-        mLlCcBack.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
-
     }
 
     @Override
@@ -111,7 +108,6 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
         }
         Intent getIntent = getIntent();
         DbServices.getInstance(getBaseContext()).saveKsKc(getIntent.getStringExtra("kcmc"));
-
         selectKcAdapter = new SelectKcAdapter(SelectKcCcActivity.this, ksKcList);
         mGvContent.setAdapter(selectKcAdapter);
         mGvContent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -173,7 +169,7 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
                         MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Ks_ccDao.TABLENAME + " SET  cc_extract = 1 WHERE cc_no = " + cc.getCc_no());
                         MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Rz_ks_zwDao.TABLENAME + " (ks_ksno,ks_xm,ks_xb,ks_zjno,ks_zwh,ks_kcno,ks_kcmc,ks_xp,zw_bs,zw_feature) " + " select a.ksno,a.xm,a.xb,a.zjno,a.zw,a.kcno,a.kcmc,b.xp_pic,c.zw_position,c.zw_feature from " + Bk_ks_tempDao.TABLENAME + " as a," + Bk_ksxpDao.TABLENAME + " as b , " + Kstz_zwDao.TABLENAME + " as c where  (a.kcno = '" + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_no() + "' AND a.ccno = '" + cc.getCc_no() + "'AND a.zjno=b.zjno  AND a.zjno=c.zjno) ");
                         if (DbServices.getInstance(getBaseContext()).queryBKKSList(DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name(), cc.getCc_name()).size() == 0) {
-                            MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Bk_ksDao.TABLENAME + " (ks_ksno,ks_xm,ks_xb,ks_zjno,ks_zwh,ks_ccno,ks_ccmc,ks_kcno,ks_kcmc,ks_xp,isRZ) " + " select a.ksno,a.xm,a.xb,a.zjno,a.zw,a.ccno,a.ccmc,a.kcno,a.kcmc,b.xp_pic,'0' from " + Bk_ks_tempDao.TABLENAME + " as a," + Bk_ksxpDao.TABLENAME + " as b where  (a.kcno = '" + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_no() + "' AND a.ccno = '" + cc.getCc_no() + "'AND a.zjno=b.zjno)");
+                            MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Bk_ksDao.TABLENAME + " (ks_ksno,ks_xm,ks_xb,ks_zjno,ks_zwh,ks_ccno,ks_ccmc,ks_kcno,ks_kcmc,ks_xp,isRZ,rzTime) " + " select a.ksno,a.xm,a.xb,a.zjno,a.zw,a.ccno,a.ccmc,a.kcno,a.kcmc,b.xp_pic,'0','' from " + Bk_ks_tempDao.TABLENAME + " as a," + Bk_ksxpDao.TABLENAME + " as b where  (a.kcno = '" + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_no() + "' AND a.ccno = '" + cc.getCc_no() + "'AND a.zjno=b.zjno)");
                         }
                         ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
                             @Override
@@ -198,7 +194,9 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
                                                 Intent getIntent = getIntent();
                                                 String sfrz = getIntent.getStringExtra("sfrz");
                                                 if (sfrz.equals("2")) {
-                                                    startActivity(new Intent(SelectKcCcActivity.this, RZJLActivity.class));
+                                                    startActivity(new Intent(SelectKcCcActivity.this, RZDJActivity.class));
+                                                } else if (sfrz.equals("3")) {
+                                                    startActivity(new Intent(SelectKcCcActivity.this, KWDJActivity.class));
                                                 } else {
                                                     startActivity(new Intent(SelectKcCcActivity.this, RZActivity.class));
                                                 }

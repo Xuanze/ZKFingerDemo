@@ -24,7 +24,6 @@ public class SelectCcAdapter extends BaseAdapter {
         LinearLayout list_item_cc_ll;
         TextView list_item_cc_name;
         TextView list_item_cc_no;
-
     }
 
     public SelectCcAdapter(Context mContext, List<Ks_cc> ccList) {
@@ -33,7 +32,6 @@ public class SelectCcAdapter extends BaseAdapter {
         this.ccList.addAll(ccList);
         this.ischoiced = new boolean[ccList.size()];
     }
-
 
     public int getCount() {
         return this.ccList.size();
@@ -62,7 +60,6 @@ public class SelectCcAdapter extends BaseAdapter {
         if (this.ccList != null && this.ccList.size() > 0) {
             holder.list_item_cc_no.setText(this.ccList.get(position).getCc_no());
             holder.list_item_cc_name.setText(this.ccList.get(position).getCc_name());
-
         }
         if (this.ischoiced[position]) {
             holder.list_item_cc_ll.setBackgroundResource(R.drawable.selector_module_tab_arrange_levelsubject_selectcc_selected);

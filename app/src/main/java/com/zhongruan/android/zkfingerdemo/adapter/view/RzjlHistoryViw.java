@@ -4,7 +4,7 @@ package com.zhongruan.android.zkfingerdemo.adapter.view;
  * Created by LHJ on 2018/2/2.
  */
 
-public class HistoryViw {
+public class RzjlHistoryViw {
     private String Cc_mc;
     private String Kc_mc;
     private int All_sl, Rz_sl, Wrz_sl, All_sb, YSb_sl;

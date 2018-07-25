@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/cjtj_gray_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="345.0"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="74.0dip"
+            android:background="#8ad8d8d8"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@id/ll_djjl_back"
+                android:layout_width="100.0dip"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/twenty_dp"
+                    android:background="@drawable/back" />
+            </LinearLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@id/tabs_rz"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                app:tabIndicatorColor="#de16a085"
+                app:tabIndicatorHeight="6.0dip"
+                app:tabSelectedTextColor="#de16a085"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabTextColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/color_divider_line" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@id/vp_rz_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

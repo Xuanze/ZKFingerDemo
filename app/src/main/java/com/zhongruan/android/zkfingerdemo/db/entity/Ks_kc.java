@@ -11,7 +11,6 @@ import org.greenrobot.greendao.annotation.Property;
  */
 @Entity(nameInDb = "ks_kc")
 public class Ks_kc {
-
     @Id(autoincrement = true)
     @Property(nameInDb = "kcid")
     private Long kcid;

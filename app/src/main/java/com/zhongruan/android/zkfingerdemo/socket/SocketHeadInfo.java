@@ -15,7 +15,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class SocketHeadInfo {
     private static final String[] FILEDS;
     private static final String[] KEYS;

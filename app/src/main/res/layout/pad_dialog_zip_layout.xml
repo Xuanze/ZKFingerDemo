@@ -48,8 +48,6 @@
                 android:textColor="@color/black"
                 android:textSize="30.0sp"
                 android:textStyle="bold" />
-
-
         </LinearLayout>
 
         <View
@@ -88,7 +86,6 @@
                 android:text="@string/ok"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

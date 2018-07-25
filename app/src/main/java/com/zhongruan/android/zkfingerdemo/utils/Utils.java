@@ -13,14 +13,13 @@ import java.util.List;
 import rx.android.BuildConfig;
 
 public class Utils {
-    public static final String DEVICETYPE_YLT2 = "giktech";
-    public static final int LEFT_FINGER_FIRST = 3;
-    public static final int LEFT_FINGER_FOURTH = 1;
+    public static final String DEVICETYPE_YLT2 = "BM7510";
     public static final int LEFT_FINGER_LITTLE = 0;
+    public static final int LEFT_FINGER_FOURTH = 1;
     public static final int LEFT_FINGER_MIDDLE = 2;
+    public static final int LEFT_FINGER_FIRST = 3;
     public static final int LEFT_FINGER_THUMB = 4;
     public static final int RIGHT_FINGER_THUMB = 5;
-
     final List<String> list;
 
     public Utils(List<String> list) {
@@ -58,7 +57,6 @@ public class Utils {
 
     public static boolean checkUSBInserted() {
         String path = getUSBPath();
-
         if (stringIsEmpty(path)) {
             return false;
         }
@@ -99,7 +97,6 @@ public class Utils {
         }
         return flag;
     }
-
 
     public static List<String> checkUSBZip(String directory, String prefix) {
         if (!checkUSBInserted()) {
@@ -156,7 +153,6 @@ public class Utils {
         return list;
     }
 
-
     public static String checkPwd(String path) {
         String str = null;
         try {
@@ -180,14 +176,12 @@ public class Utils {
         return str;
     }
 
-
     public static boolean stringIsEmpty(String string) {
         if (string == null || string.trim().equals(BuildConfig.VERSION_NAME) || string.trim().toLowerCase().equals("null") || string.trim().toLowerCase().equals("<null>")) {
             return true;
         }
         return false;
     }
-
 
     public static boolean isEqual(String str1, String str2) {
         if (str1 == null && str2 == null) {

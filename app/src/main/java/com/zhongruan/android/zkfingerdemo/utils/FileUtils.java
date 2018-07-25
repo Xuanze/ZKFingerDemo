@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -48,6 +49,36 @@ public class FileUtils {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static String getName(String name) {
+        File file = Environment.getExternalStorageDirectory();
+        if (file != null) {
+            File[] files = file.listFiles(new FileNameSelector(name));
+            if (files.length > 0) {
+                return files[0].getName();
+            } else {
+                return "";
+            }
+        }
+        return "";
+    }
+
+    /**
+     * 后缀名过滤器
+     *
+     * @author ZLQ
+     */
+    public static class FileNameSelector implements FilenameFilter {
+        String extension = ".";
+
+        public FileNameSelector(String fileExtensionNoDot) {
+            extension += fileExtensionNoDot;
+        }
+
+        public boolean accept(File dir, String name) {
+            return name.endsWith(extension);
         }
     }
 
@@ -92,13 +123,11 @@ public class FileUtils {
      * @param b
      */
     public static void saveBitmap(Bitmap b, String filePath, String fileName) {
-
         String path = getSDCardPath() + "/" + DST_FOLDER_NAME + "/" + filePath;
         File file = new File(path);
         if (!file.exists()) {
             file.mkdirs();
         }
-
         String jpegName = path + "/" + fileName + ".jpg";
         LogUtil.i("saveBitmap:jpegName = " + jpegName);
         try {
@@ -273,7 +302,6 @@ public class FileUtils {
         return flag;
     }
 
-
     /**
      * 根据文件路径拷贝文件
      *
@@ -284,7 +312,6 @@ public class FileUtils {
         LogUtil.i("copyFileToUSB", tempFolder.getPath().toString());
         File[] files;
         String usbPath;
-
         if (tempFolder.length() == 0) {
             tempFolder.delete();
             return BuildConfig.VERSION_NAME;
@@ -307,9 +334,7 @@ public class FileUtils {
                     newfile.createNewFile();
                 }
             }
-
             LogUtil.i("copyFileToUSB", newfile.getPath().toString());
-
             InputStream inStream = new FileInputStream(tempFolder);
             FileOutputStream fs = new FileOutputStream(newfile);
             byte[] buffer = new byte[1024];
@@ -333,12 +358,10 @@ public class FileUtils {
         }
     }
 
-
     // 将字符串写入到文本文件中
     public static void writeTxtToFile(String strcontent, String filePath, String fileName) {
         //生成文件夹之后，再生成文件，不然会出错
         makeFilePath(filePath, fileName);
-
         String strFilePath = filePath + fileName;
         // 每次写入时，都换行写
         String strContent = strcontent + "\r\n";
@@ -386,7 +409,6 @@ public class FileUtils {
         }
     }
 
-
     /**
      * 删除单个文件
      *
@@ -432,7 +454,6 @@ public class FileUtils {
                 new File(folderPath).delete();
                 flag = true;
             }
-
         } catch (Exception e) {
             System.out.println("删除文件夹操作出错:" + folderPath);
             e.printStackTrace();

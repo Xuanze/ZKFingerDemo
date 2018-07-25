@@ -19,7 +19,6 @@ import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
 import com.zhongruan.android.zkfingerdemo.utils.APPUtil;
 import com.zhongruan.android.zkfingerdemo.utils.Utils;
 
-
 public class WelcomeActivity extends BaseActivity {
     private ImageView loadingImageView;
     private TextView idTvLoadingmsg;
@@ -38,6 +37,12 @@ public class WelcomeActivity extends BaseActivity {
         ((AnimationDrawable) loadingImageView.getBackground()).start();
         audioManager = (AudioManager) getSystemService(Service.AUDIO_SERVICE);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                setParameter();
+            }
+        });
     }
 
     @Override
@@ -53,7 +58,7 @@ public class WelcomeActivity extends BaseActivity {
         if (Build.MODEL.equals(Utils.DEVICETYPE_YLT2)) {
             if (DbServices.getInstance(getBaseContext()).loadAllrzfs().size() == 0 && DbServices.getInstance(getBaseContext()).loadAllrzzt().size() == 0) {
                 String sn = getSerialNumber();
-                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sb_settingDao.TABLENAME + " (settingid,sb_ip,sb_sn,sb_ms,sb_hyfs,sb_finger_fz,sb_finger_cfcs,sb_face_xsd, sb_face_cfcs)   VALUES ('1','192.168.1.1','" + sn + "','0','0','0','0','0','0')");
+                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sb_settingDao.TABLENAME + " (settingid,sb_ip,sb_sn,sb_ms,sb_hyfs,sb_finger_fz,sb_finger_cfcs,sb_face_xsd, sb_face_cfcs)   VALUES ('1','192.168.1.1','" + sn + "','1','0','0','0','0','0')");
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sfrz_rzztDao.TABLENAME + " (rzzt_no,rzzt_name)   VALUES ('11','考中补充拍照')");
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sfrz_rzztDao.TABLENAME + " (rzzt_no,rzzt_name)   VALUES ('13','考中考务登记')");
                 MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("INSERT INTO " + Sfrz_rzztDao.TABLENAME + " (rzzt_no,rzzt_name)   VALUES ('21','现场认证通过')");

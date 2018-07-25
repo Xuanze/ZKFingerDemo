@@ -62,14 +62,15 @@
                     android:layout_marginLeft="20.0dip"
                     android:layout_marginRight="10.0dip"
                     android:background="@drawable/shape_ip_edittext_bg"
-                    android:hint="请输入18位身份证号码"
-                    android:inputType="number"
                     android:digits="0123456789abcdefghijklmnopqrstuvwxyz"
+                    android:hint="请输入18位身份证号码"
                     android:imeOptions="actionDone"
+                    android:inputType="number"
                     android:maxLength="18"
                     android:padding="15.0dip"
                     android:textSize="25.0dip" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="83.32999dip"
                 android:layout_height="83.32999dip"
@@ -117,7 +118,6 @@
                 android:text="@string/ok"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -9,9 +9,11 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
@@ -21,7 +23,10 @@ import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
 import com.zhongruan.android.zkfingerdemo.idcardengine.IDCardData;
 import com.zhongruan.android.zkfingerdemo.utils.CommonUtil;
+import com.zhongruan.android.zkfingerdemo.utils.FileUtils;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
+import com.zhongruan.android.zkfingerdemo.utils.Utils;
+import com.zkteco.android.biometric.ZKLiveFaceService;
 import com.zkteco.android.biometric.core.device.ParameterHelper;
 import com.zkteco.android.biometric.core.device.TransportType;
 import com.zkteco.android.biometric.core.utils.LogHelper;
@@ -35,13 +40,15 @@ import com.zkteco.android.biometric.module.idcard.exception.IDCardReaderExceptio
 import com.zkteco.android.biometric.module.idcard.meta.IDCardInfo;
 import com.zkteco.zkfinger.FingerprintService;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 基类
  */
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     private Toast mToast;
     private HintDialog hintDialog;
     private boolean isExit;
@@ -54,11 +61,10 @@ public abstract class BaseActivity extends FragmentActivity {
     private FingerprintSensor fingerprintSensor = null;
     public boolean bstart = false;
     public boolean bopen = false;
-
+    public long context;
     public SoundPool soundPool;
     //定义一个HashMap用于存放音频流的ID
     public HashMap<Integer, Integer> musicId = new HashMap<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +220,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 打开身份证模块
+     */
     public void OnBnOpen() {
         try {
             if (bopen) return;
@@ -224,6 +233,11 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 读卡
+     *
+     * @return
+     */
     public IDCardData OnBnRead() {
         try {
             if (bopen) {
@@ -244,6 +258,9 @@ public abstract class BaseActivity extends FragmentActivity {
         return null;
     }
 
+    /**
+     * 关闭身份证模块
+     */
     public void OnBnClose() {
         try {
             this.idCardReader.close(0);
@@ -253,6 +270,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 初始化指纹模块
+     */
     public void OnBnBegin() {
         try {
             if (bstart) {
@@ -274,6 +294,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 注册指纹模块
+     */
     public void startFingerprintSensor() {
         LogHelper.setLevel(Log.ASSERT);
         Map fingerprintParams = new HashMap();
@@ -282,7 +305,10 @@ public abstract class BaseActivity extends FragmentActivity {
         fingerprintSensor = FingerprintFactory.createFingerprintSensor(this, TransportType.USB, fingerprintParams);
     }
 
-    //停止
+    /**
+     * 停止指纹模块
+     */
+
     public void OnBnStop() {
         try {
             if (bstart) {
@@ -295,6 +321,54 @@ public abstract class BaseActivity extends FragmentActivity {
             }
         } catch (FingerprintSensorException e) {
             LogUtil.e("停止失败, 错误代码=" + e.getErrorCode() + "\nmessage=" + e.getMessage());
+        }
+    }
+
+    /**
+     * 注册人脸识别模块
+     */
+    public void setParameter() {
+        if (Utils.stringIsEmpty(FileUtils.getName("lic"))) {
+            Toast.makeText(getApplicationContext(), "注册文件不存在，请联系技术人员", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        File file = new File(Environment.getExternalStorageDirectory(), FileUtils.getName("lic"));
+        byte[] buffer = new byte[8192];
+        int len = 0;
+        try {
+            FileInputStream inputStream = new FileInputStream(file);
+            buffer = new byte[inputStream.available()];
+            len = inputStream.available();
+            inputStream.read(buffer);
+        } catch (Exception e) {
+        }
+        int retCode = 0;
+        retCode = ZKLiveFaceService.setParameter(0, 1012, buffer, len);
+        if (retCode == 0) {
+            getInit();
+        } else {
+            Toast.makeText(getApplicationContext(), "设置参数失败" + retCode, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 初始化人脸算法
+     */
+    private void getInit() {
+        long[] retContext = new long[1];
+        int ret = ZKLiveFaceService.init(retContext);
+        if (ret == 0) {
+            context = retContext[0];
+            String strValue = "528";
+            if (ZKLiveFaceService.setParameter(context, 2001, strValue.getBytes(), strValue.length()) == 0) {
+            } else {
+            }
+            strValue = "3";
+            if (ZKLiveFaceService.setParameter(context, 1008, strValue.getBytes(), strValue.length()) == 0) {
+            } else {
+            }
+        } else {
+            Toast.makeText(this, "初始化算法失败，请检查许可文件", Toast.LENGTH_LONG).show();
         }
     }
 

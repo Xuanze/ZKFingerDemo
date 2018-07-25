@@ -18,6 +18,7 @@
         android:paddingLeft="10.0dip"
         android:paddingRight="30.0dip"
         android:paddingTop="10.0dip">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

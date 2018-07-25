@@ -7,10 +7,7 @@ import android.os.Message;
  * Created by Administrator on 2016/8/25.
  */
 public abstract class BaseArchiver {
-
     protected String TAG = this.getClass().getSimpleName();
-
-
     protected Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -32,7 +29,7 @@ public abstract class BaseArchiver {
      * @param passwd      压缩使用的密码
      * @return 最终的压缩文件存放的绝对路径, 如果为null则说明压缩失败.
      */
-    public abstract void doArchiver(String src, String dest, boolean isCreateDir, String passwd, String FileType,IArchiverListener listener);
+    public abstract void doArchiver(String src, String dest, boolean isCreateDir, String passwd, String FileType, IArchiverListener listener);
 
     /**
      * 解压文件
@@ -43,6 +40,4 @@ public abstract class BaseArchiver {
      * @param listener  文件解压进度
      */
     public abstract void doUnArchiver(String srcfile, String unrarPath, String password, IArchiverListener listener);
-
-
 }

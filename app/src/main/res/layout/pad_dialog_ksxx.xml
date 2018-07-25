@@ -35,7 +35,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/img_module_tab_auth_queryflow_bg" />
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1.0px"
@@ -72,7 +71,6 @@
                 android:text="@string/ok"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

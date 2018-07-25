@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.zhongruan.android.zkfingerdemo.BuildConfig;
+import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.db.DaoMaster;
 import com.zhongruan.android.zkfingerdemo.db.DaoSession;
 import com.zhongruan.android.zkfingerdemo.db.DbServices;
@@ -14,7 +15,6 @@ import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 
 
 public class MyApplication extends Application {
-
     private static DaoSession daoSession;
     //获取到主线程的上下文
     private static MyApplication mContext;
@@ -37,7 +37,6 @@ public class MyApplication extends Application {
     public static MyApplication getApplication() {
         return mContext;
     }
-
 
     /**
      * 取得DaoMaster

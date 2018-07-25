@@ -75,9 +75,7 @@
                     android:layout_marginRight="20dip"
                     android:gravity="center_vertical"
                     android:textSize="20.0sp" />
-
             </LinearLayout>
-
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -112,7 +110,6 @@
                     android:gravity="center_vertical"
                     android:textSize="20.0sp" />
             </LinearLayout>
-
 
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -152,7 +149,6 @@
                 android:orientation="horizontal"
                 android:paddingLeft="15.0dip">
 
-
                 <TextView
                     android:layout_width="0.0dp"
                     android:layout_height="fill_parent"
@@ -164,7 +160,6 @@
                     android:text="导出认证数据到U盘"
                     android:textSize="20.0sp" />
 
-
                 <TextView
                     android:id="@id/tv_rz_usb_dc"
                     android:layout_width="wrap_content"
@@ -172,7 +167,6 @@
                     android:layout_marginRight="20dip"
                     android:gravity="center_vertical"
                     android:textSize="20.0sp" />
-
             </LinearLayout>
 
             <RelativeLayout
@@ -233,7 +227,6 @@
                     android:layout_marginRight="20dip"
                     android:gravity="center_vertical"
                     android:textSize="20.0sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -255,7 +248,6 @@
                     android:state_pressed="true"
                     android:text="重新上报数据"
                     android:textSize="20.0sp" />
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

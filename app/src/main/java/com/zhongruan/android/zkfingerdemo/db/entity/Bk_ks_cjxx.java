@@ -14,7 +14,6 @@ import org.greenrobot.greendao.annotation.Property;
  */
 @Entity(nameInDb = "bk_ks_cjxx")
 public class Bk_ks_cjxx implements Parcelable {
-
     @Id(autoincrement = true)
     @Property(nameInDb = "id")
     private Long id;
@@ -82,7 +81,6 @@ public class Bk_ks_cjxx implements Parcelable {
     @Generated(hash = 1925650841)
     public Bk_ks_cjxx() {
     }
-
 
     @Override
     public String toString() {

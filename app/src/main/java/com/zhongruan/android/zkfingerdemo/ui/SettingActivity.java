@@ -14,7 +14,6 @@ import com.zhongruan.android.zkfingerdemo.db.DbServices;
 /**
  * Created by LHJ on 2018/3/9.
  */
-
 public class SettingActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout mLlDataBack;
     /**
@@ -112,7 +111,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void initData() {
-
     }
 
     @Override

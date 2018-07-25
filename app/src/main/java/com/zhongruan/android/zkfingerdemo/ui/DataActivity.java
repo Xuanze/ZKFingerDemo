@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhongruan.android.zkfingerdemo.R;
@@ -148,7 +147,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initData() {
-
     }
 
     class MyHandler extends Handler {
@@ -326,6 +324,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                             dialog.dismiss();
                             if (ConfigApplication.getApplication().getKDConnectState()) {
                                 initMap();
+                                showProgressDialog(DataActivity.this, "正在清空数据...", false, 100);
                                 delFolder("DataTemp");
                                 ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
                                     public Object callback() {
@@ -349,6 +348,7 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                                 }, new ABLSynCallback.ForegroundCall() {
                                     public void callback(Object obj) {
                                         if ((int) obj == 1) {
+                                            dismissProgressDialog();
                                             MyApplication.getApplication().setShouldStopUploadingData(false);
                                             Message message1 = new Message();
                                             message1.what = 17;
@@ -750,7 +750,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                     } catch (java.io.FileNotFoundException e) {
                         Log.d("TestFile", "The File doesn't not exist.");
                         return false;
-
                     } catch (IOException e) {
                         Log.d("TestFile", e.getMessage());
                         return false;
@@ -764,7 +763,6 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 插入考点/考场/场次/科目/考生/编排
      */
-
     private void importXX() {
         ksKcList = new ArrayList<>();
         Message message13 = new Message();

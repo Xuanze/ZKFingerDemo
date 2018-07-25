@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ZipArchiver extends BaseArchiver {
-
-
     /**
      * 使用给定密码压缩指定文件或文件夹到指定位置.
      * <p>
@@ -38,14 +36,12 @@ public class ZipArchiver extends BaseArchiver {
         ZipParameters parameters = new ZipParameters();
         parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);           // 压缩方式
         parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);    // 压缩级别
-
         if (passwd != null) {
             parameters.setEncryptFiles(true);
             parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD); // 加密方式
             parameters.setPassword(passwd.toCharArray());
         }
         try {
-
             if (listener != null) {
                 mHandler.post(new Runnable() {
                     @Override
@@ -54,7 +50,6 @@ public class ZipArchiver extends BaseArchiver {
                     }
                 });
             }
-
             zipFile = new ZipFile(dest);
             if (srcFile.isDirectory()) {
                 // 如果不创建目录的话,将直接把给定目录下的文件压缩到压缩文件,即没有目录结构
@@ -68,12 +63,9 @@ public class ZipArchiver extends BaseArchiver {
             } else {
                 zipFile.addFile(srcFile, parameters);
             }
-
-
             //一下 为 监听过程，不影响 实际压缩过程；
             ProgressMonitor progressMonitor = zipFile.getProgressMonitor();//开启压缩监听
             reuslt = progressMonitor.getResult();
-
             if (progressMonitor.getResult() == ProgressMonitor.RESULT_ERROR) {
                 if (progressMonitor.getException() != null) {
                     progressMonitor.getException().printStackTrace();
@@ -101,7 +93,6 @@ public class ZipArchiver extends BaseArchiver {
         }
     }
 
-
     /**
      * 使用给定密码解压指定的ZIP压缩文件到指定目录
      *
@@ -122,12 +113,10 @@ public class ZipArchiver extends BaseArchiver {
             zFile.setFileNameCharset("GBK");
             if (!zFile.isValidZipFile())
                 throw new ZipException("文件不合法!");
-
             File destDir = new File(unrarPath);
             if (destDir.isDirectory() && !destDir.exists()) {
                 destDir.mkdir();
             }
-
             if (zFile.isEncrypted()) {
                 zFile.setPassword(password);
             }
@@ -139,7 +128,6 @@ public class ZipArchiver extends BaseArchiver {
                     }
                 });
             }
-
             FileHeader fh = null;
             final int total = zFile.getFileHeaders().size();
             for (int i = 0; i < zFile.getFileHeaders().size(); i++) {
@@ -215,24 +203,20 @@ public class ZipArchiver extends BaseArchiver {
         }
     }
 
-
     public static int addFilesWithAESEncryption(String doZipFile, ArrayList<File> filesToAdd, String password) {
         int reuslt = 1;
         ZipFile zipFile = null;
         try {
             zipFile = new ZipFile(doZipFile);
             System.out.println("---------------------------压缩开始-------------------------------");
-
             if (zipFile.getFile().exists()) {
                 System.out.println("文件已存在先删除压缩包！");
                 zipFile.getFile().delete();
             }
             zipFile.setRunInThread(true);
-
             ZipParameters parameters = new ZipParameters();
             parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE); //压缩模式
             parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL); //压缩程度 一般压缩
-
             if (!"".equals(password)) {
                 parameters.setEncryptFiles(true); //是否设置密码
                 parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_AES);
@@ -241,10 +225,8 @@ public class ZipArchiver extends BaseArchiver {
             }
             //添加要压缩的文件 可以支持多文件压缩，并 开始 压缩；
             zipFile.addFiles(filesToAdd, parameters);
-
             //一下 为 监听过程，不影响 实际压缩过程；
             ProgressMonitor progressMonitor = zipFile.getProgressMonitor();//开启压缩监听
-
             //开启 监听后，压缩状态 为 1：正在压缩
             //若 存在异常 ，则 直接跳出 循环；且状态 结果码 为失败 状态 2；
             while (progressMonitor.getState() == ProgressMonitor.STATE_BUSY) {
@@ -272,12 +254,10 @@ public class ZipArchiver extends BaseArchiver {
                         //	System.out.println("无效的操作");
                         break;
                 }
-
             }
             //如果 正常压缩，则结果码：为0； 异常则为2 或者其他；
             System.out.println("Result: " + progressMonitor.getResult());
             reuslt = progressMonitor.getResult();
-
             if (progressMonitor.getResult() == ProgressMonitor.RESULT_ERROR) {
                 if (progressMonitor.getException() != null) {
                     progressMonitor.getException().printStackTrace();
@@ -298,6 +278,4 @@ public class ZipArchiver extends BaseArchiver {
             return 1;
         }
     }
-
-
 }

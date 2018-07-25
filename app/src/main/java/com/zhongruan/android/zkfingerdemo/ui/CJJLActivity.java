@@ -17,10 +17,10 @@ import com.zhongruan.android.zkfingerdemo.fragments.DailyFragment;
  */
 
 public class CJJLActivity extends BaseActivity implements View.OnClickListener {
-
     private LinearLayout llCollectStatisticBack, llCollectStatisticSearch;
     private TabLayout tabsCj;
     private ViewPager vpViewCj;
+
 
     @Override
     public void setContentView() {
@@ -29,11 +29,11 @@ public class CJJLActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initViews() {
-
         llCollectStatisticBack = findViewById(R.id.ll_collect_statistic_back);
         tabsCj = findViewById(R.id.tabs_cj);
         llCollectStatisticSearch = findViewById(R.id.ll_collect_statistic_search);
         vpViewCj = findViewById(R.id.vp_view_cj);
+
         ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         vpAdapter.addFragment(new DailyFragment().newInstance(2), "全部");
         vpAdapter.addFragment(new DailyFragment().newInstance(1), "已上报");
@@ -50,7 +50,6 @@ public class CJJLActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initData() {
-
     }
 
     @Override

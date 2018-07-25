@@ -33,7 +33,6 @@ import rx.android.BuildConfig;
 
 @SuppressLint({"SimpleDateFormat"})
 public class SocketClient {
-
     private static final int LINKTIMEOUT = 10000;
     private static final int SENDTIMEOUT = 30000;
     private static final int RECEIVETIMEOUT = 1200000;
@@ -97,20 +96,15 @@ public class SocketClient {
                     headInfo.socketBean.setContentInfo(contentInfo);
                     headInfo.socketBean.setDateTime(retStrFormatNowDate);
                     headInfo.socketBean.setContentLength(0);
-
                     byte[] byteHeadLength = new byte[10];
                     byte[] byteHeadInfo = headInfo.getHeadInfo().getBytes(InternalZipConstants.CHARSET_UTF8);
                     byte[] headSize = String.valueOf(byteHeadInfo.length).getBytes(InternalZipConstants.CHARSET_UTF8);
-
                     System.arraycopy(headSize, 0, byteHeadLength, 0, headSize.length);
                     outputStream.write(byteHeadLength);
                     outputStream.write(byteHeadInfo);
                     outputStream.flush();
-
                     InputStream inputStream = this.socket.getInputStream();
-
                     byte[] byteHeadInfo2 = readBytes(inputStream, Integer.parseInt(new String(readBytes(inputStream, 10)).trim()));
-
                     SocketHeadInfo headInfo2 = new SocketHeadInfo(context);
                     headInfo2.socketBean.setWsWsNo(DbServices.getInstance(context).loadAllSbSetting().get(0).getSb_sn());
                     headInfo2.setHeadInfo(byteHeadInfo2);
@@ -158,12 +152,9 @@ public class SocketClient {
                     headInfo.socketBean.setContentType(1);
                     headInfo.socketBean.setContentName(contentName);
                     headInfo.socketBean.setDateTime(retStrFormatNowDate);
-
                     byte[] byteHeadInfo = headInfo.getHeadInfo().getBytes(InternalZipConstants.CHARSET_UTF8);
                     byte[] headSize = String.valueOf(byteHeadInfo.length).getBytes(InternalZipConstants.CHARSET_UTF8);
-
                     System.arraycopy(headSize, 0, byteHeadLength, 0, headSize.length);
-
                     byte[] byteContemt = BuildConfig.VERSION_NAME.getBytes(InternalZipConstants.CHARSET_UTF8);
                     outputStream.write(byteHeadLength);
                     outputStream.write(byteHeadInfo);
@@ -201,7 +192,6 @@ public class SocketClient {
                             if (handler != null) {
                                 double d = (double) fileLength;
                                 int percent = (int) (((((double) totlen) * 1.0d) / fileLength) * 100.0d);
-
                                 Message message1 = new Message();
                                 message1.what = 16;
                                 message1.arg1 = percent;

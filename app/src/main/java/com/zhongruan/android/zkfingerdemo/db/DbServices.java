@@ -17,6 +17,7 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzzt;
 import com.zhongruan.android.zkfingerdemo.ui.MyApplication;
+import com.zhongruan.android.zkfingerdemo.utils.DateUtil;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 
 import java.util.List;
@@ -189,16 +190,66 @@ public class DbServices {
         }
     }
 
-    public List<Sfrz_rzjg> selectCCrzjg(String ccmc) {
-        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no())).list();
+    public List<Sfrz_rzjg> selectKCCCrzjg(String kcno, String ccmc) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno)).list();
+    }
+
+    public List<Sfrz_rzjg> selectWSBrzjg(String kcno, String ccmc, String isSB) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
+    }
+
+    public List<Sfrz_rzjg> selectKCCCrzjg2(String kcno, String ccmc, String rzjg) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_ztid.eq(rzjg)).list();
+    }
+
+    public List<Sfrz_rzjg> selectWSBrzjg2(String kcno, String ccmc, String rzjg, String isSB) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_ztid.eq(rzjg), Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
+    }
+
+    public List<Sfrz_rzjg> selectKCCCrzjg3(String kcno, String ccmc, String rzjg) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_ztid.notEq(rzjg)).list();
+    }
+
+    public List<Sfrz_rzjg> selectWSBrzjg3(String kcno, String ccmc, String rzjg, String isSB) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_ztid.notEq(rzjg), Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
+    }
+
+
+    public List<Sfrz_rzjg> selectWSBrzjg(String isSB) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
+    }
+
+    public List<Sfrz_rzjl> selectWSBrzjl(String isSB) {
+        return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_sb.eq(isSB)).list();
+    }
+
+
+    public List<Sfrz_rzjg> selectKSrzjg(String ksno, String kmno, String kcno) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(kmno)).where(Sfrz_rzjgDao.Properties.Rzjg_ksno.eq(ksno)).where(Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno)).list();
+    }
+
+    public List<Sfrz_rzjl> selectKSrzjl(String ksno, String kmno, String kcno) {
+        return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_kmbh.eq(kmno)).where(Sfrz_rzjlDao.Properties.Rzjl_ksno.eq(ksno)).where(Sfrz_rzjlDao.Properties.Rzjl_kcbh.eq(kcno)).list();
     }
 
     public List<Ks_kc> selectKC() {
         return ks_kcDao.queryBuilder().where(Ks_kcDao.Properties.Kc_extract.eq("1")).list();
     }
 
+    public String getCCmc(String ccno) {
+        return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccno)).list().get(0).getCc_name();
+    }
+
+    public String getKMmc(String ccno) {
+        return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccno)).list().get(0).getKm_name();
+    }
+
     public List<Bk_ks> queryBKKSList(String ks_kcmc, String ks_ccmc) {
         return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).orderAsc(Bk_ksDao.Properties.Ks_zwh).list();
+    }
+
+    public List<Bk_ks> queryBKKSLists(String ks_kcmc, String ks_ccmc, String isRZ) {
+        return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.IsRZ.eq(isRZ)).orderAsc(Bk_ksDao.Properties.Ks_zwh).list();
     }
 
     public List<Bk_ks> queryNOBKKSList(String ks_kcmc, String ks_ccmc) {
@@ -225,14 +276,17 @@ public class DbServices {
         return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_ksno.eq(ksno)).list().get(0).getRzjgid();
     }
 
+    public String selectRzjgtime(String time) {
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_time.eq(time)).list().get(0).getRzjgid();
+    }
+
 
     public int queryBkKsIsTG(String ks_kcmc, String ks_ccmc, String isRZ) {
         return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.IsRZ.eq(isRZ)).distinct().list().size();
     }
 
-
-    public List<Sfrz_rzjg> selectRZJGSB(String ccmc) {
-        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_sb.notEq("1")).list();
+    public int queryBkKsWTG(String ks_kcmc, String ks_ccmc, String isRZ) {
+        return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.IsRZ.notEq(isRZ)).distinct().list().size();
     }
 
     public List<Sfrz_rzjl> selectRZJLSB() {
@@ -420,6 +474,24 @@ public class DbServices {
         for (int i = 0; i < bk_ks.size(); i++) {
             if (bk_ks.get(i) != null) {
                 bk_ks.get(i).setIsRZ("1");
+                bk_ks.get(i).setRzTime(DateUtil.getNowTime_Millisecond());
+                bk_ksDao.update(bk_ks.get(i));
+                LogUtil.i("修改成功");
+            } else {
+                LogUtil.i("数据不存在");
+            }
+        }
+    }
+
+    public void saveBkKss(String ks_kcmc, String ks_ccno, String zjno) {
+        List<Bk_ks> bk_ks = bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.Ks_ccno.eq(ks_ccno)).where(Bk_ksDao.Properties.Ks_zjno.eq(zjno)).list();
+        LogUtil.i(zjno);
+        LogUtil.i(bk_ks);
+        LogUtil.i(bk_ks.size());
+        for (int i = 0; i < bk_ks.size(); i++) {
+            if (bk_ks.get(i) != null) {
+                bk_ks.get(i).setIsRZ("2");
+                bk_ks.get(i).setRzTime(DateUtil.getNowTime_Millisecond());
                 bk_ksDao.update(bk_ks.get(i));
                 LogUtil.i("修改成功");
             } else {

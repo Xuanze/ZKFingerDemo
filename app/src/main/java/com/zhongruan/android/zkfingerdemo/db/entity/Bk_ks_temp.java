@@ -42,10 +42,10 @@ public class Bk_ks_temp {
     private String kssj;
     @Property(nameInDb = "jssj")
     private String jssj;
-    //    @Property(nameInDb = "zskssj")
-//    private String zskssj;
-//    @Property(nameInDb = "zsjssj")
-//    private String zsjssj;
+    //@Property(nameInDb = "zskssj")
+    //private String zskssj;
+    //@Property(nameInDb = "zsjssj")
+    //private String zsjssj;
     @Property(nameInDb = "kcno")
     private String kcno;
     @Property(nameInDb = "kcmc")
@@ -63,14 +63,12 @@ public class Bk_ks_temp {
     @Property(nameInDb = "cjbj")
     private String cjbj;
 
-
-
     @Generated(hash = 1785975116)
     public Bk_ks_temp(String ksno, String xm, String bmxh, String zkzh, String zjno,
-            String xb, String lxdh, String xjh, String sfks, String zw, String kmno,
-            String kmmc, String ccno, String ccmc, String kssj, String jssj,
-            String kcno, String kcmc, String kcsx, String kdno, String kdmc,
-            String bmd, String bmdmc, String cjbj) {
+                      String xb, String lxdh, String xjh, String sfks, String zw, String kmno,
+                      String kmmc, String ccno, String ccmc, String kssj, String jssj,
+                      String kcno, String kcmc, String kcsx, String kdno, String kdmc,
+                      String bmd, String bmdmc, String cjbj) {
         this.ksno = ksno;
         this.xm = xm;
         this.bmxh = bmxh;
@@ -97,12 +95,9 @@ public class Bk_ks_temp {
         this.cjbj = cjbj;
     }
 
-
     @Generated(hash = 1829043109)
     public Bk_ks_temp() {
     }
-
-
 
     @Override
     public String toString() {
@@ -122,8 +117,8 @@ public class Bk_ks_temp {
                 ccmc + "," +
                 kssj + "," +
                 jssj + "," +
-//                zskssj + "," +
-//                zsjssj + "," +
+//              zskssj + "," +
+//              zsjssj + "," +
                 kcno + "," +
                 kcmc + "," +
                 kdno + "," +
@@ -133,166 +128,133 @@ public class Bk_ks_temp {
                 cjbj;
     }
 
-
     public String getKsno() {
         return this.ksno;
     }
-
 
     public void setKsno(String ksno) {
         this.ksno = ksno;
     }
 
-
     public String getXm() {
         return this.xm;
     }
-
 
     public void setXm(String xm) {
         this.xm = xm;
     }
 
-
     public String getBmxh() {
         return this.bmxh;
     }
-
 
     public void setBmxh(String bmxh) {
         this.bmxh = bmxh;
     }
 
-
     public String getZkzh() {
         return this.zkzh;
     }
-
 
     public void setZkzh(String zkzh) {
         this.zkzh = zkzh;
     }
 
-
     public String getZjno() {
         return this.zjno;
     }
-
 
     public void setZjno(String zjno) {
         this.zjno = zjno;
     }
 
-
     public String getXb() {
         return this.xb;
     }
-
 
     public void setXb(String xb) {
         this.xb = xb;
     }
 
-
     public String getLxdh() {
         return this.lxdh;
     }
-
 
     public void setLxdh(String lxdh) {
         this.lxdh = lxdh;
     }
 
-
     public String getXjh() {
         return this.xjh;
     }
-
 
     public void setXjh(String xjh) {
         this.xjh = xjh;
     }
 
-
     public String getSfks() {
         return this.sfks;
     }
-
 
     public void setSfks(String sfks) {
         this.sfks = sfks;
     }
 
-
     public String getZw() {
         return this.zw;
     }
-
 
     public void setZw(String zw) {
         this.zw = zw;
     }
 
-
     public String getKmno() {
         return this.kmno;
     }
-
 
     public void setKmno(String kmno) {
         this.kmno = kmno;
     }
 
-
     public String getKmmc() {
         return this.kmmc;
     }
-
 
     public void setKmmc(String kmmc) {
         this.kmmc = kmmc;
     }
 
-
     public String getCcno() {
         return this.ccno;
     }
-
 
     public void setCcno(String ccno) {
         this.ccno = ccno;
     }
 
-
     public String getCcmc() {
         return this.ccmc;
     }
-
 
     public void setCcmc(String ccmc) {
         this.ccmc = ccmc;
     }
 
-
     public String getKssj() {
         return this.kssj;
     }
-
 
     public void setKssj(String kssj) {
         this.kssj = kssj;
     }
 
-
     public String getJssj() {
         return this.jssj;
     }
 
-
     public void setJssj(String jssj) {
         this.jssj = jssj;
     }
-
 
 //    public String getZskssj() {
 //        return this.zskssj;
@@ -313,85 +275,67 @@ public class Bk_ks_temp {
 //        this.zsjssj = zsjssj;
 //    }
 
-
     public String getKcno() {
         return this.kcno;
     }
-
 
     public void setKcno(String kcno) {
         this.kcno = kcno;
     }
 
-
     public String getKcmc() {
         return this.kcmc;
     }
-
 
     public void setKcmc(String kcmc) {
         this.kcmc = kcmc;
     }
 
-
     public String getKcsx() {
         return this.kcsx;
     }
-
 
     public void setKcsx(String kcsx) {
         this.kcsx = kcsx;
     }
 
-
     public String getKdno() {
         return this.kdno;
     }
-
 
     public void setKdno(String kdno) {
         this.kdno = kdno;
     }
 
-
     public String getKdmc() {
         return this.kdmc;
     }
-
 
     public void setKdmc(String kdmc) {
         this.kdmc = kdmc;
     }
 
-
     public String getBmd() {
         return this.bmd;
     }
-
 
     public void setBmd(String bmd) {
         this.bmd = bmd;
     }
 
-
     public String getBmdmc() {
         return this.bmdmc;
     }
-
 
     public void setBmdmc(String bmdmc) {
         this.bmdmc = bmdmc;
     }
 
-
     public String getCjbj() {
         return this.cjbj;
     }
 
-
     public void setCjbj(String cjbj) {
         this.cjbj = cjbj;
     }
-
-
 }

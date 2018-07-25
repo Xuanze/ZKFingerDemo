@@ -7,7 +7,6 @@ import com.zkteco.android.biometric.module.idcard.meta.IDCardInfo;
 
 
 public class CommonUtil {
-
     public static IDCardData getIDCardData(IDCardInfo card) {
         IDCardData data = new IDCardData();
         data.setXm(card.getName());

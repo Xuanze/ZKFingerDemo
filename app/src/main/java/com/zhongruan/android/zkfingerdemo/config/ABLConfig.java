@@ -2,7 +2,6 @@ package com.zhongruan.android.zkfingerdemo.config;
 
 
 public class ABLConfig {
-
     public static final String SERVER_IP = "server_ip";
     public static final String SERVER_IP_DEFAULT = "192.168.1.202";
     public static final String SERVER_SOCKET_PORT = "server_socket_port";

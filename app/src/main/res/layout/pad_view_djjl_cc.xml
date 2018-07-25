@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="75.0dip"
+            android:background="#ffebebeb"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten_dp">
+
+            <ImageView
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="@dimen/five_dp"
+                android:background="@drawable/img_module_tab_auth_statisticlist_round" />
+
+            <TextView
+                android:id="@id/list_item_piechart_cc"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="@dimen/five_dp"
+                android:layout_marginRight="@dimen/ten_dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twentyEight_sp" />
+
+            <View
+                android:layout_width="2.0dip"
+                android:layout_height="28.0dip"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/ten_dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@id/list_item_piechart_kc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/ten_dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/twentyFour_sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/color_divider_line" />
+
+        <LinearLayout
+            android:id="@id/list_item_statistic_history_item"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/twoHundred_eighty_dp"
+            android:background="#ffd8d8d8"
+            android:focusable="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/five_dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="90.0dip"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="总人数"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twentyEight_sp" />
+
+                        <TextView
+                            android:id="@id/list_item_piechart_total"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/fourty_sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="90.0dip"
+                        android:background="#61000000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="90.0dip"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="缺考"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twentyEight_sp" />
+
+                        <TextView
+                            android:id="@id/list_item_piechart_yyz"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/fourty_sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1.0dip"
+                        android:layout_height="90.0dip"
+                        android:background="#61000000" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="90.0dip"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="正常"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twentyEight_sp" />
+
+                        <TextView
+                            android:id="@id/list_item_piechart_wyz"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:layout_weight="1.0"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/fourty_sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/five_dp">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@id/list_item_uploading_ll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.0"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="上传中"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twentyFour_sp" />
+
+                                <TextView
+                                    android:id="@id/list_item_piechart_ysc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twentyFour_sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="／"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twentyFour_sp" />
+
+                                <TextView
+                                    android:id="@id/list_item_piechart_sczrs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/twentyFour_sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1.0"
+                                android:gravity="center">
+
+                                <com.zhongruan.android.zkfingerdemo.view.UploadProgressBar
+                                    android:id="@id/list_item_piechart_pb"
+                                    style="@style/self_define_ProgressBar"
+                                    android:layout_width="176.0dip"
+                                    android:layout_height="37.879974dip" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@id/list_item_uploaded_ll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30.0dip"
+                                android:layout_height="30.0dip"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/ten_dp"
+                                android:background="@drawable/img_module_tab_auth_statisticlist_check_small" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="上传完成"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twentyThree_sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@id/list_item_noupload_ll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="暂无数据上传"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/twentyThree_sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/threeHundred_fifty_dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@id/list_item_piechart"
+                    android:layout_width="@dimen/threeHundred_dp"
+                    android:layout_height="fill_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/ll_xq_view"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="@dimen/twenty_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ten_dp"
+                    android:text="详情"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twentyFour_sp" />
+
+                <ImageView
+                    android:layout_width="18.0dip"
+                    android:layout_height="30.0dip"
+                    android:background="@drawable/img_module_tab_auth_statisticlist_arrow_right" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20.0dip"
+            android:background="#ffd8d8d8" />
+
+        <include layout="@layout/pad_view_expandablelistview" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,8 +17,6 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks_cjxx;
 import java.util.List;
 
 public class DailyFragment extends RxFragment {
-
-
     private RecyclerView recyclerView;
     private QuickAdapter qadapter;
     private View rootView;

@@ -21,7 +21,6 @@ public class IPDialog extends Dialog implements View.OnClickListener {
     private String strip2 = "";
     private String strip3 = "";
     private String strip4 = "";
-
     private TextView titleTxt;
     private Button OkButton, NoButton;
     private OnEditInputFinishedListener listener;
@@ -76,20 +75,16 @@ public class IPDialog extends Dialog implements View.OnClickListener {
         OkButton.setOnClickListener(this);
         NoButton = findViewById(R.id.no_ip_Button);
         NoButton.setOnClickListener(this);
-
         if (!TextUtils.isEmpty(title)) {
             titleTxt.setText(title);
         }
-
         ip1.setText(strip1);
         ip2.setText(strip2);
         ip3.setText(strip3);
         ip4.setText(strip4);
-
         ip1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -109,7 +104,6 @@ public class IPDialog extends Dialog implements View.OnClickListener {
         ip2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -123,13 +117,11 @@ public class IPDialog extends Dialog implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
         ip3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override

@@ -48,7 +48,6 @@
                 android:layout_marginRight="14.199982dip"
                 android:background="@drawable/img_base_icon_info" />
 
-
             <TextView
                 android:id="@id/tv_select_Content"
                 android:layout_width="590.3828dip"
@@ -110,9 +109,6 @@
                 android:text="@string/ok"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
-
-
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

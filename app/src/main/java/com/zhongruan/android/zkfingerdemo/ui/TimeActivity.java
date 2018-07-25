@@ -22,7 +22,6 @@ import java.util.Date;
 /**
  * Created by Administrator on 2017/8/1.
  */
-
 public class TimeActivity extends BaseActivity implements OnClickListener {
     private TextView calibrationNowtime, calibrationNettime;
     private LinearLayout calibrationConfirm;
@@ -56,7 +55,6 @@ public class TimeActivity extends BaseActivity implements OnClickListener {
 
     @Override
     public void initData() {
-
     }
 
     @Override

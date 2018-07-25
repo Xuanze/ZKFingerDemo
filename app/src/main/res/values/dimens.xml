@@ -66,4 +66,5 @@
     <dimen name="twoHundred_eighty_dp">280.0dip</dimen>
     <dimen name="twoHundred_fifty_dp">250.0dip</dimen>
     <dimen name="twoHundred_seventy_dp">270.0dip</dimen>
+    <dimen name="base_dip">1dp</dimen>
 </resources>

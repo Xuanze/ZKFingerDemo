@@ -15,7 +15,6 @@ import com.zhongruan.android.zkfingerdemo.adapter.FileBrowserAdapter;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 
 public class ZipListDialog extends Dialog implements View.OnClickListener {
-
     private OnCloseListener listener;
     private String positiveName;
     private String negativeName;
@@ -26,7 +25,6 @@ public class ZipListDialog extends Dialog implements View.OnClickListener {
     private Button yesZipButton;
     private ListView listView;
     public static int position = 0;
-
 
     public ZipListDialog(Context context, int themeResId, ListView content, OnCloseListener listener) {
         super(context, themeResId);
@@ -64,7 +62,6 @@ public class ZipListDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initView() {
-
         dialogZipTitle = findViewById(R.id.dialog_zip_title);
         noZipButton = findViewById(R.id.no_zip_Button);
         yesZipButton = findViewById(R.id.yes_zip_Button);
@@ -80,19 +77,15 @@ public class ZipListDialog extends Dialog implements View.OnClickListener {
                 LogUtil.i(i);
             }
         });
-
         if (!TextUtils.isEmpty(positiveName)) {
             yesZipButton.setText(positiveName);
         }
-
         if (!TextUtils.isEmpty(negativeName)) {
             noZipButton.setText(negativeName);
         }
-
         if (!TextUtils.isEmpty(title)) {
             dialogZipTitle.setText(title);
         }
-
         if (fileBrowserAdapter != null) {
             listView.setAdapter(fileBrowserAdapter);
         }

@@ -40,11 +40,35 @@ public class Bk_ks implements Parcelable {
     private String ks_xp;
     @Property(nameInDb = "isRZ")
     private String isRZ;
+    @Property(nameInDb = "rzTime")
+    private String rzTime;
 
-    @Generated(hash = 1530620330)
+
+    protected Bk_ks(Parcel in) {
+        if (in.readByte() == 0) {
+            ksid = null;
+        } else {
+            ksid = in.readLong();
+        }
+        ks_ksno = in.readString();
+        ks_xm = in.readString();
+        ks_zjno = in.readString();
+        ks_xb = in.readString();
+        ks_ccno = in.readString();
+        ks_ccmc = in.readString();
+        ks_kcno = in.readString();
+        ks_kcmc = in.readString();
+        ks_zwh = in.readString();
+        ks_xp = in.readString();
+        isRZ = in.readString();
+        rzTime = in.readString();
+    }
+
+    @Generated(hash = 1941532446)
     public Bk_ks(Long ksid, String ks_ksno, String ks_xm, String ks_zjno,
             String ks_xb, String ks_ccno, String ks_ccmc, String ks_kcno,
-            String ks_kcmc, String ks_zwh, String ks_xp, String isRZ) {
+            String ks_kcmc, String ks_zwh, String ks_xp, String isRZ,
+            String rzTime) {
         this.ksid = ksid;
         this.ks_ksno = ks_ksno;
         this.ks_xm = ks_xm;
@@ -57,40 +81,39 @@ public class Bk_ks implements Parcelable {
         this.ks_zwh = ks_zwh;
         this.ks_xp = ks_xp;
         this.isRZ = isRZ;
+        this.rzTime = rzTime;
     }
 
     @Generated(hash = 1002290122)
     public Bk_ks() {
     }
 
-    protected Bk_ks(Parcel in) {
-        if (in.readByte() == 0) {
-            ksid = null;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (ksid == null) {
+            dest.writeByte((byte) 0);
         } else {
-            ksid = in.readLong();
+            dest.writeByte((byte) 1);
+            dest.writeLong(ksid);
         }
-        ks_ksno = in.readString();
-        ks_xm = in.readString();
-        ks_zjno = in.readString();
-        ks_xb = in.readString();
-        ks_kcno = in.readString();
-        ks_kcmc = in.readString();
-        ks_zwh = in.readString();
-        ks_xp = in.readString();
-        isRZ = in.readString();
+        dest.writeString(ks_ksno);
+        dest.writeString(ks_xm);
+        dest.writeString(ks_zjno);
+        dest.writeString(ks_xb);
+        dest.writeString(ks_ccno);
+        dest.writeString(ks_ccmc);
+        dest.writeString(ks_kcno);
+        dest.writeString(ks_kcmc);
+        dest.writeString(ks_zwh);
+        dest.writeString(ks_xp);
+        dest.writeString(isRZ);
+        dest.writeString(rzTime);
     }
 
-    public static final Creator<Bk_ks> CREATOR = new Creator<Bk_ks>() {
-        @Override
-        public Bk_ks createFromParcel(Parcel in) {
-            return new Bk_ks(in);
-        }
-
-        @Override
-        public Bk_ks[] newArray(int size) {
-            return new Bk_ks[size];
-        }
-    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     public Long getKsid() {
         return this.ksid;
@@ -130,6 +153,22 @@ public class Bk_ks implements Parcelable {
 
     public void setKs_xb(String ks_xb) {
         this.ks_xb = ks_xb;
+    }
+
+    public String getKs_ccno() {
+        return this.ks_ccno;
+    }
+
+    public void setKs_ccno(String ks_ccno) {
+        this.ks_ccno = ks_ccno;
+    }
+
+    public String getKs_ccmc() {
+        return this.ks_ccmc;
+    }
+
+    public void setKs_ccmc(String ks_ccmc) {
+        this.ks_ccmc = ks_ccmc;
     }
 
     public String getKs_kcno() {
@@ -172,39 +211,23 @@ public class Bk_ks implements Parcelable {
         this.isRZ = isRZ;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getRzTime() {
+        return this.rzTime;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeValue(this.ksid);
-        parcel.writeString(this.ks_ksno);
-        parcel.writeString(this.ks_xm);
-        parcel.writeString(this.ks_zjno);
-        parcel.writeString(this.ks_xb);
-        parcel.writeString(this.ks_kcno);
-        parcel.writeString(this.ks_kcmc);
-        parcel.writeString(this.ks_zwh);
-        parcel.writeString(this.ks_xp);
-        parcel.writeString(this.isRZ);
-
+    public void setRzTime(String rzTime) {
+        this.rzTime = rzTime;
     }
 
-    public String getKs_ccno() {
-        return this.ks_ccno;
-    }
+    public static final Creator<Bk_ks> CREATOR = new Creator<Bk_ks>() {
+        @Override
+        public Bk_ks createFromParcel(Parcel in) {
+            return new Bk_ks(in);
+        }
 
-    public void setKs_ccno(String ks_ccno) {
-        this.ks_ccno = ks_ccno;
-    }
-
-    public String getKs_ccmc() {
-        return this.ks_ccmc;
-    }
-
-    public void setKs_ccmc(String ks_ccmc) {
-        this.ks_ccmc = ks_ccmc;
-    }
+        @Override
+        public Bk_ks[] newArray(int size) {
+            return new Bk_ks[size];
+        }
+    };
 }

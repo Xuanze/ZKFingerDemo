@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:padding="1.0dip">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="62.0dip"
+        android:background="@drawable/img_module_tab_auth_queryflow_kslist_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@id/ll_kslist"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="3.0"
+            android:background="@color/auth_kslist_hasauth"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tvName"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/auth_menu_bg"
+                android:textSize="20.0sp" />
+
+            <TextView
+                android:id="@id/tvKsno"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/auth_menu_bg"
+                android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/tvSeat"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="2.0"
+            android:gravity="center" />
+    </LinearLayout>
+</RelativeLayout>

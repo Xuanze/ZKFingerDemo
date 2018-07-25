@@ -21,7 +21,6 @@ import java.util.List;
  */
 
 public class RzjlAdapter extends RecyclerView.Adapter<RzjlAdapter.MyViewHolder> {
-
     private Context context;
     private List<Sfrz_rzjl> rzjlList;
     private LayoutInflater layoutInflater;
@@ -39,7 +38,6 @@ public class RzjlAdapter extends RecyclerView.Adapter<RzjlAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
         Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + rzjlList.get(position).getRzjl_pith())).into(holder.mListitemRzjlIv);
         holder.mListitemRzjlRzjlsj.setText(rzjlList.get(position).getRzjl_time());
         if (rzjlList.get(position).getRzjl_rzfsno().equals("8003")) {

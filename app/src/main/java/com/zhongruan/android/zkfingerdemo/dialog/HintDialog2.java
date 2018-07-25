@@ -29,7 +29,6 @@ public class HintDialog2 extends Dialog implements View.OnClickListener {
         this.listener = listener;
     }
 
-
     public HintDialog2 setTitle(String title) {
         this.title = title;
         return this;
@@ -49,7 +48,6 @@ public class HintDialog2 extends Dialog implements View.OnClickListener {
         this.twoButton = twoButton;
         return this;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

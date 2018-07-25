@@ -309,5 +309,4 @@
             android:layout_height="1.0dip"
             android:background="@color/color_divider_line" />
     </LinearLayout>
-
 </LinearLayout>

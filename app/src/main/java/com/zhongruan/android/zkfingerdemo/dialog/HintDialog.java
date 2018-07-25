@@ -18,17 +18,13 @@ public class HintDialog extends Dialog implements View.OnClickListener {
     private Button OkButton, NoButton;
     private LinearLayout ll_button;
     private ImageView imageView;
-
     private String content;
     private OnCloseListener listener;
     private String positiveName;
     private String negativeName;
     private String title;
     private int amgView;
-
     private boolean noVisibility, isVisibility;
-
-
 
     public HintDialog(Context context, int themeResId, String content) {
         super(context, themeResId);
@@ -40,7 +36,6 @@ public class HintDialog extends Dialog implements View.OnClickListener {
         this.content = content;
         this.listener = listener;
     }
-
 
     public HintDialog setTitle(String title) {
         this.title = title;
@@ -90,7 +85,6 @@ public class HintDialog extends Dialog implements View.OnClickListener {
         OkButton.setOnClickListener(this);
         NoButton = findViewById(R.id.no_select_Button);
         NoButton.setOnClickListener(this);
-
         if (noVisibility) {
             NoButton.setVisibility(View.VISIBLE);
         } else {
@@ -101,20 +95,16 @@ public class HintDialog extends Dialog implements View.OnClickListener {
         } else {
             ll_button.setVisibility(View.GONE);
         }
-
         contentTxt.setText(content);
         if (!TextUtils.isEmpty(positiveName)) {
             OkButton.setText(positiveName);
         }
-
         if (!TextUtils.isEmpty(negativeName)) {
             NoButton.setText(negativeName);
         }
-
         if (!TextUtils.isEmpty(title)) {
             titleTxt.setText(title);
         }
-
         if (amgView != 0) {
             imageView.setBackgroundResource(amgView);
         }

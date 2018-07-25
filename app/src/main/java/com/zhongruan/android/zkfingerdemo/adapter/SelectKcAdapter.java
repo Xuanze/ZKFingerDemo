@@ -68,7 +68,6 @@ public class SelectKcAdapter extends BaseAdapter {
         return convertView;
     }
 
-
     public void choiceSingleState(int position) {
         boolean z = false;
         for (int i = 0; i < this.ischoiced.length; i++) {

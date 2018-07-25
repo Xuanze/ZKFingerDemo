@@ -243,7 +243,7 @@
             <ImageView
                 android:layout_width="90dip"
                 android:layout_height="90dip"
-                android:src="@drawable/img_home_rzjl" />
+                android:src="@drawable/img_module_home_page_base_register" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -255,7 +255,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/linearlayout_sjgl"
+            android:id="@id/linearlayout_rzjl"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -265,13 +265,13 @@
             <ImageView
                 android:layout_width="90dip"
                 android:layout_height="90dip"
-                android:src="@drawable/img_home_sjgl" />
+                android:src="@drawable/img_module_tab_home_page_outside_register" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp"
-                android:text="数据管理"
+                android:text="认证登记记录"
                 android:textColor="#000000"
                 android:textSize="28.0sp" />
         </LinearLayout>
@@ -304,6 +304,31 @@
                 android:maxLines="1"
                 android:paddingLeft="10.0dip"
                 android:text="选取考场"
+                android:textColor="#ff595757"
+                android:textSize="@dimen/twentyFour_sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/linearlayout_sjgl"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dip">
+
+            <ImageView
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:background="@drawable/img_base_sjgl" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="10.0dip"
+                android:text="数据管理"
                 android:textColor="#ff595757"
                 android:textSize="@dimen/twentyFour_sp" />
         </LinearLayout>

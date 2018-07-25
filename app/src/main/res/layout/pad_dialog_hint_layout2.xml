@@ -93,7 +93,6 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <View
         android:layout_width="fill_parent"
         android:layout_height="1.0px"
@@ -108,7 +107,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-
         <Button
             android:id="@id/negativeButton"
             android:layout_width="236.73999dip"
@@ -121,7 +119,6 @@
             android:textColor="@color/black"
             android:textSize="24.0sp" />
 
-
         <Button
             android:id="@id/positiveButton"
             android:layout_width="236.73999dip"
@@ -133,7 +130,5 @@
             android:text="@string/ok"
             android:textColor="@color/white"
             android:textSize="24.0sp" />
-
-
     </LinearLayout>
 </LinearLayout>

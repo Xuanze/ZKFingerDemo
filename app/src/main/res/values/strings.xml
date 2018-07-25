@@ -8,4 +8,15 @@
     <string name="statistics_verified">已验证</string>
     <string name="title_name">标准化考场身份认证系统</string>
     <string name="search_hint">请输入考生号后四位查询</string>
+    <string name="yzjg">登记结果:</string>
+    <string name="yzsj">登记时间:</string>
+    <string name="ks_kc">考场:</string>
+    <string name="ks_ksno">考生号:</string>
+    <string name="ks_name">姓名:</string>
+    <string name="ks_no">"考生号
+%1$s"</string>
+    <string name="ks_no_finger">考生号:%1$s</string>
+    <string name="ks_seat">座位:</string>
+    <string name="ks_sex">性别:</string>
+    <string name="ks_sfzh">身份证:</string>
 </resources>

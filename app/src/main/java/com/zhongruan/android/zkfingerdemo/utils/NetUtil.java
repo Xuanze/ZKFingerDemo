@@ -22,7 +22,6 @@ public class NetUtil {
     public static final int NET_TYPE_NONE = -1;
     public static final int NET_TYPE_WIFI = 1;
 
-
     public static int getNetType(Context context) {
         NetworkInfo info = ((ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (info == null || !info.isAvailable()) {
@@ -40,7 +39,6 @@ public class NetUtil {
         return NET_TYPE_DEFAULT;
     }
 
-
     public static String getWifiIp(Context context) {
         WifiManager wifimanage = (WifiManager) context.getSystemService(WIFI_SERVICE);
         if (!wifimanage.isWifiEnabled()) {
@@ -50,7 +48,6 @@ public class NetUtil {
         String ipAddress = intIP2StringIP(wifiInfo.getIpAddress());//得到IPV4地址
         return ipAddress;
     }
-
 
     public static String getLocalIpAddress() {
         try {

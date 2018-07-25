@@ -46,7 +46,6 @@
                 android:verticalSpacing="10.0dip" />
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@id/layout_view_face"
             android:layout_width="0.0dip"

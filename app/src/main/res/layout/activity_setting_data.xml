@@ -54,6 +54,7 @@
     <include
         layout="@layout/pad_view_data"
         android:visibility="visible" />
+
     <include
         layout="@layout/pad_view_data_kc"
         android:visibility="gone" />

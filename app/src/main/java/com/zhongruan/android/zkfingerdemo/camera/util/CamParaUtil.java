@@ -29,7 +29,6 @@ public class CamParaUtil {
 
     public Size getPropPreviewSize(List<Size> list, float th, int minWidth) {
         Collections.sort(list, sizeComparator);
-
         int i = 0;
         for (Size s : list) {
             if ((s.width >= minWidth) && equalRate(s, th)) {
@@ -46,7 +45,6 @@ public class CamParaUtil {
 
     public Size getPropPictureSize(List<Size> list, float th, int minWidth) {
         Collections.sort(list, sizeComparator);
-
         int i = 0;
         for (Size s : list) {
             if ((s.width >= minWidth) && equalRate(s, th)) {
@@ -81,7 +79,6 @@ public class CamParaUtil {
                 return -1;
             }
         }
-
     }
 
     /**
@@ -95,7 +92,6 @@ public class CamParaUtil {
             Size size = previewSizes.get(i);
             LogUtil.i("previewSizes:width = " + size.width + " height = " + size.height);
         }
-
     }
 
     /**

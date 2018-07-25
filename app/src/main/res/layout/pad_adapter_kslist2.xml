@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="62.0dip"
+        android:layout_height="76.0dip"
         android:background="@drawable/img_module_tab_auth_queryflow_kslist_bg"
         android:orientation="horizontal">
 

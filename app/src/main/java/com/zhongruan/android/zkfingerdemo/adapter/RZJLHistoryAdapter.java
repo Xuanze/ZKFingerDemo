@@ -1,7 +1,6 @@
 package com.zhongruan.android.zkfingerdemo.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -18,11 +17,10 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.zhongruan.android.zkfingerdemo.R;
-import com.zhongruan.android.zkfingerdemo.adapter.view.HistoryViw;
-import com.zhongruan.android.zkfingerdemo.db.DbServices;
+import com.zhongruan.android.zkfingerdemo.adapter.view.DjjlHistoryViw;
+import com.zhongruan.android.zkfingerdemo.adapter.view.RzjlHistoryViw;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
-import com.zhongruan.android.zkfingerdemo.ui.KWDJActivity;
 import com.zhongruan.android.zkfingerdemo.view.UploadProgressBar;
 
 import java.util.ArrayList;
@@ -32,15 +30,15 @@ import java.util.List;
  * Created by LHJ on 2018/2/2.
  */
 
-public class HistoryAdapter extends BaseExpandableListAdapter {
+public class RZJLHistoryAdapter extends BaseExpandableListAdapter {
     private Context context;
-    private List<List<HistoryViw>> list_data;
+    private List<List<RzjlHistoryViw>> list_data;
     private List<Bk_ks> bk_ks;
     private List<Sfrz_rzjg> rzjg1, rzjg2;
     private Handler handler = new Handler();
     private String ccmc, kcmc;
 
-    public HistoryAdapter(Context context, String kcmc, String ccmc, List<List<HistoryViw>> list_data) {
+    public RZJLHistoryAdapter(Context context, String kcmc, String ccmc, List<List<RzjlHistoryViw>> list_data) {
         this.list_data = list_data;
         this.context = context;
         this.ccmc = ccmc;
@@ -94,48 +92,25 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
         DataHolder dataHolder = null;
         if (dataHolder == null) {
             dataHolder = new DataHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.pad_view_rzjl_cc, null);
-            dataHolder.mListItemPiechartCc = convertView.findViewById(R.id.list_item_piechart_cc);
-            dataHolder.mListItemPiechartKc = convertView.findViewById(R.id.list_item_piechart_kc);
-            dataHolder.mListItemPiechartTotal = convertView.findViewById(R.id.list_item_piechart_total);
-            dataHolder.mListItemPiechartYyz = convertView.findViewById(R.id.list_item_piechart_yyz);
-            dataHolder.mListItemPiechartWyz = convertView.findViewById(R.id.list_item_piechart_wyz);
-            dataHolder.mListItemPiechartYsc = convertView.findViewById(R.id.list_item_piechart_ysc);
-            dataHolder.mListItemPiechartSczrs = convertView.findViewById(R.id.list_item_piechart_sczrs);
-            dataHolder.mListItemPiechartPb = convertView.findViewById(R.id.list_item_piechart_pb);
-            dataHolder.mListItemUploadingLl = convertView.findViewById(R.id.list_item_uploading_ll);
-            dataHolder.mListItemUploadedLl = convertView.findViewById(R.id.list_item_uploaded_ll);
-            dataHolder.mListItemNouploadLl = convertView.findViewById(R.id.list_item_noupload_ll);
-            dataHolder.mListItemPiechart = convertView.findViewById(R.id.list_item_piechart);
-            dataHolder.ll_xq_view = convertView.findViewById(R.id.ll_xq_view);
-            dataHolder.data = convertView.findViewById(R.id.list_item_tv);
-            dataHolder.imageView = convertView.findViewById(R.id.list_item_history_iv);
+            convertView = LayoutInflater.from(context).inflate(R.layout.pad_view_rzjl_history, null);
+            dataHolder.mListItemTv = convertView.findViewById(R.id.list_item_tv);
+            dataHolder.mListItemHistoryIv = convertView.findViewById(R.id.list_item_history_iv);
+            dataHolder.mListItemStatisticSpreadLl = convertView.findViewById(R.id.list_item_statistic_spread_ll);
             convertView.setTag(dataHolder);
         } else {
             dataHolder = (DataHolder) convertView.getTag();
         }
-        dataHolder.ll_xq_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, KWDJActivity.class));
-            }
-        });
-        dataHolder.mListItemPiechartCc.setText(DbServices.getInstance(context).selectCC().get(0).getCc_name());
-        dataHolder.mListItemPiechartKc.setText(DbServices.getInstance(context).selectKC().get(0).getKc_name() + " " + DbServices.getInstance(context).selectCC().get(0).getKm_name());
-        initPiechart(dataHolder.mListItemPiechart);
-        handler.postDelayed(dataHolder.runnable, 10);
         if (list_data == null) {
-            dataHolder.imageView.setVisibility(View.GONE);
-            dataHolder.data.setText("当前暂无历史记录");
+            dataHolder.mListItemHistoryIv.setVisibility(View.GONE);
+            dataHolder.mListItemTv.setText("当前暂无历史记录");
         } else {
             //判断是否已经打开列表
             if (isExpanded) {
-                dataHolder.imageView.setBackgroundResource(R.drawable.img_module_tab_auth_statisticlist_arrow_up);
+                dataHolder.mListItemHistoryIv.setBackgroundResource(R.drawable.img_module_tab_auth_statisticlist_arrow_down);
             } else {
-                dataHolder.imageView.setBackgroundResource(R.drawable.img_module_tab_auth_statisticlist_arrow_down);
+                dataHolder.mListItemHistoryIv.setBackgroundResource(R.drawable.img_module_tab_auth_statisticlist_arrow_up);
             }
         }
-
         return convertView;
     }
 
@@ -168,7 +143,6 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
         viewHolder.mListItemHistoryTotal.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getAll_sl()));
         viewHolder.mListItemHistoryYyz.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getRz_sl()));
         viewHolder.mListItemHistoryWyz.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getWrz_sl()));
-
         if (list_data.get(groupPosition).get(childPosition).getAll_sb() != 0) {
             if ((int) (100.0d * ((((double) (list_data.get(groupPosition).get(childPosition).getYSb_sl())) * 1.0d) / (((double) (list_data.get(groupPosition).get(childPosition).getAll_sb())) * 1.0d))) == 100) {
                 viewHolder.mListItemUploadingLlHistory.setVisibility(View.GONE);
@@ -192,69 +166,18 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    class DataHolder {
-        TextView mListItemPiechartCc;
-        TextView mListItemPiechartKc;
-        TextView mListItemPiechartTotal;
-        TextView mListItemPiechartYyz;
-        TextView mListItemPiechartWyz;
-        TextView mListItemPiechartYsc;
-        TextView mListItemPiechartSczrs;
-        UploadProgressBar mListItemPiechartPb;
-        LinearLayout mListItemUploadingLl;
-        LinearLayout mListItemUploadedLl;
-        LinearLayout mListItemNouploadLl;
-        PieChart mListItemPiechart;
-        LinearLayout ll_xq_view;
-        TextView data;
-        ImageView imageView;
-        private Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                bk_ks = DbServices.getInstance(context).queryBKKSList(kcmc, ccmc);
-                mListItemPiechartTotal.setText(bk_ks.size() + "");
-                mListItemPiechartYyz.setText(DbServices.getInstance(context).queryBkKsIsTG(kcmc, ccmc, "1") + "");
-                mListItemPiechartWyz.setText(bk_ks.size() - DbServices.getInstance(context).queryBkKsIsTG(kcmc, ccmc, "1") + "");
-                rzjg2 = DbServices.getInstance(context).selectCCrzjg(ccmc);
-                rzjg1 = DbServices.getInstance(context).selectRZJGSB(ccmc);
-                if (rzjg2.size() != 0) {
-                    if (((int) (100.0d * ((((double) (rzjg2.size() - rzjg1.size())) * 1.0d) / (((double) rzjg2.size()) * 1.0d)))) == 100) {
-                        mListItemUploadingLl.setVisibility(View.GONE);
-                        mListItemNouploadLl.setVisibility(View.GONE);
-                        mListItemUploadedLl.setVisibility(View.VISIBLE);
-                    } else {
-                        mListItemUploadingLl.setVisibility(View.VISIBLE);
-                        mListItemNouploadLl.setVisibility(View.GONE);
-                        mListItemUploadedLl.setVisibility(View.GONE);
-                        mListItemPiechartYsc.setText((rzjg2.size() - rzjg1.size()) + "");
-                        mListItemPiechartSczrs.setText(rzjg2.size() + "");
-                        mListItemPiechartPb.setProgress(((int) (100.0d * ((((double) (rzjg2.size() - rzjg1.size())) * 1.0d) / (((double) rzjg2.size()) * 1.0d)))));
-                    }
-                } else {
-                    mListItemUploadedLl.setVisibility(View.GONE);
-                    mListItemUploadingLl.setVisibility(View.GONE);
-                    mListItemNouploadLl.setVisibility(View.VISIBLE);
-                }
-                mListItemPiechart.setData(setPiechartData(DbServices.getInstance(context).queryBkKsIsTG(kcmc, ccmc, "1"), bk_ks.size()));
-                mListItemPiechart.invalidate();
-            }
-        };
+    static class DataHolder {
+        TextView mListItemTv;
+        ImageView mListItemHistoryIv;
+        LinearLayout mListItemStatisticSpreadLl;
+
     }
 
     static class ViewHolder {
-        TextView mListItemHistoryCc;
-        TextView mListItemHistoryKc;
-        TextView mListItemHistoryTotal;
-        TextView mListItemHistoryYyz;
-        TextView mListItemHistoryWyz;
-        TextView mListItemHistoryYsc;
-        TextView mListItemHistorySczrs;
+        TextView mListItemHistoryCc, mListItemHistoryKc, mListItemHistoryTotal, mListItemHistoryYyz, mListItemHistoryWyz, mListItemHistoryYsc, mListItemHistorySczrs;
         UploadProgressBar mListItemHistoryPb;
         PieChart mListItemPiechartHistory;
-        LinearLayout mListItemUploadingLlHistory;
-        LinearLayout mListItemUploadedLlHistory;
-        LinearLayout mListItemNouploadLlHistory;
-        LinearLayout mLlItemXqView;
+        LinearLayout mListItemUploadingLlHistory, mListItemUploadedLlHistory, mListItemNouploadLlHistory, mLlItemXqView;
     }
 
     private PieData setPiechartData(int paramInt1, int paramInt2) {
@@ -315,6 +238,4 @@ public class HistoryAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-
-
 }

@@ -174,7 +174,7 @@ public class DJJLFragment extends RxFragment implements View.OnClickListener {
             }
             historyLists.add(rzjlHistoryViwList);
             LogUtil.i(TAG, rzjlHistoryViwList.size());
-            djjlHistoryAdapter = new DJJLHistoryAdapter(getActivity(), kcmc, ccmc, historyLists);
+            djjlHistoryAdapter = new DJJLHistoryAdapter(getActivity(), historyLists);
             mEplvStatistic.setAdapter(djjlHistoryAdapter);
             // 通过监听展开和关闭事件动态设置高度
             mEplvStatistic.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -193,7 +193,7 @@ public class DJJLFragment extends RxFragment implements View.OnClickListener {
                 }
             });
         } else {
-            djjlHistoryAdapter = new DJJLHistoryAdapter(getActivity(), kcmc, ccmc, null);
+            djjlHistoryAdapter = new DJJLHistoryAdapter(getActivity(), null);
             mEplvStatistic.setAdapter(djjlHistoryAdapter);
         }
     }

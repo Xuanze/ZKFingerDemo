@@ -85,10 +85,10 @@ public class RZJLActivity extends BaseActivity implements View.OnClickListener {
                 }
             }
             historyLists.add(historyViwList);
-            historyAdapter = new RZJLHistoryAdapter(this, kcmc, ccmc, historyLists);
+            historyAdapter = new RZJLHistoryAdapter(this, historyLists);
             expandableListView.setAdapter(historyAdapter);
         } else {
-            historyAdapter = new RZJLHistoryAdapter(this, kcmc, ccmc, null);
+            historyAdapter = new RZJLHistoryAdapter(this, null);
             expandableListView.setAdapter(historyAdapter);
         }
     }

@@ -225,11 +225,15 @@ public class DbServices {
 
 
     public List<Sfrz_rzjg> selectKSrzjg(String ksno, String kmno, String kcno) {
-        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(kmno)).where(Sfrz_rzjgDao.Properties.Rzjg_ksno.eq(ksno)).where(Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno)).list();
+        return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(kmno), Sfrz_rzjgDao.Properties.Rzjg_ksno.eq(ksno), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno)).orderDesc(Sfrz_rzjgDao.Properties.Rzjg_time).list();
     }
 
     public List<Sfrz_rzjl> selectKSrzjl(String ksno, String kmno, String kcno) {
         return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_kmbh.eq(kmno)).where(Sfrz_rzjlDao.Properties.Rzjl_ksno.eq(ksno)).where(Sfrz_rzjlDao.Properties.Rzjl_kcbh.eq(kcno)).list();
+    }
+
+    public List<Sfrz_rzjl> selectKSrzjls(String rzjl_rzjgid) {
+        return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_rzjgid.eq(rzjl_rzjgid)).orderDesc(Sfrz_rzjlDao.Properties.Rzjl_time).list();
     }
 
     public List<Ks_kc> selectKC() {
@@ -242,6 +246,10 @@ public class DbServices {
 
     public String getKMmc(String ccno) {
         return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccno)).list().get(0).getKm_name();
+    }
+
+    public String getKMno(String ccno) {
+        return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccno)).list().get(0).getKm_no();
     }
 
     public List<Bk_ks> queryBKKSList(String ks_kcmc, String ks_ccmc) {

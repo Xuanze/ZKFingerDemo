@@ -33,16 +33,10 @@ import java.util.List;
 public class RZJLHistoryAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<List<RzjlHistoryViw>> list_data;
-    private List<Bk_ks> bk_ks;
-    private List<Sfrz_rzjg> rzjg1, rzjg2;
-    private Handler handler = new Handler();
-    private String ccmc, kcmc;
 
-    public RZJLHistoryAdapter(Context context, String kcmc, String ccmc, List<List<RzjlHistoryViw>> list_data) {
+    public RZJLHistoryAdapter(Context context, List<List<RzjlHistoryViw>> list_data) {
         this.list_data = list_data;
         this.context = context;
-        this.ccmc = ccmc;
-        this.kcmc = kcmc;
     }
 
     //  获得父项的数量

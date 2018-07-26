@@ -33,7 +33,6 @@ import java.util.List;
 public class RZDJJLHistoryAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<List<RzdjjlHistoryViw>> list_data;
-    private List<Bk_ks> bk_ks;
 
     public RZDJJLHistoryAdapter(Context context, List<List<RzdjjlHistoryViw>> list_data) {
         this.list_data = list_data;

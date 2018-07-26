@@ -70,7 +70,7 @@ public class RzjlxqAdapter extends RecyclerView.Adapter<RzjlxqAdapter.MyViewHold
                 holder.mAuthItemRzbjIv.setBackgroundResource(R.drawable.img_base_close);
                 holder.mAuthItemRzbjIv.setVisibility(View.VISIBLE);
             }
-            if (!ksList.get(position).getIsRZ().equals("0") && !ksList.get(position).getIsRZ().equals("2")) {
+            if (!ksList.get(position).getIsRZ().equals("0")) {
                 holder.mRlV1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

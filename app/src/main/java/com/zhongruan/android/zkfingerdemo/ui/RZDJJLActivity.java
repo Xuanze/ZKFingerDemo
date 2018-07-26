@@ -2,6 +2,7 @@ package com.zhongruan.android.zkfingerdemo.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RZDJJLActivity extends BaseActivity implements View.OnClickListener {
+public class RZDJJLActivity extends BaseActivity implements View.OnClickListener, ExpandableListView.OnChildClickListener {
 
 
     private LinearLayout mLlRzjlBack;
@@ -112,6 +113,7 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
     public void initListeners() {
         mListItemStatisticHistoryItem.setOnClickListener(this);
         mLlRzjlBack.setOnClickListener(this);
+        mEplvStatistic.setOnChildClickListener(this);
     }
 
     @Override
@@ -192,7 +194,6 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
             historyLists.add(rzdjjlHistoryViws);
             rzdjjlHistoryAdapter = new RZDJJLHistoryAdapter(getBaseContext(), historyLists);
             mEplvStatistic.setAdapter(rzdjjlHistoryAdapter);
-
             // 通过监听展开和关闭事件动态设置高度
             mEplvStatistic.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
                 @Override
@@ -228,6 +229,17 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
                 finish();
                 break;
         }
+    }
+
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        Intent intent = new Intent(RZDJJLActivity.this, RZXQActivity.class);
+        RzdjjlHistoryViw rzdjjlHistoryViw = (RzdjjlHistoryViw) rzdjjlHistoryAdapter.getChild(groupPosition, childPosition);
+        intent.putExtra("rzjlkc", rzdjjlHistoryViw.getKc_mc());
+        intent.putExtra("rzjlcc", rzdjjlHistoryViw.getCc_mc());
+        startActivity(intent);
+        return true;
     }
 
     /**

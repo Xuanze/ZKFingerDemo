@@ -100,7 +100,7 @@ public class RZXQFragment extends RxFragment {
         rzjlxqAdapter.setOnItemClickListener(new RzjlxqAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position, String ksno) {
-                new KsrzjlDialog(getContext(), R.style.dialog, datas.get(position).getKs_xm(), kcmc, ksno, DbServices.getInstance(getContext()).getKMmc(ccmc)).show();
+                new KsrzjlDialog(getActivity(), R.style.dialog, datas.get(position).getKs_xm(), kcmc, ksno, DbServices.getInstance(getContext()).getKMno(ccmc)).show();
             }
         });
         mLvKs.setAdapter(rzjlxqAdapter);

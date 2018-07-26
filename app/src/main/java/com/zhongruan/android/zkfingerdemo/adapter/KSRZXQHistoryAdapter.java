@@ -98,7 +98,16 @@ public class KSRZXQHistoryAdapter extends BaseExpandableListAdapter {
         } else {
             dataHolder = (DataHolder) convertView.getTag();
         }
-        dataHolder.mListitemRzjg.setText(ksRzGjHistoryList.get(groupPosition).getKs_rzzt());
+
+        if (ksRzGjHistoryList.get(groupPosition).getKs_rzzt().equals("11")) {
+            dataHolder.mListitemRzjg.setText("考中补充拍照");
+        } else if (ksRzGjHistoryList.get(groupPosition).getKs_rzzt().equals("21")) {
+            dataHolder.mListitemRzjg.setText("现场认证通过");
+        } else if (ksRzGjHistoryList.get(groupPosition).getKs_rzzt().equals("22")) {
+            dataHolder.mListitemRzjg.setText("现场认证不通过");
+        } else if (ksRzGjHistoryList.get(groupPosition).getKs_rzzt().equals("23")) {
+            dataHolder.mListitemRzjg.setText("现场认证缺考");
+        }
         dataHolder.mListitemRzjgsj.setText(ksRzGjHistoryList.get(groupPosition).getKs_rztime());
 
         //判断是否已经打开列表
@@ -116,38 +125,41 @@ public class KSRZXQHistoryAdapter extends BaseExpandableListAdapter {
         if (viewHolder == null) {
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.pad_adapter_listitem_rzjl, null);
-
             viewHolder.mListitemRzjlIv = convertView.findViewById(R.id.listitem_rzjl_iv);
             viewHolder.mListitemRzjlRzfs = convertView.findViewById(R.id.listitem_rzjl_rzfs);
             viewHolder.mListitemDivider = convertView.findViewById(R.id.listitem_divider);
             viewHolder.mListitemRzjlResult = convertView.findViewById(R.id.listitem_rzjl_result);
             viewHolder.mListitemRzjlRzjlsj = convertView.findViewById(R.id.listitem_rzjl_rzjlsj);
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzxppith())).into(viewHolder.mListitemRzjlIv);
         viewHolder.mListitemRzjlRzjlsj.setText(ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rztime());
         if (ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzfs().equals("8003")) {
             viewHolder.mListitemRzjlRzfs.setText("指纹比对");
             viewHolder.mListitemRzjlResult.setText("比对通过");
+            Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzxppith())).into(viewHolder.mListitemRzjlIv);
         } else if (ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzfs().equals("8006")) {
             viewHolder.mListitemRzjlRzfs.setText("指纹比对");
+            Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzxppith())).into(viewHolder.mListitemRzjlIv);
             viewHolder.mListitemRzjlResult.setText("比对不通过");
         } else if (ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzfs().equals("8007")) {
             viewHolder.mListitemRzjlRzfs.setText("补充拍照");
+            Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzxppith())).into(viewHolder.mListitemRzjlIv);
             viewHolder.mListitemRzjlResult.setText("");
             viewHolder.mListitemDivider.setVisibility(View.GONE);
+        } else if (ksRzGjHistoryList.get(groupPosition).getViewList().get(childPosition).getKs_rzfs().equals("8008")) {
+            viewHolder.mListitemRzjlResult.setText("");
+            viewHolder.mListitemRzjlRzfs.setText("缺考");
+            viewHolder.mListitemDivider.setVisibility(View.INVISIBLE);
+            viewHolder.mListitemRzjlIv.setVisibility(View.GONE);
         }
         return convertView;
     }
 
     static class DataHolder {
-        TextView mListitemRzjg;
-        TextView mListitemRzjgsj;
+        TextView mListitemRzjg, mListitemRzjgsj;
         ImageView mListitemRzjgSpread;
-
     }
 
     static class ViewHolder {

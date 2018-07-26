@@ -61,17 +61,27 @@ public class DJSelectKsAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+
         if (this.ksList != null && this.ksList.size() > 0) {
-            Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
-            holder.tvKsno.setText(this.ksList.get(position).getKs_xm());
-            if (ksList.get(position).getIsRZ().equals("0")){
+
+
+            if (!ksList.get(position).getKs_xp().equals(holder.tvSeat)) {
+                Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
+            }
+            if (!ksList.get(position).getKs_ksno().equals(holder.tvKsno)) {
+                holder.tvKsno.setText(this.ksList.get(position).getKs_xm());
+            }
+            if (!ksList.get(position).getKs_zwh().equals(holder.tvName)) {
+                holder.tvName.setText(ksList.get(position).getKs_zwh());
+            }
+            if (ksList.get(position).getIsRZ().equals("0")) {
                 holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.auth_kslist_hastauth));
-            }else if (ksList.get(position).getIsRZ().equals("1")){
+            } else if (ksList.get(position).getIsRZ().equals("1")) {
                 holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.auth_kslist_hasauth));
-            }else if (ksList.get(position).getIsRZ().equals("2")){
+            } else if (ksList.get(position).getIsRZ().equals("2")) {
                 holder.ll_kslist.setBackgroundColor(ContextCompat.getColor(this.mContext, R.color.button_wjdj));
             }
-            holder.tvName.setText(ksList.get(position).getKs_zwh());
         }
         return convertView;
     }

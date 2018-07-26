@@ -176,7 +176,7 @@ public class RZJLFragment extends RxFragment implements View.OnClickListener {
             }
             historyLists.add(rzjlHistoryViwList);
             LogUtil.i(TAG, rzjlHistoryViwList.size());
-            RZJLHistoryAdapter = new RZJLHistoryAdapter(getActivity(), kcmc, ccmc, historyLists);
+            RZJLHistoryAdapter = new RZJLHistoryAdapter(getActivity(), historyLists);
             mEplvStatistic.setAdapter(RZJLHistoryAdapter);
 
             // 通过监听展开和关闭事件动态设置高度
@@ -196,7 +196,7 @@ public class RZJLFragment extends RxFragment implements View.OnClickListener {
                 }
             });
         } else {
-            RZJLHistoryAdapter = new RZJLHistoryAdapter(getActivity(), kcmc, ccmc, null);
+            RZJLHistoryAdapter = new RZJLHistoryAdapter(getActivity(), null);
             mEplvStatistic.setAdapter(RZJLHistoryAdapter);
         }
     }

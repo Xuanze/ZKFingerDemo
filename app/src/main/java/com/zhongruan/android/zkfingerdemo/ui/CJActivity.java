@@ -28,6 +28,7 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks_cjxx;
 import com.zhongruan.android.zkfingerdemo.dialog.EditDialog;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
 import com.zhongruan.android.zkfingerdemo.dialog.SelectDialog;
+import com.zhongruan.android.zkfingerdemo.dialog.SfzhEditDialog;
 import com.zhongruan.android.zkfingerdemo.fingerprintengine.FingerData;
 import com.zhongruan.android.zkfingerdemo.idcardengine.IDCardData;
 import com.zhongruan.android.zkfingerdemo.utils.Base64Util;
@@ -129,15 +130,15 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
         switch (view.getId()) {
             case R.id.tv_inputIdCard:
                 handler.removeCallbacks(runnable01); //停止刷新
-                new EditDialog(CJActivity.this, R.style.dialog, new EditDialog.OnEditInputFinishedListener() {
+                new SfzhEditDialog(CJActivity.this, R.style.dialog, new SfzhEditDialog.OnCloseListener() {
                     @Override
-                    public void editInputFinished(Dialog dialog, String password, boolean confirm) {
+                    public void onClick(Dialog dialog, boolean confirm, String Str) {
                         if (confirm) {
                             dialog.dismiss();
                             IDCard idCard = new IDCard();
-                            if (idCard.validate_effective(password) == password) {
-                                bkKsCjxxList = DbServices.getInstance(getBaseContext()).querySfzh(password);
-                                et_input = password;
+                            if (idCard.validate_effective(Str) == Str) {
+                                bkKsCjxxList = DbServices.getInstance(getBaseContext()).querySfzh(Str);
+                                et_input = Str;
                                 if (bkKsCjxxList.size() > 0) {
                                     new SelectDialog(CJActivity.this, R.style.dialog, "该考生已采集过特征，重复采集会覆盖上一次采集的数据，是否覆盖采集信息？", new SelectDialog.OnCloseListener() {
                                         @Override
@@ -176,7 +177,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                             handler.postDelayed(runnable01, 100);
                         }
                     }
-                }).setInputType(InputType.TYPE_CLASS_NUMBER).setTitle("请输入身份证号").show();
+                }).show();
                 break;
             case R.id.ll_back:
                 if (!isCJ) {

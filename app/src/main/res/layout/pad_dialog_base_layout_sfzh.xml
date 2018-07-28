@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/llDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@id/title"
+        style="@style/dialogTitleText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_title_height"
+        android:layout_centerHorizontal="true"
+        android:background="#ffebebec"
+        android:gravity="center"
+        android:text="输入身份证号"
+        android:textSize="24.0sp"
+        android:visibility="visible" />
+
+    <View
+        android:id="@id/titleLine"
+        android:layout_width="match_parent"
+        android:layout_height="1.0px"
+        android:background="@color/dialogTitleLine" />
+
+    <LinearLayout
+        android:id="@id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="#ffe0e0e1"
+        android:orientation="vertical">
+
+        <include layout="@layout/pad_view_sfz_input" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/llBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="117.41998dip"
+        android:layout_gravity="bottom|center"
+        android:background="#ffebebec"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@id/negativeButton"
+            android:layout_width="236.73999dip"
+            android:layout_height="60.609985dip"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20.0dip"
+            android:background="@drawable/shape_dialog_cancel2"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/black"
+            android:textSize="24.0sp" />
+
+        <Button
+            android:id="@id/positiveButton"
+            android:layout_width="236.73999dip"
+            android:layout_height="60.609985dip"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20.0dip"
+            android:background="@drawable/shape_dialog_ok2"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="24.0sp" />
+
+    </LinearLayout>
+</LinearLayout>

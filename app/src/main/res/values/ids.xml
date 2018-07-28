@@ -333,4 +333,10 @@
     <item name="vp_kw_view" type="id">false</item>
     <item name="tabs_rz" type="id">false</item>
     <item name="vp_rz_view" type="id">false</item>
+    <item name="ll_input" type="id">false</item>
+    <item name="tv_others" type="id">false</item>
+    <item name="niv_input" type="id">false</item>
+    <item name="content" type="id">false</item>
+    <item name="line" type="id">false</item>
+    <item name="llDialog" type="id">false</item>
 </resources>

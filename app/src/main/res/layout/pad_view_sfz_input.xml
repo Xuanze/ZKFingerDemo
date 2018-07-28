@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/ll_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="410.0dip"
+            android:layout_height="60.0dip"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@id/et_input"
+                android:layout_width="370.0dip"
+                android:layout_height="60.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/shape_ip_edittext_bg"
+                android:focusable="false"
+                android:hint="请输入身份证号"
+                android:inputType="none"
+                android:padding="15.0dip"
+                android:textSize="25.0dip" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@id/tv_others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60.0dip"
+            android:text="港澳台证件及其他点击这里"
+            android:textSize="25.0sp" />
+
+        <View
+            android:layout_width="300.0dip"
+            android:layout_height="1.0dip"
+            android:background="#ff9f9fa0" />
+    </LinearLayout>
+
+    <com.zhongruan.android.zkfingerdemo.view.NumberInputView
+        android:id="@id/niv_input"
+        android:layout_width="372.0dip"
+        android:layout_height="292.0dip"
+        android:layout_marginLeft="25.0dip" />
+</LinearLayout>

@@ -4,6 +4,7 @@ package com.zhongruan.android.zkfingerdemo.ui;
 import android.app.Dialog;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -27,7 +28,6 @@ import java.util.List;
  */
 
 public class KWDJActivity extends BaseActivity implements View.OnClickListener {
-
     private LinearLayout mLlRzjlBack;
     private GridView mGvKs;
     private TextView mTvInputTip;
@@ -37,6 +37,8 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
     private String SN = DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_sn();
     private String qkid;
     private int position;
+    private String ccmc, kcmc;
+    private Handler handler = new Handler();
 
     @Override
     public void setContentView() {
@@ -49,6 +51,9 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         mGvKs = findViewById(R.id.gvKs);
         mTvInputTip = findViewById(R.id.tv_inputTip);
         mGvKs.setVisibility(View.GONE);
+        handler.postDelayed(runnable, 1000);
+        kcmc = DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name();
+        ccmc = DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name();
     }
 
     @Override
@@ -58,10 +63,10 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initData() {
-        showProgressDialog(KWDJActivity.this, "正在加载数据...", false, 100);
-        bk_ks = DbServices.getInstance(getBaseContext()).queryBKKSList(DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name(), DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name());
-        mTvInputTip.setText(DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name() + " " + DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name() + " " + DbServices.getInstance(getBaseContext()).selectCC().get(0).getKm_name());
+        bk_ks = DbServices.getInstance(getBaseContext()).queryBKKSList(kcmc, ccmc);
+        mTvInputTip.setText(ccmc + " " + kcmc + " " + DbServices.getInstance(getBaseContext()).selectCC().get(0).getKm_name());
         setAdapter = new DJSelectKsAdapter(KWDJActivity.this, bk_ks);
+        mGvKs.setAdapter(setAdapter);
         mGvKs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -85,20 +90,24 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
                 }).show();
             }
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mGvKs.setAdapter(setAdapter);
-                mGvKs.setVisibility(View.VISIBLE);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        dismissProgressDialog();
-                    }
-                }, 1000);
-            }
-        }, 500);
     }
+
+    @Override
+    protected void onStart() {
+        showProgressDialog(KWDJActivity.this, "正在加载数据...", false, 100);
+        super.onStart();
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            long time1 = System.currentTimeMillis();
+            mGvKs.setVisibility(View.VISIBLE);
+            dismissProgressDialog();
+            long time2 = System.currentTimeMillis();
+            Log.i("runtime", "run: " + (time2 - time1));
+        }
+    };
 
     /**
      * 局部更新GridView
@@ -110,7 +119,6 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         int firstVisiblePosition = mGvKs.getFirstVisiblePosition();
         /**最后一个可见的位置**/
         int lastVisiblePosition = mGvKs.getLastVisiblePosition();
-
         /**在看见范围内才更新，不可见的滑动后自动会调用getView方法更新**/
         if (position >= firstVisiblePosition && position <= lastVisiblePosition) {
             /**获取指定位置view对象**/

@@ -2,6 +2,8 @@ package com.zhongruan.android.zkfingerdemo.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -23,12 +25,15 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjg;
 import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 import com.zhongruan.android.zkfingerdemo.view.UploadProgressBar;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RZDJJLActivity extends BaseActivity implements View.OnClickListener, ExpandableListView.OnChildClickListener {
+public class RZDJJLActivity extends BaseActivity implements View.OnClickListener, ExpandableListView.OnChildClickListener, View.OnTouchListener {
     private LinearLayout mLlRzjlBack;
     /**
      * 认证记录
@@ -68,6 +73,8 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
     private List<List<RzdjjlHistoryViw>> historyLists;
     // ExpandListView 列表状态 1展开 0关闭 该案例中设置为三级
     private int[] isExpand = new int[]{0, 0, 0};
+    private boolean isHD = false;
+    private float x, y;
 
     @Override
     public void setContentView() {
@@ -94,13 +101,15 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
         mListItemStatisticHistoryItem = findViewById(R.id.list_item_statistic_history_item);
         mEplvStatistic = findViewById(R.id.eplv_statistic);
         initPiechart(mListItemPiechart);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void initListeners() {
-        mListItemStatisticHistoryItem.setOnClickListener(this);
         mLlRzjlBack.setOnClickListener(this);
         mEplvStatistic.setOnChildClickListener(this);
+        mListItemStatisticHistoryItem.setOnTouchListener(this);
+        mListItemStatisticHistoryItem.setOnClickListener(this);
     }
 
     @Override
@@ -219,6 +228,38 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void getEventBus(Integer integer) {
+        if (integer != null) {
+            rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kcmc, ccmc, "1");
+            rzjg2 = DbServices.getInstance(getBaseContext()).selectKCCCrzjg(kcmc, ccmc);
+            if (rzjg2.size() != 0) {
+                if (((int) (100.0d * ((((double) rzjg1.size()) * 1.0d) / (((double) rzjg2.size()) * 1.0d)))) == 100) {
+                    mListItemUploadingLl.setVisibility(View.GONE);
+                    mListItemNouploadLl.setVisibility(View.GONE);
+                    mListItemUploadedLl.setVisibility(View.VISIBLE);
+                } else {
+                    mListItemUploadingLl.setVisibility(View.VISIBLE);
+                    mListItemNouploadLl.setVisibility(View.GONE);
+                    mListItemUploadedLl.setVisibility(View.GONE);
+                    mListItemPiechartYsc.setText(rzjg1.size() + "");
+                    mListItemPiechartSczrs.setText(rzjg2.size() + "");
+                    mListItemPiechartPb.setProgress(((int) (100.0d * ((((double) (rzjg1.size())) * 1.0d) / (((double) rzjg2.size()) * 1.0d)))));
+                }
+            } else {
+                mListItemUploadedLl.setVisibility(View.GONE);
+                mListItemUploadingLl.setVisibility(View.GONE);
+                mListItemNouploadLl.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         Intent intent = new Intent(RZDJJLActivity.this, RZXQActivity.class);
         RzdjjlHistoryViw rzdjjlHistoryViw = (RzdjjlHistoryViw) rzdjjlHistoryAdapter.getChild(groupPosition, childPosition);
@@ -226,6 +267,29 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
         intent.putExtra("rzjlcc", rzdjjlHistoryViw.getCc_mc());
         startActivity(intent);
         return true;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, "onTouch: ACTION_DOWN");
+                x = event.getX();
+                y = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.i(TAG, "onTouch: ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, "onTouch: ACTION_UP");
+                if (event.getX() != x && y != event.getY()) {
+                    isHD = true;
+                } else {
+                    isHD = false;
+                }
+                break;
+        }
+        return isHD;
     }
 
     /**

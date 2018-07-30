@@ -25,6 +25,7 @@ import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog;
 import com.zhongruan.android.zkfingerdemo.dialog.HintDialog2;
 import com.zhongruan.android.zkfingerdemo.dialog.IPDialog;
+import com.zhongruan.android.zkfingerdemo.eventbus.MessageEvent;
 import com.zhongruan.android.zkfingerdemo.socket.SocketClient;
 import com.zhongruan.android.zkfingerdemo.utils.ABLSynCallback;
 import com.zhongruan.android.zkfingerdemo.utils.DateUtil;
@@ -33,6 +34,7 @@ import com.zhongruan.android.zkfingerdemo.utils.LogUtil;
 import com.zhongruan.android.zkfingerdemo.utils.Utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -310,27 +312,30 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    private void ChangeText(List<Ks_kc> kcStr, List<Ks_cc> ccStr) {
+        if (cc.size() > 0) {
+            int rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name(), "1").size();
+            int rzjg2 = DbServices.getInstance(TestActivity.this).selectKCCCrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name()).size();
+            if (rzjg2 > 0) {
+                upload_app_tv.setText("上传 " + ((int) (100.0d * ((((double) rzjg1) * 1.0d) / (((double) rzjg2) * 1.0d)))) + "%（" + rzjg1 + " / " + rzjg2 + "）");
+                EventBus.getDefault().post(666);
+            } else {
+                upload_app_tv.setText("暂无数据上传");
+            }
+        } else {
+            upload_app_tv.setText("暂无数据上传");
+        }
+    }
+
     private void startCheckMeesageFromKD() {
         if (MyApplication.getApplication().isShouldStopUploadingData()) {
             checkAgain();
             return;
         }
-
         if (DbServices.getInstance(getBaseContext()).selectKC().size() > 0) {
             kc = DbServices.getInstance(getBaseContext()).selectKC();
             cc = DbServices.getInstance(getBaseContext()).selectCC();
-            if (cc.size() > 0) {
-                int rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name(), "1").size();
-                int rzjg2 = DbServices.getInstance(TestActivity.this).selectKCCCrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name()).size();
-                if (rzjg2 > 0) {
-                    upload_app_tv.setText("上传 " + ((int) (100.0d * ((((double) rzjg1) * 1.0d) / (((double) rzjg2) * 1.0d)))) + "%（" + rzjg1 + " / " + rzjg2 + "）");
-                } else {
-                    upload_app_tv.setText("暂无数据上传");
-                }
-
-            } else {
-                upload_app_tv.setText("暂无数据上传");
-            }
+            ChangeText(kc, cc);
             if (DbServices.getInstance(TestActivity.this).loadAllrzjg().size() > 0 || DbServices.getInstance(TestActivity.this).loadAllrzjl().size() > 0) {
                 List<Sfrz_rzjg> rzjgList = DbServices.getInstance(getBaseContext()).selectWSBrzjg("0");
                 List<Sfrz_rzjl> rzjlList = DbServices.getInstance(getBaseContext()).selectWSBrzjl("0");
@@ -502,6 +507,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             linearlayoutRzjl.setVisibility(View.VISIBLE);
             linearlayoutSjgl.setVisibility(View.VISIBLE);
         }
+        startCheckMeesageFromKD();
     }
 
     @Override

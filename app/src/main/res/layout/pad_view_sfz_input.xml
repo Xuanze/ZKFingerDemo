@@ -38,12 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60.0dip"
             android:text="港澳台证件及其他点击这里"
-            android:textSize="25.0sp" />
+            android:textSize="25.0sp"
+            android:visibility="gone" />
 
         <View
             android:layout_width="300.0dip"
             android:layout_height="1.0dip"
-            android:background="#ff9f9fa0" />
+            android:background="#ff9f9fa0"
+            android:visibility="gone" />
     </LinearLayout>
 
     <com.zhongruan.android.zkfingerdemo.view.NumberInputView

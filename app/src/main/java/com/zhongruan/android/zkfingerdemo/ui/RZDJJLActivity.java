@@ -2,8 +2,6 @@ package com.zhongruan.android.zkfingerdemo.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -17,9 +15,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.RZDJJLHistoryAdapter;
-import com.zhongruan.android.zkfingerdemo.adapter.RZJLHistoryAdapter;
 import com.zhongruan.android.zkfingerdemo.adapter.view.RzdjjlHistoryViw;
-import com.zhongruan.android.zkfingerdemo.adapter.view.RzjlHistoryViw;
 import com.zhongruan.android.zkfingerdemo.base.BaseActivity;
 import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks;
@@ -33,13 +29,10 @@ import java.util.List;
 import java.util.Map;
 
 public class RZDJJLActivity extends BaseActivity implements View.OnClickListener, ExpandableListView.OnChildClickListener {
-
-
     private LinearLayout mLlRzjlBack;
     /**
      * 认证记录
      */
-    private TextView mTvInputTip;
     private TextView mListItemPiechartCc;
     private TextView mListItemPiechartKc;
     /**
@@ -61,22 +54,18 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
     private LinearLayout mListItemUploadedLl;
     private LinearLayout mListItemNouploadLl;
     private PieChart mListItemPiechart;
-    private LinearLayout mLlXqView;
     private LinearLayout mListItemStatisticHistoryItem;
     private ExpandableListView mEplvStatistic;
     /**
      * 0
      */
     private TextView mListItemPiechartQk;
-
-
     private List<Bk_ks> bk_ks, bkKsLs;
     private String ccmc, kcmc;
     private List<Sfrz_rzjg> rzjg1, rzjg2;
     private String TAG = "HNZR";
     private RZDJJLHistoryAdapter rzdjjlHistoryAdapter;
     private List<List<RzdjjlHistoryViw>> historyLists;
-
     // ExpandListView 列表状态 1展开 0关闭 该案例中设置为三级
     private int[] isExpand = new int[]{0, 0, 0};
 
@@ -88,7 +77,6 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void initViews() {
         mLlRzjlBack = findViewById(R.id.ll_rzjl_back);
-        mTvInputTip = findViewById(R.id.tv_inputTip);
         mListItemPiechartCc = findViewById(R.id.list_item_piechart_cc);
         mListItemPiechartKc = findViewById(R.id.list_item_piechart_kc);
         mListItemPiechartTotal = findViewById(R.id.list_item_piechart_total);
@@ -103,7 +91,6 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
         mListItemUploadedLl = findViewById(R.id.list_item_uploaded_ll);
         mListItemNouploadLl = findViewById(R.id.list_item_noupload_ll);
         mListItemPiechart = findViewById(R.id.list_item_piechart);
-        mLlXqView = findViewById(R.id.ll_xq_view);
         mListItemStatisticHistoryItem = findViewById(R.id.list_item_statistic_history_item);
         mEplvStatistic = findViewById(R.id.eplv_statistic);
         initPiechart(mListItemPiechart);
@@ -230,7 +217,6 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
     }
-
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {

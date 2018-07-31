@@ -1,6 +1,5 @@
 package com.zhongruan.android.zkfingerdemo.ui;
 
-
 import android.app.Dialog;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.DJSelectKsAdapter;
-import com.zhongruan.android.zkfingerdemo.adapter.RZSelectKsAdapter;
 import com.zhongruan.android.zkfingerdemo.base.BaseActivity;
 import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks;
@@ -21,7 +19,6 @@ import com.zhongruan.android.zkfingerdemo.dialog.KsxxDialog2;
 import com.zhongruan.android.zkfingerdemo.utils.DateUtil;
 
 import java.util.List;
-
 
 /**
  * Created by Administrator on 2017/8/11.
@@ -47,6 +44,7 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initViews() {
+        showProgressDialog(KWDJActivity.this, "正在加载数据...", false, 100);
         mLlRzjlBack = findViewById(R.id.ll_kwdj_back);
         mGvKs = findViewById(R.id.gvKs);
         mTvInputTip = findViewById(R.id.tv_inputTip);
@@ -92,11 +90,6 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
-    @Override
-    protected void onStart() {
-        showProgressDialog(KWDJActivity.this, "正在加载数据...", false, 100);
-        super.onStart();
-    }
 
     private Runnable runnable = new Runnable() {
         @Override

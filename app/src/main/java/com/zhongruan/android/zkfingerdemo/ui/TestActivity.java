@@ -224,7 +224,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     }).setBackgroundResource(R.drawable.img_base_icon_info).setNOVisibility(true).setLLButtonVisibility(true).setTitle("未导入数据").setPositiveButton("确定").show();
                 } else if (cc.size() == 0) {
                     Intent intent = new Intent(this, SelectKcCcActivity.class);
-                    intent.putExtra("sfrz", "1");
+                    intent.putExtra("sfrz", "3");
                     startActivity(intent);
                 } else {
                     if (!DateUtil.isTime(DateUtil.dateToLong(DateUtil.getNowTime_Millisecond3()), DateUtil.dateToLong(cc.get(0).getCc_kssj()), DateUtil.dateToLong(cc.get(0).getCc_jssj()))) {

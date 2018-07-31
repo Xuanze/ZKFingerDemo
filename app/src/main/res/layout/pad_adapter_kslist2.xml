@@ -46,7 +46,7 @@
         <ImageView
             android:id="@id/tvSeat"
             android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="2.0"
             android:gravity="center" />
     </LinearLayout>

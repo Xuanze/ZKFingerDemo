@@ -49,7 +49,6 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
     private String ccmc, kcmc;
     private Handler handler = new Handler();
 
-
     @Override
     public void setContentView() {
         setContentView(R.layout.activity_kwdj);
@@ -78,7 +77,6 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         mTvInputTip.setText(ccmc + " " + kcmc + " " + DbServices.getInstance(getBaseContext()).selectCC().get(0).getKm_name());
         setAdapter = new DJSelectKsAdapter(KWDJActivity.this, bk_ks);
         mGvKs.setAdapter(setAdapter);
-
         mGvKs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

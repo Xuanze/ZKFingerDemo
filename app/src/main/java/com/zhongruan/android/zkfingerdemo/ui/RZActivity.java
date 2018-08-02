@@ -11,6 +11,7 @@ import android.media.ThumbnailUtils;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Base64;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -95,6 +96,9 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
 
     @Override
     public void initViews() {
+        showProgressDialog(RZActivity.this, "正在加载数据...", false, 100);
+
+        handler.postDelayed(runnable, 1000);
         faceView = findViewById(R.id.face_view);
         btn_photo = findViewById(R.id.img_photo);
         mLlBack = findViewById(R.id.llBack);
@@ -123,6 +127,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
         state_camera = findViewById(R.id.state_camera);
         rl_camera = findViewById(R.id.rl_camera);
         gvKs = findViewById(R.id.gvKs);
+        gvKs.setVisibility(View.GONE);
         layout_view_rz_face = findViewById(R.id.layout_view_rz_face);
         _surfaceHolder = surfaceView.getHolder();
         _surfaceHolder.addCallback(this);
@@ -196,6 +201,14 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
             state_camera.setVisibility(View.GONE);
             rl_camera.setVisibility(View.VISIBLE);
             contrastOption = true;
+        }
+    };
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            gvKs.setVisibility(View.VISIBLE);
+            dismissProgressDialog();
         }
     };
 

@@ -83,6 +83,7 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void initViews() {
+        showProgressDialog(RZDJJLActivity.this, "正在加载数据...", false, 100);
         mLlRzjlBack = findViewById(R.id.ll_rzjl_back);
         mListItemPiechartCc = findViewById(R.id.list_item_piechart_cc);
         mListItemPiechartKc = findViewById(R.id.list_item_piechart_kc);

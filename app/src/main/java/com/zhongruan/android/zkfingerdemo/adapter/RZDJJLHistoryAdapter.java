@@ -138,7 +138,6 @@ public class RZDJJLHistoryAdapter extends BaseExpandableListAdapter {
         viewHolder.mListItemHistoryTotal.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getAll_sl()));
         viewHolder.mListItemHistoryYyz.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getRz_sl()));
         viewHolder.mListItemHistoryQk.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getQk_sl()));
-
         viewHolder.mListItemHistoryWyz.setText(Integer.toString(list_data.get(groupPosition).get(childPosition).getWrz_sl()));
         if (list_data.get(groupPosition).get(childPosition).getAll_sb() != 0) {
             if ((int) (100.0d * ((((double) (list_data.get(groupPosition).get(childPosition).getYSb_sl())) * 1.0d) / (((double) (list_data.get(groupPosition).get(childPosition).getAll_sb())) * 1.0d))) == 100) {

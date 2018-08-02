@@ -350,6 +350,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                     }
                 }
             }
+        } else {
+            upload_app_tv.setText("暂无数据上传");
         }
         ABLSynCallback.call(new ABLSynCallback.BackgroundCall() {
             public Object callback() {
@@ -414,6 +416,7 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             public void callback(Object obj) {
                 if (((Boolean) obj).booleanValue()) {
                     DbServices.getInstance(TestActivity.this).saveRZJG(rzjg.getRzjg_time());
+                    ChangeText(kc, cc);
                 }
             }
         });

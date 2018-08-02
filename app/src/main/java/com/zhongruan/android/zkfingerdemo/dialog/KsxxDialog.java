@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.RzjlAdapter;
@@ -78,7 +79,7 @@ public class KsxxDialog extends Dialog implements View.OnClickListener, AdapterV
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         bp = findViewById(R.id.spinner);
         bp.setVisibility(View.VISIBLE);
-        Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + bk_ks.getKs_xp())).into(mKwdjXp);
+        Glide.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + bk_ks.getKs_xp())).into(mKwdjXp);
         mKwdjZh.setText(bk_ks.getKs_zwh());
         mKwdjZjh.setText(bk_ks.getKs_zjno());
         mKwdjKc.setText(bk_ks.getKs_kcmc());

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.RZSelectKsAdapter;
@@ -230,7 +231,7 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
         layout_view_rz_face.setVisibility(View.GONE);
         layout_view_finger.setVisibility(View.VISIBLE);
         layout_view_face.setVisibility(View.VISIBLE);
-        Picasso.with(this).load(new File(FileUtils.getAppSavePath() + "/" + rz_ks_zw.get(0).getKs_xp())).into(mIvKs);
+        Glide.with(this).load(new File(FileUtils.getAppSavePath() + "/" + rz_ks_zw.get(0).getKs_xp())).into(mIvKs);
         mTvKsName.setText(rz_ks_zw.get(0).getKs_xm() + "|" + (rz_ks_zw.get(0).getKs_xb().equals("1") ? "男" : "女"));
         mTvKsSeat.setText(rz_ks_zw.get(0).getKs_zwh());
         mTvKsSfzh.setText(rz_ks_zw.get(0).getKs_zjno());

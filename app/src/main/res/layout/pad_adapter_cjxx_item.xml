@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/ll_photowall_item"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/shape_photowall_boder_gray"
     android:orientation="vertical"
     android:padding="12dip">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="46.0dip"
         android:background="@color/cjtj_gray"
         android:orientation="vertical">
 
         <TextView
             android:id="@id/tv_student_name"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="42.0dip"
             android:layout_gravity="center"
             android:gravity="center"
@@ -25,13 +25,13 @@
 
         <ImageView
             android:id="@id/v_name_line"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="4.0dip"
             android:background="@color/cjtj_gray" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/cjtj_item_white"
         android:orientation="vertical">
@@ -42,7 +42,7 @@
 
             <RelativeLayout
                 android:id="@id/ll_photo_state"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20.0dip">
 

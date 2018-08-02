@@ -66,4 +66,5 @@ dependencies {
     implementation files('libs/zkandroididcardreader.jar')
     implementation files('libs/zkandroidfpsensor.jar')
     implementation files('libs/ZKLiveFaceService.jar')
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
 }

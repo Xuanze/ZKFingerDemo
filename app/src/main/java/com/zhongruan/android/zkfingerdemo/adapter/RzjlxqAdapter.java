@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks;
@@ -46,7 +47,7 @@ public class RzjlxqAdapter extends RecyclerView.Adapter<RzjlxqAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         if ((this.ksList != null) && (this.ksList.size() > 0)) {
-            Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksList.get(position).getKs_xp())).into(holder.mAuthItemXp);
+            Glide.with(context).load(new File(FileUtils.getAppSavePath() + "/" + ksList.get(position).getKs_xp())).into(holder.mAuthItemXp);
             holder.mAuthItemXm.setText(ksList.get(position).getKs_xm());
             holder.mAuthItemXb.setText(ksList.get(position).getKs_xb().equals("1") ? "男" : "女");
             holder.mAuthItemKc.setText(ksList.get(position).getKs_kcno());

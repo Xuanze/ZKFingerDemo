@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/setting_ll"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/settingBg"
     android:scrollbars="none"
     tools:ignore="MissingDefaultResource">
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fadingEdge="none"
         android:paddingLeft="20.0dip"
         android:paddingTop="20.0dip"
@@ -18,13 +18,13 @@
         android:paddingBottom="20.0dip">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@id/ll_ms_change"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_top_bottom"
                 android:clickable="true"
@@ -33,7 +33,7 @@
 
                 <TextView
                     android:layout_width="0.0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1.0"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_device"
                     android:drawablePadding="8.0dip"
@@ -53,13 +53,13 @@
 
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="51.5dip"
                 android:layout_marginTop="20.0dip"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:background="@drawable/shape_setting_selector_top"
                     android:clickable="false"
@@ -70,12 +70,12 @@
                     android:textSize="24.0sp" />
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1.5dip"
                     android:layout_alignParentBottom="true"
                     android:background="#ffff9f15" />
@@ -83,7 +83,7 @@
 
             <LinearLayout
                 android:id="@id/ll_hyfs"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -92,7 +92,7 @@
 
                 <TextView
                     android:layout_width="0.0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1.0"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_idcard"
                     android:drawablePadding="8.0dip"
@@ -111,13 +111,13 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="51.5dip"
                 android:layout_marginTop="20.0dip"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:background="@drawable/shape_setting_selector_top"
                     android:clickable="false"
@@ -128,12 +128,12 @@
                     android:textSize="24.0sp" />
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1.5dip"
                     android:layout_alignParentBottom="true"
                     android:background="#ffff9f15" />
@@ -141,7 +141,7 @@
 
             <LinearLayout
                 android:id="@id/ll_finger_fz"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -170,13 +170,13 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="1.0dip"
                 android:background="#ffdcdcdc" />
 
             <LinearLayout
                 android:id="@id/ll_finger_cfcs"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -205,13 +205,13 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="1.0dip"
                 android:background="#ffdcdcdc" />
 
             <LinearLayout
                 android:id="@id/ll_face_xsd"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -241,13 +241,13 @@
 
 
             <ImageView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="1.0dip"
                 android:background="#ffdcdcdc" />
 
             <LinearLayout
                 android:id="@id/ll_face_cfcs"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_white_top_bottom"
                 android:clickable="true"

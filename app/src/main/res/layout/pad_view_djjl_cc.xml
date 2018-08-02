@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="75.0dip"
             android:background="#ffebebeb"
             android:orientation="horizontal"
@@ -28,7 +28,7 @@
             <TextView
                 android:id="@id/list_item_piechart_cc"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/five_dp"
                 android:layout_marginRight="@dimen/ten_dp"
                 android:gravity="center"
@@ -44,7 +44,7 @@
 
             <TextView
                 android:id="@id/list_item_piechart_kc"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/ten_dp"
@@ -59,13 +59,13 @@
         </LinearLayout>
 
         <View
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1.0dip"
             android:background="@color/color_divider_line" />
 
         <LinearLayout
             android:id="@id/list_item_statistic_history_item"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/twoHundred_eighty_dp"
             android:background="#ffd8d8d8"
             android:focusable="false"
@@ -73,12 +73,12 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1.5"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:gravity="bottom"
@@ -93,7 +93,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:gravity="center"
@@ -103,7 +103,7 @@
 
                         <TextView
                             android:id="@id/list_item_piechart_total"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/ten_dp"
                             android:layout_weight="1.0"
@@ -126,7 +126,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:gravity="center"
@@ -136,7 +136,7 @@
 
                         <TextView
                             android:id="@id/list_item_piechart_yyz"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/ten_dp"
                             android:layout_weight="1.0"
@@ -159,7 +159,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
                             android:gravity="center"
@@ -169,7 +169,7 @@
 
                         <TextView
                             android:id="@id/list_item_piechart_wyz"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/ten_dp"
                             android:layout_weight="1.0"
@@ -181,26 +181,26 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:orientation="horizontal"
                     android:padding="@dimen/five_dp">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@id/list_item_uploading_ll"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <LinearLayout
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1.0"
@@ -241,7 +241,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1.0"
@@ -258,7 +258,7 @@
                         <LinearLayout
                             android:id="@id/list_item_uploaded_ll"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -280,7 +280,7 @@
                         <LinearLayout
                             android:id="@id/list_item_noupload_ll"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal">
 
                             <TextView
@@ -297,7 +297,7 @@
 
             <LinearLayout
                 android:layout_width="@dimen/threeHundred_fifty_dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -305,14 +305,14 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@id/list_item_piechart"
                     android:layout_width="@dimen/threeHundred_dp"
-                    android:layout_height="fill_parent" />
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@id/ll_xq_view"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/twenty_dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -333,7 +333,7 @@
         </LinearLayout>
 
         <View
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="20.0dip"
             android:background="#ffd8d8d8" />
 

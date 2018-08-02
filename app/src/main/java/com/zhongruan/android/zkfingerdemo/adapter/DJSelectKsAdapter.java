@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.db.DbServices;
@@ -62,7 +63,7 @@ public class DJSelectKsAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if (this.ksList != null && this.ksList.size() > 0) {
-            Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
+            Glide.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
             holder.tvKsno.setText(this.ksList.get(position).getKs_xm());
             holder.tvName.setText(ksList.get(position).getKs_zwh());
             if (ksList.get(position).getIsRZ().equals("0")) {

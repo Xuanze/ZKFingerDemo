@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_marginTop="10.0dip"
     android:baselineAligned="false"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="10.0dip"
@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="vertical">
@@ -43,11 +43,11 @@
 
                 <LinearLayout
                     android:layout_width="200.0dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_weight="1.0"
                         android:gravity="center|left"
@@ -74,7 +74,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -107,11 +107,11 @@
 
                 <LinearLayout
                     android:layout_width="400.0dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_weight="1.0"
                         android:gravity="center"
@@ -139,7 +139,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -170,11 +170,11 @@
 
                 <LinearLayout
                     android:layout_width="150.0dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_weight="1.0"
                         android:gravity="center|left"
@@ -200,7 +200,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -237,7 +237,7 @@
 
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@id/spinner"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

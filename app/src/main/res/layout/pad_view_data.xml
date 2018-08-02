@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/data_ll"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/settingBg"
     android:scrollbars="none">
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fadingEdge="none"
         android:paddingBottom="20.0dip"
         android:paddingLeft="20.0dip"
@@ -16,17 +16,17 @@
         android:paddingTop="20.0dip">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="51.5dip"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:background="@drawable/shape_setting_selector_top"
                     android:clickable="false"
@@ -37,12 +37,12 @@
                     android:textSize="24.0sp" />
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1.5dip"
                     android:layout_alignParentBottom="true"
                     android:background="#ffff9f15" />
@@ -50,7 +50,7 @@
 
             <LinearLayout
                 android:id="@id/ll_usb_dr"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -78,13 +78,13 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="1.0dip"
                 android:background="#ffdcdcdc" />
 
             <LinearLayout
                 android:id="@id/ll_net_dr"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_center"
                 android:clickable="true"
@@ -112,13 +112,13 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="51.5dip"
                 android:layout_marginTop="20.0dip"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:background="@drawable/shape_setting_selector_top"
                     android:clickable="false"
@@ -129,12 +129,12 @@
                     android:textSize="24.0sp" />
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1.5dip"
                     android:layout_alignParentBottom="true"
                     android:background="#ffff9f15" />
@@ -142,7 +142,7 @@
 
             <LinearLayout
                 android:id="@id/ll_usb_dc"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_top_bottom"
                 android:clickable="true"
@@ -151,7 +151,7 @@
 
                 <TextView
                     android:layout_width="0.0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1.0"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_datamanage_export_rz_usb"
                     android:drawablePadding="8.0dip"
@@ -170,14 +170,14 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="51.5dip"
                 android:layout_marginTop="20.0dip"
                 android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:background="@drawable/shape_setting_selector_top"
                     android:clickable="false"
@@ -188,12 +188,12 @@
                     android:textSize="24.0sp" />
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="50.0dip"
                     android:orientation="vertical" />
 
                 <ImageView
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="1.5dip"
                     android:layout_alignParentBottom="true"
                     android:background="#ffff9f15" />
@@ -201,7 +201,7 @@
 
             <LinearLayout
                 android:id="@id/ll_cj_usb_dc"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:background="@drawable/shape_setting_selector_top_bottom"
                 android:clickable="true"
@@ -211,7 +211,7 @@
 
                 <TextView
                     android:layout_width="0.0dp"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1.0"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_datamanage_export_rz_usb"
                     android:drawablePadding="8.0dip"
@@ -231,7 +231,7 @@
 
             <LinearLayout
                 android:id="@id/ll_net_sb"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:layout_marginTop="20.0dip"
                 android:background="@drawable/shape_setting_selector_top_bottom"
@@ -241,7 +241,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:drawableLeft="@drawable/img_module_tab_setting_base_datamanage_import_net"
                     android:drawablePadding="8.0dip"
                     android:gravity="center_vertical"

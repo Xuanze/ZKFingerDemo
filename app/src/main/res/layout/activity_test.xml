@@ -285,8 +285,8 @@
 
         <LinearLayout
             android:id="@id/ll_test_xqkc"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="horizontal"
@@ -310,8 +310,8 @@
 
         <LinearLayout
             android:id="@id/linearlayout_sjgl"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="horizontal"
@@ -335,8 +335,8 @@
 
         <LinearLayout
             android:id="@id/ll_test_jcsz"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="horizontal"

@@ -1,15 +1,25 @@
 package com.zhongruan.android.zkfingerdemo.ui;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.DJSelectKsAdapter;
 import com.zhongruan.android.zkfingerdemo.base.BaseActivity;
@@ -17,7 +27,9 @@ import com.zhongruan.android.zkfingerdemo.db.DbServices;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks;
 import com.zhongruan.android.zkfingerdemo.dialog.KsxxDialog2;
 import com.zhongruan.android.zkfingerdemo.utils.DateUtil;
+import com.zhongruan.android.zkfingerdemo.utils.FileUtils;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -37,6 +49,7 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
     private String ccmc, kcmc;
     private Handler handler = new Handler();
 
+
     @Override
     public void setContentView() {
         setContentView(R.layout.activity_kwdj);
@@ -49,7 +62,7 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         mGvKs = findViewById(R.id.gvKs);
         mTvInputTip = findViewById(R.id.tv_inputTip);
         mGvKs.setVisibility(View.GONE);
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 500);
         kcmc = DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name();
         ccmc = DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name();
     }
@@ -65,6 +78,7 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         mTvInputTip.setText(ccmc + " " + kcmc + " " + DbServices.getInstance(getBaseContext()).selectCC().get(0).getKm_name());
         setAdapter = new DJSelectKsAdapter(KWDJActivity.this, bk_ks);
         mGvKs.setAdapter(setAdapter);
+
         mGvKs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -90,7 +104,6 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
-
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -104,6 +117,7 @@ public class KWDJActivity extends BaseActivity implements View.OnClickListener {
 
     /**
      * 局部更新GridView
+     * <p>
      *
      * @param position
      */

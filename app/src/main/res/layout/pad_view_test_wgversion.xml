@@ -10,8 +10,8 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1.0"
         android:gravity="center"
         android:orientation="horizontal">
@@ -39,8 +39,8 @@
         android:background="@color/color_divider_line" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1.0"
         android:gravity="center"
         android:orientation="horizontal">

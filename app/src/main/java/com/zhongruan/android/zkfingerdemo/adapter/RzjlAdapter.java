@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.db.entity.Sfrz_rzjl;
@@ -38,7 +39,7 @@ public class RzjlAdapter extends RecyclerView.Adapter<RzjlAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Picasso.with(context).load(new File(FileUtils.getAppSavePath() + "/" + rzjlList.get(position).getRzjl_pith())).into(holder.mListitemRzjlIv);
+        Glide.with(context).load(new File(FileUtils.getAppSavePath() + "/" + rzjlList.get(position).getRzjl_pith())).into(holder.mListitemRzjlIv);
         holder.mListitemRzjlRzjlsj.setText(rzjlList.get(position).getRzjl_time());
         if (rzjlList.get(position).getRzjl_rzfsno().equals("8003")) {
             holder.mListitemRzjlRzfs.setText("指纹比对");

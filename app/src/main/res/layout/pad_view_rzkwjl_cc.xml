@@ -338,7 +338,7 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@id/list_item_piechart"
                     android:layout_width="@dimen/threeHundred_dp"
-                    android:layout_height="fill_parent" />
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <LinearLayout

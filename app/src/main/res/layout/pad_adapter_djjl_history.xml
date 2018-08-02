@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="visible">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="180.0dip"
             android:focusable="false"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="55.0dip"
                     android:orientation="horizontal"
                     android:padding="@dimen/ten_dp">
@@ -32,7 +32,7 @@
                     <TextView
                         android:id="@id/list_item_history_cc"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/twenty_dp"
                         android:layout_marginRight="@dimen/ten_dp"
                         android:gravity="center"
@@ -49,7 +49,7 @@
 
                     <TextView
                         android:id="@id/list_item_history_kc"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/ten_dp"
@@ -64,7 +64,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:orientation="horizontal"
@@ -75,7 +75,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1.0"
                         android:gravity="center|left"
                         android:orientation="horizontal">
@@ -101,7 +101,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1.0"
                         android:gravity="center"
                         android:orientation="horizontal">
@@ -127,7 +127,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1.0"
                         android:gravity="center|right"
                         android:orientation="horizontal">
@@ -153,27 +153,27 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:orientation="horizontal"
                     android:padding="@dimen/five_dp">
 
                     <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@id/list_item_uploading_ll_history"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal"
                             android:visibility="visible">
 
                             <LinearLayout
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/twenty_dp"
@@ -215,7 +215,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="fill_parent"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1.0"
@@ -232,7 +232,7 @@
                         <LinearLayout
                             android:id="@id/list_item_uploaded_ll_history"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -254,7 +254,7 @@
                         <LinearLayout
                             android:id="@id/list_item_noupload_ll_history"
                             android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal">
 
                             <TextView
@@ -277,14 +277,14 @@
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@id/list_item_piechart_history"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@id/ll_item_xq_view"
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/twenty_dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -305,7 +305,7 @@
         </LinearLayout>
 
         <View
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1.0dip"
             android:background="@color/color_divider_line" />
     </LinearLayout>

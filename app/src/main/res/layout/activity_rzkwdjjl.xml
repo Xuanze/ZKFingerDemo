@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="74.0dip"
         android:background="@color/cjtj_title_gray"
         android:orientation="horizontal">
@@ -13,7 +13,7 @@
         <LinearLayout
             android:id="@id/ll_rzjl_back"
             android:layout_width="100.0dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:orientation="horizontal"
             android:paddingLeft="10.0dip"
@@ -44,7 +44,7 @@
     </RelativeLayout>
 
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1.0dip"
         android:background="@color/color_divider_line" />
 

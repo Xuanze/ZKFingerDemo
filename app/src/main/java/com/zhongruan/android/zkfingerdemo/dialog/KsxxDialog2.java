@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.zhongruan.android.zkfingerdemo.R;
 import com.zhongruan.android.zkfingerdemo.adapter.RzjlAdapter;
@@ -70,7 +71,7 @@ public class KsxxDialog2 extends Dialog implements View.OnClickListener {
         mBtQkdjBtg.setOnClickListener(this);
         mBtWjdjBtg = findViewById(R.id.btWjdjBtgs);
         mBtWjdjBtg.setOnClickListener(this);
-        Picasso.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + bk_ks.getKs_xp())).into(mIvKs);
+        Glide.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + bk_ks.getKs_xp())).into(mIvKs);
         mTvKsSeat.setText(bk_ks.getKs_zwh());
         mTvKsSfzh.setText(bk_ks.getKs_zjno());
         mTvKsKc.setText(bk_ks.getKs_kcmc());

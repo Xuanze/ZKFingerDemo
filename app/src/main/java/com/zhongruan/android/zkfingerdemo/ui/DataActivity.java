@@ -27,6 +27,8 @@ import com.zhongruan.android.zkfingerdemo.db.Ks_kcDao;
 import com.zhongruan.android.zkfingerdemo.db.Ks_kdDao;
 import com.zhongruan.android.zkfingerdemo.db.Ks_kmDao;
 import com.zhongruan.android.zkfingerdemo.db.Kstz_zwDao;
+import com.zhongruan.android.zkfingerdemo.db.Sfrz_rzjgDao;
+import com.zhongruan.android.zkfingerdemo.db.Sfrz_rzjlDao;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks_cjxx;
 import com.zhongruan.android.zkfingerdemo.db.entity.Bk_ks_temp;
 import com.zhongruan.android.zkfingerdemo.db.entity.Ks_kc;
@@ -507,6 +509,8 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 }).setBackgroundResource(R.drawable.img_base_icon_question).setNOVisibility(true).setLLButtonVisibility(true).setLLButtonVisibility(true).setTitle("U盘导出采集数据").setPositiveButton("是").setNegativeButton("否").show();
                 break;
             case R.id.ll_net_sb:
+                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjgDao.TABLENAME + " SET  rzjg_sb = 0");
+                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjlDao.TABLENAME + " SET  rzjl_sb = 0");
                 ShowHintDialog(this, "后台上报服务已开启，请稍等", "提示", R.drawable.img_base_check, "知道了", false);
                 break;
         }

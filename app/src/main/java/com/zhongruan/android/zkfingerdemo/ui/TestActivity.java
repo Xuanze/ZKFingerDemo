@@ -92,27 +92,6 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         version_app_tv = findViewById(R.id.version_app_tv);
     }
 
-    Runnable runnable01 = new Runnable() {
-        @Override
-        public void run() {
-            nowtimeTv.setText(DateUtil.getNowTimeNoDate());
-            nowdayTv.setText(DateUtil.getDateByFormat("yyyy年MM月dd日"));
-            handler.postDelayed(runnable01, 1000);
-        }
-    };
-    Runnable runnable02 = new Runnable() {
-        @Override
-        public void run() {
-            if (ConfigApplication.getApplication().isToSocket()) {
-                connectedOrNot = ConfigApplication.getApplication().getKDConnectState();
-            }
-            localipTv.setText(ConfigApplication.getApplication().getDeviceIP());
-            tvConnectState.setText(connectedOrNot ? "已连接校端" : "未连接校端");
-            imgConnectState.setBackgroundResource(connectedOrNot ? R.drawable.img_module_tab_footer_base_icon_connect : R.drawable.img_module_tab_footer_base_icon_disconnect);
-            handler.postDelayed(runnable02, 5000);
-        }
-    };
-
     @Override
     public void initListeners() {
         llNowtime.setOnClickListener(this);
@@ -133,8 +112,29 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
         netipTv.setText(DbServices.getInstance(getBaseContext()).loadAllSbSetting().get(0).getSb_ip());
         startCheckMeesageFromKD();
         new Thread(runnable01).start();
-        handler.postDelayed(runnable02, 500);
+        handler.post(runnable02);
     }
+
+    Runnable runnable01 = new Runnable() {
+        @Override
+        public void run() {
+            nowtimeTv.setText(DateUtil.getNowTimeNoDate());
+            nowdayTv.setText(DateUtil.getDateByFormat("yyyy年MM月dd日"));
+            handler.postDelayed(runnable01, 500);
+        }
+    };
+    Runnable runnable02 = new Runnable() {
+        @Override
+        public void run() {
+            if (ConfigApplication.getApplication().isToSocket()) {
+                connectedOrNot = ConfigApplication.getApplication().getKDConnectState();
+            }
+            localipTv.setText(ConfigApplication.getApplication().getDeviceIP());
+            tvConnectState.setText(connectedOrNot ? "已连接校端" : "未连接校端");
+            imgConnectState.setBackgroundResource(connectedOrNot ? R.drawable.img_module_tab_footer_base_icon_connect : R.drawable.img_module_tab_footer_base_icon_disconnect);
+            handler.postDelayed(runnable02, 2000);
+        }
+    };
 
     @Override
     public void onClick(View view) {
@@ -313,9 +313,9 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void ChangeText(List<Ks_kc> kcStr, List<Ks_cc> ccStr) {
-        if (cc.size() > 0) {
-            int rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name(), "1").size();
-            int rzjg2 = DbServices.getInstance(TestActivity.this).selectKCCCrzjg(kc.get(0).getKc_no(), cc.get(0).getCc_name()).size();
+        if (ccStr.size() > 0) {
+            int rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kcStr.get(0).getKc_no(), ccStr.get(0).getCc_name(), "1").size();
+            int rzjg2 = DbServices.getInstance(TestActivity.this).selectKCCCrzjg(kcStr.get(0).getKc_no(), ccStr.get(0).getCc_name()).size();
             if (rzjg2 > 0) {
                 upload_app_tv.setText("上传 " + ((int) (100.0d * ((((double) rzjg1) * 1.0d) / (((double) rzjg2) * 1.0d)))) + "%（" + rzjg1 + " / " + rzjg2 + "）");
                 EventBus.getDefault().post(666);
@@ -417,6 +417,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 if (((Boolean) obj).booleanValue()) {
                     DbServices.getInstance(TestActivity.this).saveRZJG(rzjg.getRzjg_time());
                     ChangeText(kc, cc);
+                } else {
+                    uploadRzjg(rzjg);
                 }
             }
         });
@@ -462,6 +464,8 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
             public void callback(Object obj) {
                 if (((Boolean) obj).booleanValue()) {
                     DbServices.getInstance(TestActivity.this).saveRZJL(rzjl.getRzjl_time());
+                } else {
+                    uploadRzjl(rzjl);
                 }
             }
         });

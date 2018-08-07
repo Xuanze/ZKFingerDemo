@@ -85,7 +85,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     private SurfaceView surfaceView;
     private SurfaceHolder _surfaceHolder;
     private int[] score;
-    private String tgid, btgid;
 
     @Override
     public void setContentView() {
@@ -97,7 +96,6 @@ public class RZActivity extends BaseActivity implements View.OnClickListener, Fi
     @Override
     public void initViews() {
         showProgressDialog(RZActivity.this, "正在加载数据...", false, 100);
-
         handler.postDelayed(runnable, 1000);
         faceView = findViewById(R.id.face_view);
         btn_photo = findViewById(R.id.img_photo);

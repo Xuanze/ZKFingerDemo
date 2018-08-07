@@ -120,7 +120,7 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
         mListItemPiechartCc.setText(DbServices.getInstance(getBaseContext()).selectCC().get(0).getCc_name());
         mListItemPiechartKc.setText(DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name() + " " + DbServices.getInstance(getBaseContext()).selectCC().get(0).getKm_name());
         mListItemPiechartTotal.setText(bk_ks.size() + "");
-        mListItemPiechartYyz.setText(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(kcmc, ccmc, "1") + "");
+        mListItemPiechartYyz.setText(DbServices.getInstance(getBaseContext()).queryBkKsYyz(kcmc, ccmc) + "");
         mListItemPiechartQk.setText(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(kcmc, ccmc, "2") + "");
         mListItemPiechartWyz.setText(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(kcmc, ccmc, "0") + "");
         rzjg1 = DbServices.getInstance(getBaseContext()).selectWSBrzjg(kcmc, ccmc, "1");
@@ -179,7 +179,7 @@ public class RZDJJLActivity extends BaseActivity implements View.OnClickListener
                     rzdjjlHistoryViw.setKc_mc(a);
                     LogUtil.i("lhj", a + "  -------------  " + c);
                     rzdjjlHistoryViw.setAll_sl(DbServices.getInstance(getBaseContext()).queryBKKSList(a, c).size());
-                    rzdjjlHistoryViw.setRz_sl(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(a, c, "1"));
+                    rzdjjlHistoryViw.setRz_sl(DbServices.getInstance(getBaseContext()).queryBkKsYyz(a, c));
                     rzdjjlHistoryViw.setQk_sl(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(a, c, "2"));
                     rzdjjlHistoryViw.setWrz_sl(DbServices.getInstance(getBaseContext()).queryBkKsIsTG(a, c, "0"));
                     rzdjjlHistoryViw.setAll_sb(DbServices.getInstance(getBaseContext()).selectKCCCrzjg(a, c).size());

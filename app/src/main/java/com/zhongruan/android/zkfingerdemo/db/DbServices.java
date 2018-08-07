@@ -288,6 +288,9 @@ public class DbServices {
         return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_time.eq(time)).list().get(0).getRzjgid();
     }
 
+    public int queryBkKsYyz(String ks_kcmc, String ks_ccmc) {
+        return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc), Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc), Bk_ksDao.Properties.IsRZ.notEq("0"), Bk_ksDao.Properties.IsRZ.notEq("2")).distinct().list().size();
+    }
 
     public int queryBkKsIsTG(String ks_kcmc, String ks_ccmc, String isRZ) {
         return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.IsRZ.eq(isRZ)).distinct().list().size();
@@ -499,7 +502,7 @@ public class DbServices {
         for (int i = 0; i < bk_ks.size(); i++) {
             if (bk_ks.get(i) != null) {
                 bk_ks.get(i).setIsRZ("2");
-                bk_ks.get(i).setRzTime(DateUtil.getNowTime_Millisecond());
+                bk_ks.get(i).setRzTime(DateUtil.getNowTime());
                 bk_ksDao.update(bk_ks.get(i));
                 LogUtil.i("修改成功");
             } else {

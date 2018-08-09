@@ -31,7 +31,6 @@ public class DbServices {
     private static DbServices instance;
     private static Context appContext;
     private DaoSession mDaoSession;
-
     private Bk_ks_cjxxDao bk_ks_cjxxDao;
     private Bk_ks_tempDao bk_ks_tempDao;
     private Ks_ccDao ks_ccDao;
@@ -66,10 +65,8 @@ public class DbServices {
             instance.mDaoSession = MyApplication.getDaoInstant(context);
             instance.bk_ks_cjxxDao = instance.mDaoSession.getBk_ks_cjxxDao();
             instance.bk_ks_tempDao = instance.mDaoSession.getBk_ks_tempDao();
-
             instance.ks_ccDao = instance.mDaoSession.getKs_ccDao();
             instance.ks_kcDao = instance.mDaoSession.getKs_kcDao();
-
             instance.ks_kdDao = instance.mDaoSession.getKs_kdDao();
             instance.ks_kmDao = instance.mDaoSession.getKs_kmDao();
             instance.bk_ksxpDao = instance.mDaoSession.getBk_ksxpDao();
@@ -84,7 +81,6 @@ public class DbServices {
         }
         return instance;
     }
-
 
     /**
      * 取出所有数据
@@ -115,11 +111,9 @@ public class DbServices {
         return ks_kmDao.loadAll();
     }
 
-
     public List<Rz_ks_zw> loadAllrzkszw() {
         return rz_ks_zwDao.loadAll();
     }
-
 
     public List<Sfrz_rzfs> loadAllrzfs() {
         return rzfsDao.loadAll();
@@ -145,28 +139,18 @@ public class DbServices {
         return settingDao.loadAll();
     }
 
-
     /**
      * 根据查询条件,返回数据列表
      *
-     * @param where 条件
+     * @param sfzh 条件
      * @return 数据列表
      */
 
-
-    public List<Bk_ks_cjxx> querySfzh(String where) {
-        return bk_ks_cjxxDao.queryBuilder().where(Bk_ks_cjxxDao.Properties.Sfz_sfzh.eq(where))
+    public List<Bk_ks_cjxx> querySfzh(String sfzh) {
+        return bk_ks_cjxxDao.queryBuilder().where(Bk_ks_cjxxDao.Properties.Sfz_sfzh.eq(sfzh))
                 .orderDesc(Bk_ks_cjxxDao.Properties.Id)
                 .build().list();
     }
-
-
-    public List<Rz_ks_zw> queryKSZW(String ksno) {
-        return rz_ks_zwDao.queryBuilder().where(Rz_ks_zwDao.Properties.Ks_ksno.eq(ksno))
-                .orderDesc(Bk_ks_cjxxDao.Properties.Id)
-                .build().list();
-    }
-
 
     /**
      * 根据查询条件,返回数据列表
@@ -174,7 +158,6 @@ public class DbServices {
      * @param isSbzt 条件
      * @return 数据列表
      */
-
 
     public List<Bk_ks_cjxx> querySbzt(int isSbzt) {
         return bk_ks_cjxxDao.queryBuilder().where(Bk_ks_cjxxDao.Properties.IsSbzt.eq(isSbzt))
@@ -214,7 +197,6 @@ public class DbServices {
         return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccmc)).list().get(0).getKm_no()), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno), Sfrz_rzjgDao.Properties.Rzjg_ztid.notEq(rzjg), Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
     }
 
-
     public List<Sfrz_rzjg> selectWSBrzjg(String isSB) {
         return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_sb.eq(isSB)).list();
     }
@@ -223,13 +205,8 @@ public class DbServices {
         return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_sb.eq(isSB)).list();
     }
 
-
     public List<Sfrz_rzjg> selectKSrzjg(String ksno, String kmno, String kcno) {
         return rzjgDao.queryBuilder().where(Sfrz_rzjgDao.Properties.Rzjg_kmno.eq(kmno), Sfrz_rzjgDao.Properties.Rzjg_ksno.eq(ksno), Sfrz_rzjgDao.Properties.Rzjg_kcno.eq(kcno)).orderDesc(Sfrz_rzjgDao.Properties.Rzjg_time).list();
-    }
-
-    public List<Sfrz_rzjl> selectKSrzjl(String ksno, String kmno, String kcno) {
-        return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_kmbh.eq(kmno)).where(Sfrz_rzjlDao.Properties.Rzjl_ksno.eq(ksno)).where(Sfrz_rzjlDao.Properties.Rzjl_kcbh.eq(kcno)).list();
     }
 
     public List<Sfrz_rzjl> selectKSrzjls(String rzjl_rzjgid) {
@@ -238,10 +215,6 @@ public class DbServices {
 
     public List<Ks_kc> selectKC() {
         return ks_kcDao.queryBuilder().where(Ks_kcDao.Properties.Kc_extract.eq("1")).list();
-    }
-
-    public String getCCmc(String ccno) {
-        return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccno)).list().get(0).getCc_name();
     }
 
     public String getKMmc(String ccno) {
@@ -268,14 +241,6 @@ public class DbServices {
         return ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_extract.eq("1")).list();
     }
 
-    public Rz_ks_zw selectKs(String ksno) {
-        return rz_ks_zwDao.queryBuilder().where(Rz_ks_zwDao.Properties.Ksid.eq(ksno)).list().get(0);
-    }
-
-    public Bk_ks selectKszh(String ccno, String zh) {
-        return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_ccno.eq(ccno)).where(Bk_ksDao.Properties.Ks_zwh.eq(zh)).orderAsc(Bk_ksDao.Properties.Ks_zwh).list().get(0);
-    }
-
     public List<Rz_ks_zw> selectBkKs(String zjno) {
         return rz_ks_zwDao.queryBuilder().where(Rz_ks_zwDao.Properties.Ks_zjno.eq(zjno)).list();
     }
@@ -298,15 +263,6 @@ public class DbServices {
 
     public int queryBkKsWTG(String ks_kcmc, String ks_ccmc, String isRZ) {
         return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_kcmc.eq(ks_kcmc)).where(Bk_ksDao.Properties.Ks_ccmc.eq(ks_ccmc)).where(Bk_ksDao.Properties.IsRZ.notEq(isRZ)).distinct().list().size();
-    }
-
-    public List<Sfrz_rzjl> selectRZJLSB() {
-        return rzjlDao.queryBuilder().where(Sfrz_rzjlDao.Properties.Rzjl_sb.notEq("1")).list();
-    }
-
-
-    public Bk_ks selectBKKS(String ccno, String zjno) {
-        return bk_ksDao.queryBuilder().where(Bk_ksDao.Properties.Ks_ccno.eq(ccno)).where(Bk_ksDao.Properties.Ks_zjno.eq(zjno)).build().unique();
     }
 
     public List<Bk_ks_temp> selectDOWNBKKS(String kcno, String ccno) {
@@ -383,17 +339,6 @@ public class DbServices {
         if (ks_kc != null) {
             ks_kc.setKc_extract("1");
             ks_kcDao.update(ks_kc);
-            LogUtil.i("修改成功");
-        } else {
-            LogUtil.i("数据不存在");
-        }
-    }
-
-    public void saveKsCc(String ccName) {
-        Ks_cc ks_cc = ks_ccDao.queryBuilder().where(Ks_ccDao.Properties.Cc_name.eq(ccName)).build().unique();
-        if (ks_cc != null) {
-            ks_cc.setCc_extract("1");
-            ks_ccDao.update(ks_cc);
             LogUtil.i("修改成功");
         } else {
             LogUtil.i("数据不存在");
@@ -534,7 +479,6 @@ public class DbServices {
         }
     }
 
-
     /**
      * 删除所有数据
      */
@@ -578,7 +522,6 @@ public class DbServices {
         rz_ks_zwDao.deleteAll();
     }
 
-
     public void deleteAllrzjl() {
         rzjlDao.deleteAll();
     }
@@ -596,5 +539,4 @@ public class DbServices {
         bk_ks_cjxxDao.deleteByKey(id);
         Log.i(TAG, "delete");
     }
-
 }

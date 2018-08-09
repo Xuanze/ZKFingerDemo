@@ -509,9 +509,21 @@ public class DataActivity extends BaseActivity implements View.OnClickListener {
                 }).setBackgroundResource(R.drawable.img_base_icon_question).setNOVisibility(true).setLLButtonVisibility(true).setLLButtonVisibility(true).setTitle("U盘导出采集数据").setPositiveButton("是").setNegativeButton("否").show();
                 break;
             case R.id.ll_net_sb:
-                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjgDao.TABLENAME + " SET  rzjg_sb = 0");
-                MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjlDao.TABLENAME + " SET  rzjl_sb = 0");
-                ShowHintDialog(this, "后台上报服务已开启，请稍等", "提示", R.drawable.img_base_check, "知道了", false);
+                new HintDialog(this, R.style.dialog, "后台上报服务已开启，请稍等", new HintDialog.OnCloseListener() {
+                    @Override
+                    public void onClick(Dialog dialog, boolean confirm) {
+                        if (confirm) {
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjgDao.TABLENAME + " SET  rzjg_sb = 0");
+                                    MyApplication.getDaoInstant(getBaseContext()).getDatabase().execSQL("UPDATE " + Sfrz_rzjlDao.TABLENAME + " SET  rzjl_sb = 0");
+                                }
+                            };
+                            dialog.dismiss();
+                        }
+                    }
+                }).setBackgroundResource(R.drawable.img_base_check).setNOVisibility(false).setLLButtonVisibility(true).setTitle("提示").setPositiveButton("知道了").show();
                 break;
         }
     }

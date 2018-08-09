@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:layout_marginTop="10.0dip"
     android:baselineAligned="false"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="10.0dip"
@@ -16,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="0.0dip"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="vertical">
@@ -42,11 +43,11 @@
 
                 <LinearLayout
                     android:layout_width="180.0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_weight="1.0"
                         android:gravity="center|left"
@@ -74,7 +75,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -86,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:maxLines="1"
-                            android:text="座位:"
+                            android:text="@string/ks_seat"
                             android:textColor="@color/auth_ksinfo"
                             android:textSize="26.0sp" />
 
@@ -101,7 +102,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -122,11 +123,11 @@
 
                 <LinearLayout
                     android:layout_width="500.0dip"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_weight="1.0"
                         android:gravity="center"
@@ -138,7 +139,7 @@
                             android:layout_weight="1.0"
                             android:gravity="center|right"
                             android:maxLines="1"
-                            android:text="身份证:"
+                            android:text="@string/ks_sfzh"
                             android:textColor="@color/auth_ksinfo"
                             android:textSize="26.0sp" />
 
@@ -146,7 +147,7 @@
                             android:id="@id/tvKsSfzh"
                             android:layout_width="0.0dip"
                             android:layout_height="wrap_content"
-                            android:layout_weight="5.0"
+                            android:layout_weight="4.0"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:textColor="@color/auth_ksinfo"
@@ -154,7 +155,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -167,7 +168,7 @@
                             android:layout_weight="1.0"
                             android:gravity="center|right"
                             android:maxLines="1"
-                            android:text="考场:"
+                            android:text="@string/ks_kc"
                             android:textColor="@color/auth_ksinfo"
                             android:textSize="26.0sp" />
 
@@ -183,7 +184,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="0.0dip"
                         android:layout_marginTop="10.0dip"
                         android:layout_weight="1.0"
@@ -196,7 +197,7 @@
                             android:layout_weight="1.0"
                             android:gravity="center|right"
                             android:maxLines="1"
-                            android:text="考生号:"
+                            android:text="@string/ks_ksno"
                             android:textColor="@color/auth_ksinfo"
                             android:textSize="26.0sp" />
 
@@ -214,4 +215,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

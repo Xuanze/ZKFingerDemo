@@ -134,7 +134,7 @@ public class CJActivity extends BaseActivity implements OnClickListener, Fingerp
                         if (confirm) {
                             dialog.dismiss();
                             IDCard idCard = new IDCard();
-                            if (idCard.validate_effective(Str) == Str) {
+                            if (idCard.validate_effective(Str.toLowerCase()).equals(Str.toLowerCase())) {
                                 bkKsCjxxList = DbServices.getInstance(getBaseContext()).querySfzh(Str);
                                 et_input = Str;
                                 if (bkKsCjxxList.size() > 0) {

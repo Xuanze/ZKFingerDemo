@@ -63,7 +63,7 @@ public class DJSelectKsAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if (this.ksList != null && this.ksList.size() > 0) {
-            Glide.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + DbServices.getInstance(mContext).selectBkKs(ksList.get(position).getKs_zjno()).get(0).getKs_xp())).into(holder.tvSeat);
+            Glide.with(mContext).load(new File(FileUtils.getAppSavePath() + "/" + ksList.get(position).getKs_xp())).into(holder.tvSeat);
             holder.tvKsno.setText(this.ksList.get(position).getKs_xm());
             holder.tvName.setText(ksList.get(position).getKs_zwh());
             if (ksList.get(position).getIsRZ().equals("0")) {

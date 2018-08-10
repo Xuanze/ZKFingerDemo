@@ -186,24 +186,26 @@ public class SelectKcCcActivity extends BaseActivity implements View.OnClickList
                                 if (((Boolean) obj).booleanValue()) {
                                     showProgressDialog(SelectKcCcActivity.this, "正在提取所选场次数据完成", false, 100);
                                     dismissProgressDialog();
-                                    new HintDialog(SelectKcCcActivity.this, R.style.dialog, "提取指纹完成，共有" + DbServices.getInstance(getBaseContext()).queryBKKSList(DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name(), cc.getCc_name()).size() + "个考生，有" + DbServices.getInstance(getBaseContext()).loadAllrzkszw().size() + "个指纹", new HintDialog.OnCloseListener() {
-                                        @Override
-                                        public void onClick(Dialog dialog, boolean confirm) {
-                                            if (confirm) {
-                                                dialog.dismiss();
-                                                Intent getIntent = getIntent();
-                                                String sfrz = getIntent.getStringExtra("sfrz");
-                                                if (sfrz.equals("2")) {
-                                                    startActivity(new Intent(SelectKcCcActivity.this, RZDJActivity.class));
-                                                } else if (sfrz.equals("3")) {
-                                                    startActivity(new Intent(SelectKcCcActivity.this, KWDJActivity.class));
-                                                } else {
+                                    Intent getIntent = getIntent();
+                                    String sfrz = getIntent.getStringExtra("sfrz");
+                                    if (sfrz.equals("3")) {
+                                        startActivity(new Intent(SelectKcCcActivity.this, KWDJActivity.class));
+                                        finish();
+                                    } else if (sfrz.equals("1")) {
+                                        new HintDialog(SelectKcCcActivity.this, R.style.dialog, "提取指纹完成，共有" + DbServices.getInstance(getBaseContext()).queryBKKSList(DbServices.getInstance(getBaseContext()).selectKC().get(0).getKc_name(), cc.getCc_name()).size() + "个考生，有" + DbServices.getInstance(getBaseContext()).loadAllrzkszw().size() + "个指纹", new HintDialog.OnCloseListener() {
+                                            @Override
+                                            public void onClick(Dialog dialog, boolean confirm) {
+                                                if (confirm) {
+                                                    dialog.dismiss();
                                                     startActivity(new Intent(SelectKcCcActivity.this, RZActivity.class));
+                                                    finish();
                                                 }
-                                                finish();
                                             }
-                                        }
-                                    }).setBackgroundResource(R.drawable.img_base_check).setNOVisibility(false).setLLButtonVisibility(true).setTitle("提示").setPositiveButton("知道了").show();
+                                        }).setBackgroundResource(R.drawable.img_base_check).setNOVisibility(false).setLLButtonVisibility(true).setTitle("提示").setPositiveButton("知道了").show();
+                                    } else if (sfrz.equals("2")) {
+                                        startActivity(new Intent(SelectKcCcActivity.this, RZDJJLActivity.class));
+                                        finish();
+                                    }
                                 } else {
                                     ShowHintDialog(SelectKcCcActivity.this, "提取考生指纹失败，请重新选择场次", "提示", R.drawable.img_base_icon_error, "知道了", false);
                                 }
